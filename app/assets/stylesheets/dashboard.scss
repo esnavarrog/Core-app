@@ -1,0 +1,138 @@
+// Place all the styles related to the Dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// colores
+
+$primaryColor:           #FA8072;
+$secondaryColor:         #DAF7A6;
+$yellow:                 #FFC300;
+$red:                    #FF5733;
+$hoverPrimary:           #C70039;
+$resaltColor:            #900C3F;
+
+// light colors
+
+$lightPrimary:           #FFA07A;
+$lightGreen:             #DAF7A6;
+$lightRed:               #FA8072;
+$lightYellow:            #FFC300;
+$lightHoverPrimary:      #FF5733;
+$lightResaltColor:       #C70039;
+
+body{
+    background-color: azure;
+    font-family: 'Raleway', sans-serif !important;
+}
+
+// buttons
+.btn{
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+.btn-outline-primary{
+    color: $primaryColor !important;
+    border-color: $primaryColor !important;
+}
+.btn-outline-primary:hover{
+    color: white !important;
+    border-color: $hoverPrimary !important;
+    background-color: $hoverPrimary !important;
+}
+.btn-outline-primary:active{
+    color: white !important;
+    border-color: $lightHoverPrimary !important;
+    background-color: $lightHoverPrimary !important;
+}
+
+.header{
+    background-color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+h1{
+    color: $primaryColor;
+}
+
+.container{
+    margin: 8px 0 50px 0;
+}
+
+.public{
+    height: 250px;
+    text-align: center;
+    padding: 0 !important;
+    transition: .3s;
+    .title-card{
+        padding: 4px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+        background-color: rgba(215, 26, 248, 0.3);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        // backdrop-filter: grayscale(1);
+        // -webkit-backdrop-filter: grayscale(1);
+        position: relative;
+        top: 184px;
+    }
+    .local-card{
+        padding: 4px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+        position: relative;
+        top: 184px;
+    }
+}
+
+.img{
+    background-image: url('https://quizizz.com/_media/quizzes/5e3c6bbd-3f9d-4a98-b96a-f7592126a4c2_200_200');
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 3px;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    min-height: 240px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+.circle-img{
+    border-radius: 50%;
+    border: .5px solid black;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.title-name{
+    margin-left: 10px;
+    .name{
+        font-weight: 600;
+    }
+    .direction{
+        font-size: .7rem;
+    }
+}
+
+.icons{
+    svg{
+        margin-left: 2rem;
+        stroke-width: 1;
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.footer{
+    padding: 10px 0;
+    text-align: center;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    .title-footer{
+        color: $resaltColor;
+    }
+}
