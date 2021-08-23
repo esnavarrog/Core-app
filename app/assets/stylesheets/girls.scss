@@ -1,0 +1,54 @@
+// Place all the styles related to the Girls controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.img-circle{
+    border-radius: 50%;
+    border: 1px solid #DAF7A6;
+    padding: 2px;
+}
+
+.informacion{
+    text-align: center;
+    margin: 24px;
+    font-size: 14px;
+    .name{
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 27px;
+        margin-bottom: 5px;
+        color: #FA8072;
+    }
+    .direction{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg{
+            width: 14px;
+            height: 14px;
+            margin-right: 3px;
+        }
+    }
+    h2{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .precio{
+        font-weight: 600;
+        margin: 24px 0;
+    }
+    .description{
+        margin: 24px 0;
+    }
+
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: 5px !important;
+}
+
+.disabled {
+    opacity: .65;
+    pointer-events: none;
+}

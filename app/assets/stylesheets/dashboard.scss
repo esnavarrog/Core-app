@@ -20,10 +20,7 @@ $lightYellow:            #FFC300;
 $lightHoverPrimary:      #FF5733;
 $lightResaltColor:       #C70039;
 
-body{
-    background-color: azure;
-    font-family: 'Raleway', sans-serif !important;
-}
+
 
 // buttons
 .btn{
@@ -52,6 +49,7 @@ body{
 }
 
 h1{
+    font-weight: 700 !important;
     color: $primaryColor;
 }
 
@@ -60,7 +58,7 @@ h1{
 }
 
 .public{
-    height: 250px;
+    padding-bottom: 100px;
     text-align: center;
     padding: 0 !important;
     transition: .3s;
@@ -69,33 +67,85 @@ h1{
         font-size: 14px;
         font-weight: 600;
         color: white;
-        background-color: rgba(215, 26, 248, 0.3);
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
-        // backdrop-filter: grayscale(1);
-        // -webkit-backdrop-filter: grayscale(1);
-        position: relative;
-        top: 184px;
+        background-color: rgba(115, 43, 128, 0.2);
+        // backdrop-filter: blur(3px);
+        // -webkit-backdrop-filter: blur(3px);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
-    .local-card{
-        padding: 4px 0;
-        font-size: 14px;
-        font-weight: 600;
-        color: white;
-        position: relative;
-        top: 184px;
+   
+}
+
+.grid{
+    box-sizing: border-box;
+    display: block;
+    width: 100vw;
+
+    .grid-item{
+        position: inherit;
+        width: 20%;
+        box-sizing: border-box;
+        display: block;
+        float: left;
     }
 }
 
+
 .img{
-    background-image: url('https://quizizz.com/_media/quizzes/5e3c6bbd-3f9d-4a98-b96a-f7592126a4c2_200_200');
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 3px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    margin: 1px;
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    min-height: 240px;
-    width: 200px;
     border-radius: 4px;
+    .img-item{
+        box-sizing: border-box;
+        overflow: hidden;
+        img{
+            position: relative;
+            display: block;
+            width: 100%;
+            -webkit-transition: transform .3s ease-in-out;
+            transition: transform .3s ease-in-out;
+            &:hover{
+                transform: scale(1.07);
+            }
+        }
+        
+    }
+}
+
+.box-bottom{
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+// margins
+
+.m-24{
+    margin: 24px;
+}
+.mt-24{
+    margin-top: 24px;
+}
+.mb-24{
+    margin-bottom: 24px;
+}
+.ml-24{
+    margin-left: 24px;
+}
+.mr-24{
+    margin-right: 24px;
+}
+
+.mt-100{
+    margin-top: 100px;
 }
 
 .circle-img{
@@ -134,5 +184,17 @@ h1{
     bottom: 0;
     .title-footer{
         color: $resaltColor;
+    }
+}
+
+@media (max-width: 959.9px){
+    .grid .grid-item{
+        width: 50%;
+    }
+    
+}
+@media (min-width: 960px) and (max-width: 1200px){
+    .grid .grid-item{
+        width: 33%;
     }
 }

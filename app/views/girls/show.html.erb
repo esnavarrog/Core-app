@@ -1,0 +1,67 @@
+<p id="notice">
+    <%= notice %>
+</p>
+
+<!-- header -->
+<div class="d-flex justify-content-between py-2 mx-2">
+    <div class="d-flex align-items-center">
+        <%= image_tag(@girl.avatar_url(:thumb), class:'circle-img') if @girl.avatar? %>
+            <div class="title-name">
+                <div class="name">
+                    <%= @girl.name %>
+                </div>
+                <div class="direction">
+                    <%= @girl.address %>
+                </div>
+            </div>
+    </div>
+    <div class="icons d-flex align-items-center justify-content-between">
+        <%= inline_svg_tag 'icons/heart.svg' %>
+            <%= inline_svg_tag 'icons/phone.svg' %>
+    </div>
+</div>
+
+<!-- content -->
+
+<div class="d-flex justify-content-center flex-wrap">
+    <!-- imagen -->
+    <picture>
+        <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle') if @girl.avatar? %>
+    </picture>
+
+    <!-- datos -->
+
+    <div class="informacion">
+        <div class="name">
+            <%= @girl.name.upcase %>
+        </div>
+        <div class="direction">
+            <%= inline_svg_tag('icons/map-pin.svg') %>
+                <%= @girl.address %>
+        </div>
+        <div class="edad">
+            <%= @girl.edad %>
+        </div>
+        <div class="atencion">
+            <%= @girl.horario %>
+        </div>
+        <div class="precio">
+            <% if @girl.price == 'consultar' %>
+                Servicios a consultar
+            <% else %>
+                Servicios desde $<%= number_with_delimiter @girl.price.to_i, delimiter:'.' %>
+            <% end %>
+        </div>
+        <div class="description">
+            <h2>
+                <%= @girl.description %>
+            </h2>
+        </div>
+
+    </div>
+</div>
+
+<!-- footer -->
+
+<%= link_to 'Edit' , edit_girl_path(@girl) %> |
+    <%= link_to 'Back' , girls_path %>
