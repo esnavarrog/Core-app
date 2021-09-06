@@ -11,6 +11,14 @@ $red:                    #FF5733;
 $hoverPrimary:           #C70039;
 $resaltColor:            #900C3F;
 
+// paleta de colores
+
+$rosa:                   #BF396A;
+$azul:                   #1b959a;
+$amarillo:               #F2C641;
+$anaranjado:             #D96A29;
+$negro:                  #0D0D0D;
+
 // light colors
 
 $lightPrimary:           #FFA07A;
@@ -19,6 +27,7 @@ $lightRed:               #FA8072;
 $lightYellow:            #FFC300;
 $lightHoverPrimary:      #FF5733;
 $lightResaltColor:       #C70039;
+$backgroundGrey:     #F9F9F9;
 
 
 
@@ -27,30 +36,43 @@ $lightResaltColor:       #C70039;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
 .btn-outline-primary{
-    color: $primaryColor !important;
-    border-color: $primaryColor !important;
+    color: $rosa !important;
+    border-color: $rosa !important;
 }
 .btn-outline-primary:hover{
+    color: white !important;
+    border-color: $rosa !important;
+    background-color: $rosa !important;
+}
+.btn-primary{
+    color: white !important;
+    border-color: $rosa !important;
+    background-color: $rosa !important;
+}
+.btn-primary:hover{
     color: white !important;
     border-color: $hoverPrimary !important;
     background-color: $hoverPrimary !important;
 }
 .btn-outline-primary:active{
     color: white !important;
-    border-color: $lightHoverPrimary !important;
-    background-color: $lightHoverPrimary !important;
+    border-color: $anaranjado !important;
+    background-color: $anaranjado !important;
 }
 
 .header{
     background-color: #fff;
-    padding: 10px 0;
+    padding: 0;
     text-align: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;    
+    position: relative;
+    margin-bottom: 2px;
 }
 
 h1{
     font-weight: 700 !important;
-    color: $primaryColor;
+    color: $rosa;
+    margin-bottom: 0 !important;
 }
 
 .container{
@@ -80,7 +102,8 @@ h1{
 .grid{
     box-sizing: border-box;
     display: block;
-    width: 100vw;
+    margin: auto;
+    width: 908px;
 
     .grid-item{
         position: inherit;
@@ -150,7 +173,7 @@ h1{
 
 .circle-img{
     border-radius: 50%;
-    border: .5px solid black;
+    border: .5px solid $negro;
     height: 2.5rem;
     width: 2.5rem;
 }
@@ -188,8 +211,16 @@ h1{
 }
 
 @media (max-width: 959.9px){
+    .grid{
+        width: 100vw;
+    }
     .grid .grid-item{
         width: 50%;
+    }
+    .picture-portada{
+        .portada{
+            width: 100vw;
+        }
     }
     
 }

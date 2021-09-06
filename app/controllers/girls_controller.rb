@@ -23,9 +23,9 @@ class GirlsController < ApplicationController
   def create
     @girl = Girl.new(girl_params)
     @girl.price = params[:price].gsub(/[^.]/, '')
-    puts @girl.price
     respond_to do |format|
       if @girl.save
+        # format.js
         format.html { redirect_to @girl, notice: "Girl was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,12 +35,9 @@ class GirlsController < ApplicationController
 
   # PATCH/PUT /girls/1 or /girls/1.json
   def update
-    
-    respond_to do |format|
-      if @girl.update(girl_params)
+    if @girl.update(girl_params)
+      respond_to do |format|
         format.html { redirect_to @girl, notice: "Girl was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
@@ -67,6 +64,7 @@ class GirlsController < ApplicationController
         :description, 
         :price, 
         :avatar,
+        :portada,
         :body,
         :horario,
         :idioma,

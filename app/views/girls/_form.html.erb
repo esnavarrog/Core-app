@@ -1,26 +1,24 @@
-<%= form_with(model: girl) do |form| %>
-  <% if girl.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(girl.errors.count, "error" ) %> prohibited this girl from being saved:
-      </h2>
-
-      <ul>
-        <% girl.errors.each do |error| %>
-          <li>
-            <%= error.full_message %>
-          </li>
-          <% end %>
-      </ul>
-    </div>
-    <% end %>
+<%= form_with(model: @girl) do |form| %>
+      <div class="avatar-form d-flex justify-content-center">
+        <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-form') if @girl.avatar? %>
+      </div>
       <div class="form-group">
-        <%= form.label :name, 'Nombre' %>
+
+        <%= form.label :avatar, 'Descripción' %>
+          <%= form.file_field :avatar, class:'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :portada %>
+          <%= form.file_field :portada, class:'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :name, 'Seudónimo Artístico' %>
           <%= form.text_field :name, class:'form-control' %>
 
       </div>
       <div class="form-group">
-        <%= form.label :address, 'Dirección aprox.' %>
+        <%= form.label :address, 'Dirección Cercana' %>
           <%= form.text_field :address, class:'form-control' %>
       </div>
 
@@ -33,10 +31,7 @@
           <%= form.text_area :description, class:'form-control' %>
       </div>
 
-      <div class="form-group">
-        <%= form.label :avatar, 'Descripción' %>
-          <%= form.file_field :avatar, class:'form-control' %>
-      </div>
+      
 
       <div class="actions">
         <%= form.submit %>

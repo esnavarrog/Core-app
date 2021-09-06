@@ -1,24 +1,86 @@
 // Place all the styles related to the Girls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
+$backgroundGrey:     #CFD2D2;
 
+// paleta colores
 
+$rosa: #BF396A;
+$azul: #1b959a;
+$amarillo: #F2C641;
+$anaranjado: #D96A29;
+$negro: #0D0D0D;
+
+body{
+    color: $negro;
+}
+#sub-menu{
+    box-sizing: border-box;
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    max-width: 940px;
+}
 .img-circle{
     border-radius: 50%;
-    border: 1px solid #DAF7A6;
-    padding: 2px;
+    border: 4px solid white;
+    position: absolute;
+    bottom:-10%;
+    transition: all;
+}
+
+.img-circle-avatar{
+    border-radius: 50%;
+    width: 40px;
+}
+.img-circle-form{
+    border-radius: 50%;
+    border: 4px solid white;
+}
+.avatar-form{
+    .portada{
+        width: 100%;
+        border-radius: 5px;
+    }
+}
+.title-form-section{
+    margin-bottom: 14px;
+    h2{
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+}
+.picture-portada{
+    position: relative;
+    .portada{
+        border-radius: 0 0 5px 5px;
+    }
+}
+
+.section-form{
+    margin-bottom: 24px;
+    .form-group{
+        margin-bottom: 24px;
+    }
+}
+
+.container-girls{
+    background-color: white;
+    box-shadow: $box_shadow;
 }
 
 .informacion{
     text-align: center;
-    margin: 24px;
-    font-size: 14px;
+    margin-top: 5%;
+        font-size: 14px;
     .name{
-        font-size: 24px;
+        font-size: 34px;
         font-weight: 600;
         line-height: 27px;
         margin-bottom: 5px;
-        color: #FA8072;
+        color: $rosa;
     }
     .direction{
         display: flex;
@@ -36,12 +98,20 @@
     }
     .precio{
         font-weight: 600;
-        margin: 24px 0;
+        font-size: 1.5rem;
+        color: $azul;
     }
-    .description{
-        margin: 24px 0;
+    
+}
+.description{
+    padding: 24px 0;
+    margin-top: 14px;
+    h2{
+        font-size: 16px !important;
+        margin-bottom: 0;
+        width: 900px;
+        text-align: center;
     }
-
 }
 
 .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
@@ -51,4 +121,169 @@
 .disabled {
     opacity: .65;
     pointer-events: none;
+}
+.back{
+    .btn{
+        box-shadow: rgba(0, 0, 0, 0.00) 0px 4px 12px !important;
+    }
+    
+    .btn-light{
+        background-color: white !important;
+        border-color: white !important;
+        color: #666;
+    }
+}
+
+// modals
+.modal-header{
+    justify-content: center !important;
+    .btn{
+        box-shadow: none !important;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .btn-close{
+        border-radius: 50%;
+    }
+    .modal-title{
+        text-align: center !important;
+        font-weight: 600;
+    }
+}
+
+.container-content{
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+// buttons
+
+.form-perfil{
+    box-shadow:$box_shadow;
+    background-color: white;
+    padding: 10px 16px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    .btn{
+        box-shadow: none !important;
+        border-radius: 20px;
+    }
+}
+.form-profile{
+    .btn{
+        border-radius: 20px !important;
+    }
+    .btn-light{
+        text-align: left;
+        margin-top: 0 !important;
+        margin-left: 16px;
+        padding: 9px 16px;
+    }
+    .btn-white{
+        text-align: center;
+        margin-left: 0;
+        background-color: transparent !important;
+        border: 0;
+        padding: 2px 16px;
+        color: #666;
+    }
+}
+.form-details{
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: $box_shadow;
+    margin-top: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    h3{
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: $azul;
+    }
+    .btn{
+        box-shadow: none !important;
+        border-radius: 10px;
+    }
+    .btn-light{
+        background-color: rgba(0, 0, 0, 0.05);
+        width: 100%;
+        margin-top: 16px;
+    }
+}
+
+hr{
+    background-color: $backgroundGrey !important;
+}
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: 0px !important;
+}
+
+.form-group{
+    textarea{
+        height: 150px;
+    }
+}
+
+.icon-whatsapp{
+    width: 24px;
+    height: 24px;
+    fill: #25D366;
+    animation: latidos .9s infinite;
+	transform-origin: center;
+}
+
+@keyframes latidos {
+    from { transform: none; }
+    50% { transform: scale(1.2); }
+    to { transform: none; }
+}
+
+@media (max-width: 759.8px){
+    .img-circle{
+        height: 90%;
+    }
+    .form-details{
+        border-radius: 0;
+    }
+    .form-profile{
+        border-radius: 0;
+    }
+    
+}
+@media (min-width: 760px) and (max-width: 939.9px){
+    .img-circle{
+        // top: 60%;
+    }
+    .form-details{
+        border-radius: 0 8px 8px 0;
+    }
+    .form-profile{
+        border-radius: 8px 0 0 8px;
+    }
+    
+}
+
+@media(min-width:940px){
+    .informacion{
+        margin-top: 40px;
+    }
+    
+}
+
+@media(max-width:940px){
+    .description{
+        h2{
+            width: 90%;
+        }
+    }
+    .form-perfil{
+        border-radius: 0;
+        width: 100vw;
+    }
+    
 }

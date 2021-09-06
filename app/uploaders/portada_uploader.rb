@@ -1,4 +1,4 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class PortadaUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -29,21 +29,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fill: [180, 180]
-  end
+  # version :thumb do
+  #   process resize_to_fit: [50, 50]
+  # end
   version :medium do
-    process resize_to_fill: [400, 600]
+    process resize_to_fill: [940, 340]
     process convert: 'png'
-    process :watermark
-  end
-
-  def watermark
-    manipulate! do |img|
-      logo = Magick::Image.read("#{Rails.root}/app/assets/images/logo-m.png").first
-      logo.alpha(Magick::ActivateAlphaChannel)
-      img = img.composite(logo, Magick::NorthWestGravity, 100, 200, Magick::OverCompositeOp)
-    end
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

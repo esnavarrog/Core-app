@@ -1,0 +1,83 @@
+<%= form_with model: @girl, remote: true, method: :put do |form| %>
+<div class="modal-body modal-dialog-scrollable">
+    <div class="section-form">
+      <div class="d-flex justify-content-between align-items-center title-form-section">
+        <h2>Foto de Perfil</h2>
+        <div>
+          <%= form.label :avatar, 'Subir', class:'btn btn-primary btn-sm' %>
+          <%= form.file_field :avatar, class:'form-control d-none' %>
+        </div>
+      </div>
+      <div class="avatar-form d-flex justify-content-center">
+        <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-form') if @girl.avatar? %>
+      </div>
+    </div>
+
+    <div class="section-form">
+      <div class="d-flex justify-content-between align-items-center title-form-section">
+        <h2>Foto de Portada</h2>
+        <div>
+          <%= form.label :portada, 'Subir', class:'btn btn-primary btn-sm' %>
+            <%= form.file_field :portada, class:'form-control d-none' %>
+        </div>
+      </div>
+      <div class="avatar-form d-flex justify-content-center">
+        <%= image_tag(@girl.portada_url(:medium), class:'portada') if @girl.avatar? %>
+      </div>
+    </div>
+
+    <div class="section-form">
+      <div class="d-flex justify-content-between align-items-center title-form-section">
+        <h2>Presentación</h2>
+      </div>
+      <div class="form-group">
+        <%= form.label :description, ' Descripción' %>
+          <%= form.text_area :description, class:'form-control', placeholder:'Describe tus servicios...' %>
+      </div>
+    </div>
+    
+    <div class="section-form">
+      <div class="d-flex justify-content-between align-items-center title-form-section">
+        <h2>Datos</h2>
+      </div>
+      <div class="form-group">
+        <%= form.label :name, 'Seudónimo Artístico' %>
+          <%= form.text_field :name, class:'form-control', placeholder:'Escribe un nombre para mostrar...' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :phone, 'Número Contacto' %>
+          <div class="input-group">
+            <span class="input-group-text" id="cod-area">+56</span>
+            <%= form.text_field :phone, class:'form-control', placeholder:'Ej. 912345678', aria:{describedby:"cod-area"} %>
+          </div>
+      </div>
+      <div class="form-group">
+        <%= form.label :edad, 'Edad' %>
+          <%= form.text_field :edad, class:'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :nacionalidad, 'Nacionalidad' %>
+          <%= form.select :nacionalidad, Girl::COUNTRY_LIST,{}, {class:'form-control', id:'nacionalidad'}%>
+      </div>
+      <div class="form-group">
+        <%= form.label :address, 'Dirección de Referencia' %>
+          <%= form.text_field :address, class:'form-control', placeholder:'Ej. M. La Moneda' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :price, 'Precio' %>
+          <%= form.select :price, Girl::PRICE_LIST,{}, {class:'form-control', id:'precio-hora'}%>
+      </div>
+    </div>
+      
+
+
+     
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <%= form.submit 'Guardar', class:'btn btn-primary' %>
+    </div>
+  <% end %>

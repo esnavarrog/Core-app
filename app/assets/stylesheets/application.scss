@@ -14,11 +14,16 @@
  *= require_self
  */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-@import 'variables';
 @import 'bootstrap/scss/bootstrap';
+@import 'variables';
 @import 'dashboard';
+@import 'girls';
 
 body{
-    background-color: azure;
+    background-color: rgba(0, 0, 0, 0.05) !important;
     font-family: 'Montserrat', sans-serif !important;
+}
+
+.row {
+    --bs-gutter-x: 10px !important;
 }

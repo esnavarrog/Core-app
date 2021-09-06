@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_003710) do
+ActiveRecord::Schema.define(version: 2021_08_23_225027) do
 
   create_table "girls", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_003710) do
     t.boolean "videollamadas"
     t.boolean "llamadas"
     t.boolean "chat"
+    t.string "portada"
   end
 
 end

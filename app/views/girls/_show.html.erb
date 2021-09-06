@@ -1,0 +1,99 @@
+<div class="container-girls">
+
+    <!-- header -->
+    <div id="sub-menu" class="sticky-top">
+        <div class="d-flex justify-content-between py-2 mx-2 b-bottom">
+            <div class="back">
+                <%= link_to dashboard_index_url, class:'btn btn-light' do %>
+                    <%= inline_svg_tag 'icons/icon_chevron_left.svg' %>
+                <%end%>
+            </div>
+            <div class="d-flex align-items-center justify-content-between back">
+                <a href="" class="btn btn-light">
+                    <%= inline_svg_tag 'icons/heart.svg' %>
+                </a>
+                <a href="tel:+56<%= @girl.try(:phone) %>" class="btn btn-light">
+                    <%= inline_svg_tag 'icons/phone.svg' %>
+                </a>
+                <a href="https://wa.me/+56<%= @girl.try(:phone) %>?text=Hola%20<%= @girl.name.titleize %>%20te%20hablo%20desde%20UrbanSex.cl,%20estas%20disponible?" target="_blank" class="circle btn btn-light ">
+                    <%= inline_svg_tag('icons/icon_whatsapp.svg', class:'icon-whatsapp') %>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- content -->
+    
+    <!-- imagen -->
+    <picture class="picture-portada d-flex justify-content-center">
+        <%= image_tag(@girl.portada_url(:medium), class:'portada') if @girl.portada? %>
+        <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle') if @girl.avatar? %>
+    </picture>
+    <div class="d-flex justify-content-center flex-wrap">
+        
+    
+        <!-- datos -->
+    
+        <div class="informacion">
+            <div class="name">
+                <%= @girl.name.upcase %>
+            </div>
+            <div class="direction">
+                <%= inline_svg_tag('icons/map-pin.svg') %>
+                    <%= @girl.address %>
+            </div>
+            <div class="edad">
+                <%= @girl.edad ?  "#{@girl.edad} años" : "" %><%= @girl.nacionalidad ? ', ' + @girl.nacionalidad.capitalize : '' %>
+            </div>
+            <div class="atencion">
+                <%= @girl.horario %>
+            </div>
+            <div class="precio">
+                <% if @girl.price == 'a consultar' %>
+                    Valor a consultar
+                <% else %>
+                    Valor desde $<%= number_with_delimiter @girl.price.to_i, delimiter:'.' %>
+                <% end %>
+            </div>
+            
+        </div>
+        
+    </div>
+    <% if @girl.description.present? %>
+        <div class="description border-top d-flex justify-content-center flex-wrap">
+            <h2>
+                <%= @girl.description %>
+            </h2>
+        </div>
+    <% end %>
+</div>
+
+
+<div class="container-content">
+
+    <div class="form-perfil d-flex justify-content-start">
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-perfil">
+            Editar Perfil
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <!-- Detalles -->
+            <%= render "girls/modules/forms_profile" %>
+    
+            <!-- Gallery -->
+            <div class="form-details">
+                <h3>Fotos</h3>
+    
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+            <%= render 'girls/modules/add_publication' %>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+    
+    <!-- modals -->
+    <%= render 'girls/modals/modal_perfil' %>
