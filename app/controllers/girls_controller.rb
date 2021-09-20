@@ -8,6 +8,8 @@ class GirlsController < ApplicationController
 
   # GET /girls/1 or /girls/1.json
   def show
+    @post = @girl.posts.build
+    @posts = @girl.posts.order(created_at: :desc)
   end
 
   # GET /girls/new
@@ -96,6 +98,7 @@ class GirlsController < ApplicationController
         :presencial,
         :videollamadas,
         :llamadas,
-        :chat)
+        :chat
+        )
     end
 end

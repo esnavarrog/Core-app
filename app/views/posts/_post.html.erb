@@ -1,0 +1,27 @@
+
+<% @posts.each do |post| %>
+    <div class="form-details form-profile published">
+        <div class="content-published d-flex justify-content-between ">
+            <div class="user-published d-flex align-items-center">
+                <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-avatar') if @girl.avatar? %>
+                <div class="ms-3">
+                    <span><%= @girl.name.capitalize %></span>
+                    <div class="datetime-published">
+                        <%= time_ago_in_words post.created_at %>
+                    </div>
+                </div>
+            </div>
+            <i class="bi bi-three-dots-vertical"></i>
+            
+        </div>
+        <div class="content-published my-2">
+            <%= post.content %>
+        </div>
+        <% if post.video.present? %>
+            <%= video_tag post.video_url(:mp4), :controls => true %>
+        <% end %>
+        <% if post.img.present? %>
+            <%= image_tag(post.img_url(:normal), class:'img-published') %>
+        <% end %>
+    </div>
+<% end %>

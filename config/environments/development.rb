@@ -71,6 +71,10 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  logger            = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter  = config.log_formatter
+  config.logger     = ActiveSupport::TaggedLogging.new(logger)
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end

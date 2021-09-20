@@ -1,10 +1,13 @@
-<%= form_with model: @girl, remote: true, method: :put do |form| %>
+<%= form_with(model: @girl, remote: true, method: :put) do |form| %>
 <div class="modal-body modal-dialog-scrollable">
     <div class="section-form">
       <div class="d-flex justify-content-between align-items-center title-form-section">
         <h2>Foto de Perfil</h2>
         <div>
-          <%= form.label :avatar, 'Subir', class:'btn btn-primary btn-sm' %>
+          <label for="girl_avatar" class="btn btn-primary btn-sm">
+            <%= inline_svg_tag('icons/icon_camera.svg') %>
+              Subir
+          </label>
           <%= form.file_field :avatar, class:'form-control d-none' %>
         </div>
       </div>
@@ -17,7 +20,10 @@
       <div class="d-flex justify-content-between align-items-center title-form-section">
         <h2>Foto de Portada</h2>
         <div>
-          <%= form.label :portada, 'Subir', class:'btn btn-primary btn-sm' %>
+          <label for="girl_portada" class="btn btn-primary btn-sm">
+            <%= inline_svg_tag('icons/icon_camera.svg') %>
+              Subir
+          </label>
             <%= form.file_field :portada, class:'form-control d-none' %>
         </div>
       </div>

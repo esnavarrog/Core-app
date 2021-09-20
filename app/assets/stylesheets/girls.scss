@@ -33,6 +33,7 @@ body{
 .img-circle-avatar{
     border-radius: 50%;
     width: 40px;
+    height: 40px;
 }
 .img-circle-form{
     border-radius: 50%;
@@ -105,7 +106,6 @@ body{
 }
 .description{
     padding: 24px 0;
-    margin-top: 14px;
     h2{
         font-size: 16px !important;
         margin-bottom: 0;
@@ -224,6 +224,10 @@ hr{
 }
 
 .form-group{
+    label{
+        font-size: 13px;
+        font-weight: 600;
+    }
     textarea{
         height: 150px;
     }
@@ -235,6 +239,9 @@ hr{
     fill: #25D366;
     animation: latidos .9s infinite;
 	transform-origin: center;
+}
+.trix-button-group--file-tools{
+    display: none !important;
 }
 
 @keyframes latidos {

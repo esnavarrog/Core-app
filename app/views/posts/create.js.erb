@@ -1,0 +1,5 @@
+$('#modal-publish').modal("toggle")
+$('#box-images-thumb').html("<%= j render './posts/post_thumb' %>")
+$('#box-published').html("<%= j render @post %>")
+
+$('#post_img').val('')

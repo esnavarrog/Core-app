@@ -1,0 +1,11 @@
+
+
+<div class="row">
+    <% @posts.last(9).each do |post| %>
+        <% if post.video.present? %>
+            <div class="col-4 mb-3">
+                <%= video_tag(post.video_url(:mp4)) %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
