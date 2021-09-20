@@ -1,7 +1,8 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class VideoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  include CarrierWave::Video
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -13,14 +14,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url(*args)
-  #   # For Rails 3.1+ asset pipeline compatibility:
-    # ActionController::Base.helpers.asset_path("default.png")
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-    # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  version :mp4 do
+    process :encode_video => [:mp4]
+    def full_filename(for_file)
+      "#{File.basename(for_file, File.extname(for_file))}.mp4"
+    end
   end
+
+  # Provide a default URL as a default if there hasn't been a file uploaded:
+  # def default_url(*args)
+  #   # For Rails 3.1+ asset pipeline compatibility:
+  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  #
+  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  # end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
@@ -30,28 +37,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fill: [180, 180]
-  end
-  version :medium do
-    process resize_to_fill: [400, 600]
-    process convert: 'png'
-    process :watermark
-  end
-
-  def watermark
-    manipulate! do |img|
-      logo = Magick::Image.read("#{Rails.root}/app/assets/images/logo-m.png").first
-      logo.alpha(Magick::ActivateAlphaChannel)
-      img = img.composite(logo, Magick::CenterGravity, Magick::MultiplyCompositeOp)
-    end
-  end
+  # version :thumb do
+  #   process resize_to_fit: [50, 50]
+  # end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_allowlist
-    %w(jpg jpeg gif png)
-  end
+  # def extension_allowlist
+  #   %w(jpg jpeg gif png)
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

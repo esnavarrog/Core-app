@@ -1,0 +1,40 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$primaryColor: #C70039;
+
+.published{
+    padding: 24px 0 !important;
+    .img-published{
+        width: 100%;
+        margin-top: 16px;
+    }
+    .datetime-published{
+        font-size: 12px;
+    }
+    video{
+        width: 100%;
+    }
+}
+.content-published{
+    margin: auto 16px;
+    .user-published{
+        span{
+            color: $primaryColor;
+        }
+    }
+    
+}
+
+.button-upload{
+    height: 90px;
+    border-radius: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 100%;
+    font-size: 30px !important;
+}
+
+trix-editor.form-control{
+    background-color: rgba(0, 0, 0, 0.05);
+}

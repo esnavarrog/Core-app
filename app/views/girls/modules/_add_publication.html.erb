@@ -1,7 +1,7 @@
 <div class="form-details form-profile">
     <div class="d-flex align-items-center">
         <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-avatar') if @girl.avatar? %>
-        <div class="btn btn-light">¿Qué estás pensando</div>
+        <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-publish">¿Qué estás pensando</div>
     </div>
     <hr>
     <div class="d-flex align-items-center justify-content-between">
@@ -12,6 +12,23 @@
         <div class="btn btn-light btn-white d-flex align-items-center justify-content-center">
             <%= inline_svg_tag('icons/icon_img.svg', class:'me-2') %>
             Foto
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-publish" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Agregar Publicación</h5>
+            <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <%= render './posts/form'%>
+        </div>
+        
+        
         </div>
     </div>
 </div>

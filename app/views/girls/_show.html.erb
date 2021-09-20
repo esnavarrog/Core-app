@@ -2,7 +2,7 @@
 
     <!-- header -->
     <div id="sub-menu" class="sticky-top">
-        <div class="d-flex justify-content-between py-2 mx-2 b-bottom">
+        <div class="d-flex justify-content-between py-2 mx-2 b-bottom"  >
             <div class="back">
                 <%= link_to dashboard_index_url, class:'btn btn-light' do %>
                     <%= inline_svg_tag 'icons/icon_chevron_left.svg' %>
@@ -26,10 +26,10 @@
     
     <!-- imagen -->
     <picture class="picture-portada d-flex justify-content-center">
-        <%= image_tag(@girl.portada_url(:medium), class:'portada') if @girl.portada? %>
+        <%= image_tag(@girl.portada_url(:medium), class:'portada') %>
         <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle') if @girl.avatar? %>
     </picture>
-    <div class="d-flex justify-content-center flex-wrap">
+    <div class="d-flex justify-content-center flex-wrap pb-3">
         
     
         <!-- datos -->
@@ -84,11 +84,24 @@
             <!-- Gallery -->
             <div class="form-details">
                 <h3>Fotos</h3>
+                <div id="box-images-thumb" class="d-flex justify-content-center text-center">
+                    <%= render "./posts/post_thumb" %>
+                </div>
+    
+            </div>
+            <div class="form-details">
+                <h3>Videos</h3>
+                <div id="box-images-thumb" class="d-flex justify-content-center text-center">
+                    <% render "./posts/video_thumb"%>
+                </div>
     
             </div>
         </div>
         <div class="col-sm-12 col-md-7">
             <%= render 'girls/modules/add_publication' %>
+            <div id="box-published">
+                <%= render "./posts/post" %>
+            </div>
         </div>
     </div>
 </div>
