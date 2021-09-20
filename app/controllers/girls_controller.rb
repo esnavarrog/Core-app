@@ -24,11 +24,10 @@ class GirlsController < ApplicationController
   # POST /girls or /girls.json
   def create
     @girl = Girl.new(girl_params)
-    @girl.price = params[:price].gsub(/[^.]/, '')
     respond_to do |format|
       if @girl.save
         # format.js
-        format.html { redirect_to @girl, notice: "Girl was successfully created." }
+        format.html { redirect_to root, notice: "Girl was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
