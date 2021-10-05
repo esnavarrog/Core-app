@@ -1,3 +1,37 @@
-<div class="header d-flex align-items-center justify-content-center">
+<div class="header d-flex align-items-center justify-content-between">
+    <div>
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Small button
+            </button>
+            <ul class="dropdown-menu">
+            ...
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm" type="button">
+                Small split button
+            </button>
+            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                ...
+            </ul>
+        </div>
+    </div>
     <h1>Core</h1>
+    <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, class:'btn btn-light btn-light-user', method: :delete do %>
+            <%= inline_svg_tag('icons/icon_sign-out.svg') %>
+        <% end %>
+    <% else %>
+        <div>
+            <%= link_to new_user_session_path, class:'item' do %>
+                <%= inline_svg_tag('icons/icon_sign-in.svg') %>
+            <% end %>
+            <%= link_to 'Registrarse', new_user_registration_path, class:'ms-3' %>
+        </div>
+    <% end %>
+    
 </div>
