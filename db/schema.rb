@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_26_054102) do
+ActiveRecord::Schema.define(version: 2021_10_17_180809) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -100,7 +100,9 @@ ActiveRecord::Schema.define(version: 2021_09_26_054102) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "video"
+    t.integer "user_id"
     t.index ["girl_id"], name: "index_posts_on_girl_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,8 +114,8 @@ ActiveRecord::Schema.define(version: 2021_09_26_054102) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nickname"
-    t.integer "role"
-    t.integer "status"
+    t.integer "role", default: 0
+    t.integer "status", default: 0
     t.string "avatar"
     t.string "name"
     t.datetime "birthday"
@@ -125,4 +127,5 @@ ActiveRecord::Schema.define(version: 2021_09_26_054102) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "posts", "girls"
+  add_foreign_key "posts", "users"
 end

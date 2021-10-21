@@ -1,6 +1,6 @@
 
 <% @posts.each do |post| %>
-    <div class="form-details form-profile published">
+    <div id="post-<%= post.id %>" class="form-details form-profile published">
         <div class="content-published d-flex justify-content-between ">
             <div class="user-published d-flex align-items-center">
                 <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-avatar') if @girl.avatar? %>
@@ -11,6 +11,7 @@
                     </div>
                 </div>
             </div>
+            <%= link_to "delete", girl_post_path(@girl, post), method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true %>
             <i class="bi bi-three-dots-vertical"></i>
             
         </div>

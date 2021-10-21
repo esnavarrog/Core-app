@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :posts
   validates_presence_of :nickname
   validates_uniqueness_of :nickname
-  enum role: [:admin_super, :girl, :user]
+  enum role: [:user, :admin_super, :girl ]
   enum status: [:active, :locked, :inactive]
 end

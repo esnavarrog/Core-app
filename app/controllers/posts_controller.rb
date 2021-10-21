@@ -5,17 +5,24 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   def create
-    @post = Post.create(post_params)
-    @post.girl = @girl
-    @posts = @girl.posts.order(created_at: :desc)
-    respond_to do |format|
-      if @post.save
-        format.js
+    if post_params[:content].present? || post_params[:img].present? || post_params[:video].present?
+      @post = Post.create(post_params)
+      @post.girl = @girl
+      @post.user = current_user
+      @posts = @girl.posts.order(created_at: :desc)
+      respond_to do |format|
+        if @post.save
+          format.js
+        end
       end
+    else
+      render :form_error
     end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
   end
 
   def update
