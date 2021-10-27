@@ -1,10 +1,10 @@
 
-<div class="row">
-    <% @posts.last(9).each do |post| %>
-        <% if post.img.present? %>
-            <div class="col-4 mb-3">
+<% @posts.last(9).each do |post| %>
+    <% if post.img.present? %>
+        <div class="col-4 mb-2">
+            <a href="#post-<%= post.id %>">
                 <%= image_tag(post.img_url(:thumb)) %>
-            </div>
-        <% end %>
+            </a>
+        </div>
     <% end %>
-</div>
+<% end %>

@@ -11,8 +11,18 @@
                     </div>
                 </div>
             </div>
-            <%= link_to "delete", girl_post_path(@girl, post), method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true %>
-            <i class="bi bi-three-dots-vertical"></i>
+            <div class="btn-group dropstart">
+                <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <%= link_to girl_post_path(@girl, post), class:"dropdown-item", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                            <i class="bi bi-trash "></i> Eliminar
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
             
         </div>
         <div class="content-published my-2">

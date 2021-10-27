@@ -79,24 +79,25 @@
         </button>
     </div>
 
-    
     <div class="row">
         <div class="col-sm-12 col-md-5">
             <!-- Detalles -->
             <%= render "girls/modules/forms_profile" %>
     
-            <!-- Gallery -->
             <div class="form-details">
-                <h3>Fotos</h3>
-                <div id="box-images-thumb" class="d-flex justify-content-center text-center">
-                    <%= render "./posts/post_thumb" %>
+                <h3>Información</h3>
+                <div id="box-images-thumb" class="">
+                    <%= render "details"%>
                 </div>
     
             </div>
+            <!-- Gallery -->
             <div class="form-details">
-                <h3>Videos</h3>
-                <div id="box-images-thumb" class="d-flex justify-content-center text-center">
-                    <% render "./posts/video_thumb"%>
+                <h3>Fotos</h3>
+                <div class="container d-flex justify-content-between" style="margin-bottom: 8px !important;">
+                    <div id="box-images-thumb" class="row">
+                        <%= render "./posts/post_thumb" %>
+                    </div>
                 </div>
     
             </div>
