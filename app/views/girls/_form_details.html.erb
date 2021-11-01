@@ -1,0 +1,110 @@
+<%= form_with(model: @girl) do |form| %>
+<div class="modal-body">
+    <div id="form-details-info" class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <%= form.label :edad %>
+                <%= form.text_field :edad, class:'form-control' %>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <%= form.label :estatura %>
+                <div class="input-group">
+                    <div class="input-group-text">
+                        1.
+                    </div>
+                    <%= form.select :estatura, Girl::ESTATURA %>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <%= form.label :cabello %>
+                <div class="input-group">
+                    <div class="input-group-text">
+                        Color
+                    </div>
+                    <%= form.select :cabello, Girl::CABELLO_LIST %>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <%= form.label :kilos, "Peso" %>
+                <div class="input-group">
+                    <div class="input-group-text">
+                        kg
+                    </div>
+                    <%= form.select :kilos, Girl::KILOS %>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <%= form.label :ojos, "Ojos" %>
+                <div class="input-group">
+                    <div class="input-group-text">
+                        Color
+                    </div>
+                    <%= form.select :ojos, Girl::OJOS_LIST %>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <%= form.label :depilacion, "Depilación" %>
+                <div class="input-group">
+                    <div class="input-group-text">
+                        Tipo
+                    </div>
+                    <%= form.select :depilacion, Girl::DEPILACION_LIST %>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <%= form.label "Medidas" %>
+            <div class="input-group mb-2">
+                <div class="input-group-text">
+                    Busto
+                </div>
+                <%= form.select :busto, Girl::CM %>
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-text">
+                    Cintura
+                </div>
+                <%= form.select :cintura, Girl::CM %>
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-text">
+                    Cadera
+                </div>
+                <%= form.select :cadera, Girl::CM %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= form.label :modalidad, "Modalidad trabajo" %>
+            <div class="input-group">
+                <div class="input-group-text">
+                    Tipo
+                </div>
+                <%= form.select :modalidad, Girl::TRABAJO_LIST %>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+   
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+
+    <%= form.submit "Guardar", class:'btn btn-primary' %>
+</div>
+<% end %>

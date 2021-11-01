@@ -97,7 +97,12 @@ class GirlsController < ApplicationController
         :presencial,
         :videollamadas,
         :llamadas,
-        :chat
+        :chat,
+        :busto,
+        :cadera,
+        :cintura,
+        :pagos,
+        :modalidad
         )
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_17_180809) do
+ActiveRecord::Schema.define(version: 2021_10_31_191647) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -92,6 +92,11 @@ ActiveRecord::Schema.define(version: 2021_10_17_180809) do
     t.boolean "llamadas"
     t.boolean "chat"
     t.string "portada"
+    t.string "busto"
+    t.string "cintura"
+    t.string "cadera"
+    t.integer "pagos"
+    t.string "modalidad"
   end
 
   create_table "posts", force: :cascade do |t|

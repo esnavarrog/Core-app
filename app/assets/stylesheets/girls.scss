@@ -378,6 +378,40 @@ hr{
     display: none !important;
 }
 
+.input-group{
+    select{
+        border: 1px solid $azul;
+        border-radius: 0px 4px 4px 0;
+        border-left: 0;
+    }
+}
+
+.nav-link{
+    color: $rosa;
+}
+
+.nav-tabs .nav-link.active{
+    color: $azul !important;
+}
+
+#form-details-info{
+    .form-group{
+        .form-control{
+            border: 1px solid $azul;
+            border-radius: 4px;
+        }
+        margin-bottom: 12px;
+        label{
+            color: $azul;
+        }
+        .input-group-text{
+            background-color: $azul;
+            border-color: $azul;
+            color: white;
+        }
+    }
+}
+
 @keyframes latidos {
     from { transform: none; }
     50% { transform: scale(1.2); }
@@ -413,7 +447,6 @@ hr{
     .informacion{
         margin-top: 40px;
     }
-    
 }
 
 @media(max-width:940px){
