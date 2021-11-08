@@ -10,7 +10,7 @@ $rosa: #BF396A;
 $azul: #1b959a;
 $amarillo: #F2C641;
 $anaranjado: #D96A29;
-$negro: #0D0D0D;
+$negro: #33406F;
 
 body{
     color: $negro;
@@ -224,7 +224,7 @@ body{
     .precio{
         font-weight: 600;
         font-size: 1.5rem;
-        color: $azul;
+        color: $negro;
     }
     
 }
@@ -263,6 +263,9 @@ body{
 }
 
 // modals
+.modal{
+    z-index: 1200 !important;
+}
 .modal-header{
     justify-content: center !important;
     .btn{
@@ -331,7 +334,7 @@ body{
     h3{
         font-weight: 600;
         font-size: 1.25rem;
-        color: $azul;
+        color: $negro;
     }
     .btn{
         box-shadow: none !important;
@@ -391,7 +394,7 @@ hr{
 }
 
 .nav-tabs .nav-link.active{
-    color: $azul !important;
+    color: $negro !important;
 }
 
 #form-details-info{
@@ -402,7 +405,7 @@ hr{
         }
         margin-bottom: 12px;
         label{
-            color: $azul;
+            color: $negro;
         }
         .input-group-text{
             background-color: $azul;
