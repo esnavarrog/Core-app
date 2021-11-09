@@ -3,12 +3,10 @@ class Girl < ApplicationRecord
     mount_uploader :avatar, AvatarUploader
     mount_uploader :portada, PortadaUploader
     has_many :posts
-    validates :name, presence: {message: "El NOMBRE no puede estar en blanco"}, uniqueness: {message: "Ya existe una chica con este nombre"}
-    validates :address, presence: {message: "La DIRECCIÓN no puede estar en blanco"}
+    validates :name, presence: {message: "El NOMBRE no puede estar en blanco"}
     validates :avatar, presence: {message: "La FOTO DE PORTADA no puede estar en blanco"}
     validates :price, presence: {message: "La PRECIO no puede estar en blanco"}
 
-    before_save :format_number
 
     accepts_nested_attributes_for :posts, reject_if: :all_blank, allow_destroy: true
 
@@ -35,6 +33,8 @@ class Girl < ApplicationRecord
     ESTATURA = (40..99).to_a
     KILOS = (20..100).to_a
     CM = (20..150).to_a
+
+
     def format_number
         if price != 'consultar'
             price.to_s.gsub(/\./, "")
