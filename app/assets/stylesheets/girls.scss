@@ -415,6 +415,10 @@ hr{
     }
 }
 
+.border-rose{
+    border: 1px solid $rosa !important;
+}
+
 @keyframes latidos {
     from { transform: none; }
     50% { transform: scale(1.2); }

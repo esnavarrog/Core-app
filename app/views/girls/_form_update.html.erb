@@ -1,5 +1,5 @@
-<%= form_with(model: @girl, remote: true, method: :put) do |form| %>
-<div class="modal-body modal-dialog-scrollable">
+<div class="modal-body">
+  <%= form_with(model: @girl, remote: true, method: :put) do |form| %>
     <div class="section-form">
       <div class="d-flex justify-content-between align-items-center title-form-section">
         <h2>Foto de Perfil</h2>
@@ -11,7 +11,7 @@
           <%= form.file_field :avatar, class:'form-control d-none' %>
         </div>
       </div>
-      <div class="avatar-form d-flex justify-content-center">
+      <div id="avatar-form" class="avatar-form d-flex justify-content-center">
         <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-form') if @girl.avatar? %>
       </div>
     </div>
@@ -27,7 +27,7 @@
             <%= form.file_field :portada, class:'form-control d-none' %>
         </div>
       </div>
-      <div class="avatar-form d-flex justify-content-center">
+      <div id="portada-form" class="avatar-form d-flex justify-content-center">
         <%= image_tag(@girl.portada_url(:medium), class:'portada') if @girl.avatar? %>
       </div>
     </div>
@@ -81,9 +81,10 @@
 
      
 
+    <%= form.submit 'Guardar', class:'btn btn-primary d-none', id:'submit-update-form' %>
+    <% end %>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      <%= form.submit 'Guardar', class:'btn btn-primary' %>
+      <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
+      <button id="submit-update" class="btn btn-primary">Guardar</button>
     </div>
-  <% end %>

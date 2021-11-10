@@ -10,6 +10,7 @@ import "channels"
 import "trix"
 import "@rails/actiontext"
 global.$ = require("jquery");
+require("jquery-ui");
 
 
 import '../js/bootstrap_js_files.js'

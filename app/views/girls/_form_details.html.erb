@@ -1,6 +1,5 @@
 <%= form_with(model: @girl) do |form| %>
 <div class="modal-body">
-    <div id="form-details-info" class="row">
         <div class="col-sm-12 col-md-6">
             <div class="form-group">
                 <%= form.label :edad %>
@@ -93,7 +92,6 @@
                 <%= form.select :modalidad, Girl::TRABAJO_LIST %>
             </div>
         </div>
-    </div>
     
     
     

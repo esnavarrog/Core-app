@@ -1,6 +1,12 @@
 $('#modal-publish').modal("toggle")
 $('#box-images-thumb').html("<%= j render './posts/post_thumb' %>")
 $('#box-published').html("<%= j render @post %>")
+$('#post-<%= @post.id %>').addClass('border-rose')
 
 $('#post_img').val('')
 $('#post_video').val('')
+$('.loader').fadeOut(1000);
+
+setTimeout(function(){
+    $('#post-<%= @post.id %>').toggleClass('border-rose', 1000)
+}, 3000);
