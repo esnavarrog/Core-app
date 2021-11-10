@@ -31,6 +31,10 @@ function events() {
         $('#submit-update-form').click();
     })
 
+    $('body').on('click', '#submit-details', function () {
+        $('#submit-details-form').click();
+    })
+
     $('body').on('change', '#girl_avatar', function () {
         let styles = 'width:186px; height:186px; object-fit: cover;'
         let className = 'img-circle-form'

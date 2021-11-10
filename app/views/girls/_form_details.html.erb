@@ -1,5 +1,5 @@
-<%= form_with(model: @girl) do |form| %>
 <div class="modal-body">
+    <%= form_with(model: @girl, id:'form-details-info') do |form| %>
         <div class="col-sm-12 col-md-6">
             <div class="form-group">
                 <%= form.label :edad %>
@@ -99,10 +99,10 @@
     
     
    
+        <%= form.submit "Guardar", class:'btn btn-primary d-none', id:'submit-details-form' %>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
-
-    <%= form.submit "Guardar", class:'btn btn-primary' %>
+    <button id="submit-details" class="btn btn-primary">Guardar</button>
 </div>
 <% end %>

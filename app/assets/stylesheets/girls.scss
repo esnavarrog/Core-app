@@ -415,14 +415,14 @@ hr{
     }
 }
 
-.border-rose{
-    border: 1px solid $rosa !important;
-}
-
 @keyframes latidos {
     from { transform: none; }
     50% { transform: scale(1.2); }
     to { transform: none; }
+}
+
+.border-rose{
+    border: 1px solid $rosa !important;
 }
 
 @media (max-width: 759.8px){
