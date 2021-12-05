@@ -38,17 +38,18 @@
             <div class="conteo-likes d-flex justify-content-between align-items-center">
                 <div>likes</div>
                 <% if post.comments.count > 1 %>
-                    <div id="count-comments"><%= post.comments.count %> comentarios</div>
+                    <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentarios</div>
                 <% elsif post.comments.count == 1 %>
-                    <div id="count-comments"><%= post.comments.count %> comentario</div>
+                    <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentario</div>
                 <% elsif post.comments.count < 1 %>
-                    <div id="count-comments">Sin comentarios</div>
+                    <div id="count-comments-<%= post.id %>">Sin comentarios</div>
                 <% end %>
             </div>
+            <hr>
             <% if user_signed_in? %>
             <div class="row-likes d-flex justify-content-between">
-                <div class="btn btn-light"><i class="bi bi-hand-thumbs-up"></i> Me gusta</div>
-                <div class="btn btn-light"><i class="bi bi-chat"></i> Comentar</div>
+                <div class="btn btn-light btn-sm"><i class="bi bi-hand-thumbs-up"></i> Me gusta</div>
+                <div class="btn btn-light btn-sm"><i class="bi bi-chat"></i> Comentar</div>
             </div>
             <hr>
             <div class="input-group input-group-comment">
