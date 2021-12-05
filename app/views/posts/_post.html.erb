@@ -34,5 +34,39 @@
         <% if post.img.present? %>
             <%= image_tag(post.img_url(:normal), class:'img-published') %>
         <% end %>
+        <div>
+            <div class="conteo-likes d-flex justify-content-between align-items-center">
+                <div>likes</div>
+                <% if post.comments.count > 1 %>
+                    <div><%= post.comments.count %> comentarios</div>
+                <% elsif post.comments.count == 1 %>
+                    <div><%= post.comments.count %> comentario</div>
+                <% elsif post.comments.count < 1 %>
+                    <div>Sin comentarios</div>
+                <% end %>
+            </div>
+            <% if user_signed_in? %>
+            <div class="row-likes d-flex justify-content-between">
+                <div class="btn btn-light"><i class="bi bi-hand-thumbs-up"></i> Me gusta</div>
+                <div class="btn btn-light"><i class="bi bi-chat"></i> Comentar</div>
+            </div>
+            <hr>
+            <div class="input-group mb-3">
+                <input type="text" id="input-comment-<%= post.id %>" class="form-control" placeholder="Comenta aquí..." aria-label="Recipient's username">
+                <button class="btn btn-outline-secondary button-comment" data-id="<%= post.id %>" data-type="Post" data-url="<%= comment_new_url %>" type="button" data-input="input-comment-<%= post.id %>">Button</button>
+            </div>
+            <%end%>
+            <div id="body-post-<%= post.id %>" class="box-comments">
+                <% post.comments.last(2).each do |comment| %>
+                    <div class="d-flex align-items-center">
+                        <%= image_tag(User.find(comment.user).avatar_url(:thumb), class:'img-circle-avatar') if User.find(comment.user).avatar? %>
+                        <span>
+    
+                            <%= comment.message %>
+                        </span>
+                    </div>
+                <%end%>
+            </div>
+        </div>
     </div>
 <% end %>

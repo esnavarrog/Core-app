@@ -5,7 +5,7 @@ $('#post-<%= @post.id %>').addClass('border-rose')
 
 $('#post_img').val('')
 $('#post_video').val('')
-$('.loader').fadeOut(1000);
+$('.loader').fadeOut(100);
 
 setTimeout(function(){
     $('#post-<%= @post.id %>').toggleClass('border-rose', 1000)

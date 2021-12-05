@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  has_many :girls
   validates_presence_of :nickname
   validates_uniqueness_of :nickname
   enum role: [:user, :admin_super, :girl ]

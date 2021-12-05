@@ -1,0 +1,2 @@
+$('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn(1000)
+$('#input-comment-<%= @post.id %>').val('')

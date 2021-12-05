@@ -24,6 +24,7 @@ class GirlsController < ApplicationController
   # POST /girls or /girls.json
   def create
     @girl = Girl.create(girl_params)
+    @girl.user = current_user
     respond_to do |format|
       if @girl.save
         format.html { redirect_to @girl, notice: "Girl was successfully created." }
