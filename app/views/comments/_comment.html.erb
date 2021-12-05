@@ -1,6 +1,12 @@
+
 <div class="d-flex align-items-center">
-    <%= image_tag(User.find(comment.user).avatar_url(:thumb), class:'img-circle-avatar') if User.find(comment.user).avatar? %>
+    <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar') if User.find(comment.user).avatar? %>
     <span>
-        <%= comment.message %>
+        <div class="title-message">
+            <%= User.find(comment.user.to_i).nickname %>
+        </div>
+        <div class="message-message">
+            <%= comment.message %>
+        </div>
     </span>
 </div>

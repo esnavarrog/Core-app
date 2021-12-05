@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
         if @comment.save
             render :new
         else
+            puts @comment.errors.messages.first
             render :form_error
         end
     end

@@ -1,2 +1,9 @@
 $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn(1000)
 $('#input-comment-<%= @post.id %>').val('')
+$('#count-comments').html('<%= @post.comments.count %>')
+
+<% if @post.comments.count > 1 %>
+    $('#count-comments').html('<div id="count-comments"><%= @post.comments.count %> comentarios</div>')
+<% elsif @post.comments.count == 1 %>
+    $('#count-comments').html('<div id="count-comments"><%= @post.comments.count %> comentario</div>')
+<% end %>

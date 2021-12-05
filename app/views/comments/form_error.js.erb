@@ -1,0 +1,9 @@
+$('#error-<%= @post.id %>').removeClass('d-none')
+<% @comment.errors.each do |key, error| %>
+$('#error-<%= @post.id %>').html('<%= error %>')
+<%end%>
+
+setTimeout(function(){
+    $('#error-<%= @post.id %>').addClass('d-none')
+    $('#error-<%= @post.id %>').html('')
+}, 5000);
