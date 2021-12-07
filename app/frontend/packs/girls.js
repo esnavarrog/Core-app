@@ -8,9 +8,9 @@ function events() {
 
     function loader(){
         setTimeout(function() {
-            $('.loader').fadeOut(1000);
+            $('.loader').fadeOut(300);
             $('#body').removeClass('hidden-loader');
-        }, 1000);
+        }, 300);
     }
 
     $('window').on('load', loader());
