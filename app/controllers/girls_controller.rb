@@ -38,9 +38,11 @@ class GirlsController < ApplicationController
   def update
     if @girl.update(girl_params)
       respond_to do |format|
-        format.html { redirect_to @girl, notice: "Girl was successfully updated." }
+        format.html {redirect_to @girl}
       end
+      
     end
+    @girl.inspect
   end
 
   # DELETE /girls/1 or /girls/1.json
