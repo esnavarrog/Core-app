@@ -42,7 +42,6 @@ class GirlsController < ApplicationController
       end
       
     end
-    @girl.inspect
   end
 
   # DELETE /girls/1 or /girls/1.json
