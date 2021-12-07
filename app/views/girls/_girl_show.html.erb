@@ -25,7 +25,7 @@
             </div>
             <div class="edad">
                 <%= @girl.edad ?  "#{@girl.edad} años" : "" %><%= @girl.nacionalidad ? ', ' + @girl.nacionalidad.capitalize : '' %>
-                <%= inline_svg_tag("icons/flag/flag_#{@girl.nacionalidad}.svg", class:'flag-icon') %>
+                <%= @girl.nacionalidad != "Otra" ? inline_svg_tag("icons/flag/flag_#{@girl.nacionalidad}.svg", class:'flag-icon') : '' %>
             </div>
             <div class="atencion">
                 <%= @girl.horario %>
