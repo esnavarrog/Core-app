@@ -15,12 +15,17 @@ $negro: #33406F;
 body{
     color: $negro;
 }
+.sticky-top{
+    z-index: 1040 !important;
+}
 #sub-menu{
+    
+    .sub-sub-menu{
+        max-width: 940px;
+    }
     box-sizing: border-box;
-    background-color: white;
     display: block;
-    margin: 0 auto;
-    max-width: 940px;
+    background-color: white;
 }
 .img-circle{
     border-radius: 50%;
