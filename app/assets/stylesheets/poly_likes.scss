@@ -1,0 +1,18 @@
+// Place all the styles related to the PolyLikes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.dropdown-menu-likes{
+    min-width: 350px !important;
+    max-width: 400px;
+    border-radius: 20px !important;
+    padding: 15px 15px !important;
+    height: 70px !important;
+    display: flex;
+    align-items: center;
+}
+
+.like-button-emoji{
+    cursor: pointer;
+}

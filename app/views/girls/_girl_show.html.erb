@@ -21,7 +21,7 @@
             </div>
             <div class="direction">
                 <%= inline_svg_tag('icons/map-pin.svg') %>
-                    <%= @girl.address %>
+                <%= @girl.address %>
             </div>
             <div class="edad">
                 <%= @girl.edad ?  "#{@girl.edad} años" : "" %><%= @girl.nacionalidad ? ', ' + @girl.nacionalidad.capitalize : '' %>

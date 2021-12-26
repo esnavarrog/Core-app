@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :girls
+  has_many :poly_likes
   validates_presence_of :nickname
   validates_uniqueness_of :nickname
   enum role: [:user, :admin_super, :girl ]

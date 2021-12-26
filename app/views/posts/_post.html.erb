@@ -36,7 +36,7 @@
         <% end %>
         <div>
             <div class="conteo-likes d-flex justify-content-between align-items-center">
-                <div>likes</div>
+                <div id="likes-post-<%= post.id %>"><%= post.poly_likes.count %></div>
                 <% if post.comments.count > 1 %>
                     <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentarios</div>
                 <% elsif post.comments.count == 1 %>
@@ -48,7 +48,34 @@
             <hr>
             <% if user_signed_in? %>
             <div class="row-likes d-flex justify-content-between">
-                <div class="btn btn-light btn-sm"><i class="bi bi-hand-thumbs-up"></i> Me gusta</div>
+                <div class="btn-group dropup">
+                    <button id="button-like" class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-hand-thumbs-up"></i> Me gusta</button>
+                    <ul class="dropdown-menu dropdown-menu-likes">
+                        <div class="d-flex justify-content-between">
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="0" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/heart_arrow.svg') %>
+                            </a>
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="1" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/devil_smile.svg') %>
+                            </a>
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="2" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/enamorado.svg') %>
+                            </a>
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="3" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/eye_heart.svg') %>
+                            </a>
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="4" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/eye_star.svg') %>
+                            </a>
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="5" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/kiss.svg') %>
+                            </a>
+                            <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="6" data-type="Post">
+                                <%= inline_svg_tag('icons/emojis/wink.svg') %>
+                            </a>
+                        </div>
+                    </ul>
+                  </div>
                 <div class="btn btn-light btn-sm"><i class="bi bi-chat"></i> Comentar</div>
             </div>
             <hr>

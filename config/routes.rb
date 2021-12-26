@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :dashboard do
     resources :girls
   end
+  post 'poly_likes', to: 'poly_likes#create'
 end
 

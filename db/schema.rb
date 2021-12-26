@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_044309) do
+ActiveRecord::Schema.define(version: 2021_12_25_234750) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -111,6 +111,17 @@ ActiveRecord::Schema.define(version: 2021_12_05_044309) do
     t.index ["user_id"], name: "index_girls_on_user_id"
   end
 
+  create_table "poly_likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "likeable_type", null: false
+    t.integer "likeable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "emoji"
+    t.index ["likeable_type", "likeable_id"], name: "index_poly_likes_on_likeable"
+    t.index ["user_id"], name: "index_poly_likes_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "img"
     t.integer "girl_id", null: false
@@ -144,6 +155,7 @@ ActiveRecord::Schema.define(version: 2021_12_05_044309) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "girls", "users"
+  add_foreign_key "poly_likes", "users"
   add_foreign_key "posts", "girls"
   add_foreign_key "posts", "users"
 end

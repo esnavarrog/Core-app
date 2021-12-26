@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   belongs_to :girl
   belongs_to :user
   has_many :comments, as: :commentable
+  has_many :poly_likes, as: :likeable
   has_rich_text :content
 
   def set_success(format, opts)
