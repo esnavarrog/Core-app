@@ -1,1 +1,10 @@
-<%= @post.poly_likes.count %>
+<% @post.poly_likes.group(:emoji).each do |poly_like| %>
+    <div class="d-flex align-items-center icon-count">
+        <span class="icon">
+            <%= inline_svg_tag('icons/emojis/'+poly_like.emoji+'.svg', style:'width:30px;') %>
+        </span>
+        <span>
+            <%= @post.poly_likes.where(emoji:poly_like.emoji).count %>
+        </span>
+    </div>
+<% end %>
