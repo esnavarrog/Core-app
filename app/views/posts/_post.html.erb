@@ -37,7 +37,7 @@
         <div>
             <div class="conteo-likes d-flex justify-content-between align-items-center">
                 <div class="d-flex" id="likes-post-<%= post.id %>">
-                    <% post.poly_likes.group(:emoji).each do |poly_like| %>
+                    <% post.poly_likes.select(:emoji).group(:emoji).each do |poly_like| %>
                         <div class="d-flex align-items-center icon-count">
                             <span class="icon">
                                 <%= inline_svg_tag('icons/emojis/'+poly_like.emoji+'.svg', style:'width:30px;') %>

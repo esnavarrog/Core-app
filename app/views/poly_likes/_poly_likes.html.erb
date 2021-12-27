@@ -1,4 +1,4 @@
-<% @post.poly_likes.group(:emoji).each do |poly_like| %>
+<% @post.poly_likes.select(:emoji).group(:emoji).each do |poly_like| %>
     <div class="d-flex align-items-center icon-count">
         <span class="icon">
             <%= inline_svg_tag('icons/emojis/'+poly_like.emoji+'.svg', style:'width:30px;') %>
