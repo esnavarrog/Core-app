@@ -1,5 +1,7 @@
 class Girl < ApplicationRecord
 
+    extend FriendlyId
+    friendly_id :name, use: :slugged
     mount_uploader :avatar, AvatarUploader
     mount_uploader :portada, PortadaUploader
     has_many :posts

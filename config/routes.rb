@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'posts/destroy'
   get 'posts/update'
   post 'comment_new', to: 'comments#create'
+  resources :girls, path:'chicas'
   resources :girls do
     resources :posts do
       resources :comments, only: [:create]

@@ -23,8 +23,13 @@ function events() {
 
     $('body').on('click', '.comment-button', function(){
         let input = $(this).data('input')
-        $('#input-comment-put-'+input).toggleClass('d-none')
-        $('#input-comment-'+input).trigger("focus");
+        $('.input-group-comment').addClass('d-none')
+        if($('#input-comment-put-'+input).hasClass('d-none')){
+            $('#input-comment-put-'+input).removeClass('d-none')
+            $('#input-comment-'+input).trigger("focus");
+        }else{
+            $('#input-comment-put-'+input).addClass('d-none')
+        }
 
     })
 }
