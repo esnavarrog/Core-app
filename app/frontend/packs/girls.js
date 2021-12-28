@@ -57,4 +57,9 @@ function events() {
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    $('body').on('click', '.button-add-publication', function() {
+        $('#modal-publish').modal('show');
+        $('#'+$(this).data('button')).click()
+    })
 }

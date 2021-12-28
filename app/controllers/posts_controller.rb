@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+  
   def create
     if post_params[:content].present? || post_params[:img].present? || post_params[:video].present?
       @post = Post.create(post_params)

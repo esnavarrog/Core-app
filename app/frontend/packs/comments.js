@@ -20,4 +20,11 @@ function events() {
             }
         })
     }
+
+    $('body').on('click', '.comment-button', function(){
+        let input = $(this).data('input')
+        $('#input-comment-put-'+input).toggleClass('d-none')
+        $('#input-comment-'+input).trigger("focus");
+
+    })
 }

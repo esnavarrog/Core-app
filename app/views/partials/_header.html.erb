@@ -8,7 +8,7 @@
                 <% if user_signed_in? %>
                     <li>
                         <%= link_to edit_registration_path(current_user), class:'dropdown-item' do %>
-                            <%= inline_svg_tag('icons/icon_sign-out.svg') %> Perfil
+                            <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %> Perfil
                         <% end %>
                     </li>
                     <li>
