@@ -4,3 +4,9 @@
 </div>
 
 <%= render "edit_form"%>
+
+<% likes = PolyLike.where(user_id:current_user.id, likeable_type:'Girl') %>
+<% likes.each do |like| %>
+  <% girls = Girl.find(like.likeable_id) %>
+  <%= girls.name %>
+<% end %>

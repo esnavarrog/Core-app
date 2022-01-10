@@ -88,8 +88,8 @@
             </div>
             <hr>
             <div id="input-comment-put-<%= post.id %>" class="input-group input-group-comment d-none">
-                <input type="text" id="input-comment-<%= post.id %>" class="form-control" placeholder="Comenta aquí..." aria-label="Recipient's username">
-                <button class="btn btn-outline-secondary button-comment" data-id="<%= post.id %>" data-type="Post" data-url="<%= comment_new_url %>" type="button" data-input="input-comment-<%= post.id %>">Comenta</button>
+                <input type="text" id="input-comment-<%= post.id %>" data-button="button-comment-<%= post.id %>" class="form-control input-comment" placeholder="Comenta aquí..." aria-label="Recipient's username">
+                <button id="button-comment-<%= post.id %>" class="btn btn-outline-secondary button-comment" data-id="<%= post.id %>" data-type="Post" data-url="<%= comment_new_url %>" type="button" data-input="input-comment-<%= post.id %>">Comenta</button>
             </div>
             <div class="badge rounded-pill bg-danger badge-error-comment d-none" id="error-<%= post.id %>"></div>
             <%end%>

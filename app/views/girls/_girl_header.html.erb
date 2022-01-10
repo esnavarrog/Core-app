@@ -7,9 +7,10 @@
                 <%end%>
             </div>
             <div class="d-flex align-items-center justify-content-between back">
-                <a href="" class="btn btn-light">
+                
+                <%= link_to @like.present? ? delete_like_path(likeable_id:@girl.id, likeable_type:'Girl') : poly_likes_path(likeable_id:@girl.id, likeable_type:'Girl'), class:"btn btn-light #{@like.present? ? 'animate__heartBeat' : ''}", id:"like-girl", method:"POST", remote:true do %>
                     <%= inline_svg_tag 'icons/heart.svg' %>
-                </a>
+                <% end %>
                 <a href="tel:+56<%= @girl.try(:phone) %>" class="btn btn-light">
                     <%= inline_svg_tag 'icons/phone.svg' %>
                 </a>

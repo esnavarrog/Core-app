@@ -21,6 +21,13 @@ body{
 .flag-icon{
     width:20px;
 }
+
+#like-girl.animate__heartBeat{
+    svg{
+        fill: $rosa;
+        stroke: $rosa;
+    }
+}
 #sub-menu{
     
     .sub-sub-menu{

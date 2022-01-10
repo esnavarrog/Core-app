@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     resources :girls
   end
   post 'poly_likes', to: 'poly_likes#create'
+  post 'create_post', to: 'posts#create'
+  post 'delete_like', to: 'poly_likes#delete_like'
 end
 

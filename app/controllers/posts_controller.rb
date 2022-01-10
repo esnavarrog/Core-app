@@ -7,15 +7,16 @@ class PostsController < ApplicationController
   
   def create
     if post_params[:content].present? || post_params[:img].present? || post_params[:video].present?
-      @post = Post.create(post_params)
+      @post = Post.new(post_params)
       @post.girl = @girl
       @post.user = current_user
+
       @posts = @girl.posts.order(created_at: :desc)
-      respond_to do |format|
-        if @post.save
-          format.js
-        end
-      end
+      puts '++++++++++++'
+      puts @post.inspect
+      puts '++++++++++++'
+      @post.save
+      
     else
       render :form_error
     end
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def set_girl
-    @girl = Girl.find(params[:girl_id])
+    @girl = Girl.friendly.find(params[:girl_id])
   end
 
   private

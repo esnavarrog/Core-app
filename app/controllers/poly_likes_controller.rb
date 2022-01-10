@@ -5,7 +5,12 @@ class PolyLikesController < ApplicationController
             @poly_like = poly_like
             @poly_like.update(emoji:params[:emoji].to_i)
             @post = Post.find(params[:likeable_id]) if params[:likeable_type] == "Post"
-            render :create
+            @girl = Girl.find(params[:likeable_id]) if params[:likeable_type] == "Girl"
+            if params[:likeable_type] == "Post"
+                render :create
+            else
+                render :like_girl
+            end
         else
             @poly_like = PolyLike.new
             @poly_like.likeable_id = params[:likeable_id]
@@ -15,12 +20,23 @@ class PolyLikesController < ApplicationController
             end
             @poly_like.user_id = current_user.id if current_user.present?
             if @poly_like.save
-                @post = Post.find(params[:likeable_id]) if params[:likeable_type] == "Post"
-                render :create
+                @girl = Girl.find(params[:likeable_id]) if params[:likeable_type] == "Girl"
+                if params[:likeable_type] == "Post"
+                    render :create
+                else
+                    render :like_girl
+                end
             else
                 render :form_error
             end
         end
+    end
+
+    def delete_like
+        like = Girl.find(params[:likeable_id]).poly_likes.where(user_id:current_user.id, likeable_type: "Girl", likeable_id:params[:likeable_id])
+        @like = PolyLike.find(like.first.id)
+        @like.destroy
+        render :delete_like
     end
 
     private

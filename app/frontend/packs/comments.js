@@ -32,4 +32,13 @@ function events() {
         }
 
     })
+
+    $('body').ready(function(){
+        $(".input-comment").keypress(function(e) {
+            var button = $(this).data('button');
+            if (e.which == 13) {
+                $("#" + button).click()
+            };
+        });
+    });
 }

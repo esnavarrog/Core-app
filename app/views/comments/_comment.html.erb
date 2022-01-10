@@ -1,5 +1,5 @@
 
-<div class="d-flex align-items-center">
+<div id="comment-<%= comment.id %>" class="d-flex align-items-center">
     <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar') if User.find(comment.user).avatar? %>
     <span>
         <div class="title-message">

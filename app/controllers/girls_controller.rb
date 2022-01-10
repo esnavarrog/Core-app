@@ -10,6 +10,7 @@ class GirlsController < ApplicationController
   def show
     @post = @girl.posts.build
     @posts = @girl.posts.order(created_at: :desc)
+    @like = @girl.poly_likes.where(likeable_type:'Girl')
   end
 
   # GET /girls/new
