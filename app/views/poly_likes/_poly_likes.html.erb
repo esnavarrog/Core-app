@@ -1,7 +1,7 @@
 <% @post.poly_likes.select(:emoji).group(:emoji).each do |poly_like| %>
-    <div class="d-flex align-items-center icon-count">
+    <div class="d-flex align-items-center justify-content-center icon-count">
         <span class="icon">
-            <%= inline_svg_tag('icons/emojis/'+poly_like.emoji+'.svg', style:'width:30px;') %>
+            <%= image_tag('icons/emojis/'+poly_like.emoji+'.png', style:'width:25px;') %>
         </span>
         <span>
             <%= @post.poly_likes.where(emoji:poly_like.emoji).count %>

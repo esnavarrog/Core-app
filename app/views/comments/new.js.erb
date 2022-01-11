@@ -1,5 +1,6 @@
 $('#input-comment-<%= @post.id %>').val('')
 $('#count-comments').html('<%= @post.comments.count %>')
+$('#hr-bottom-<%= @post.id %>').removeClass('d-none')
 
 <% if @post.comments.count > 1 %>
     $('#count-comments-<%= @post.id %>').html('<div id="count-comments-<%= @post.id %>"><%= @post.comments.count %> comentarios</div>')

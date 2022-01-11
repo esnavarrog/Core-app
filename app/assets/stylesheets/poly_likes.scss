@@ -18,7 +18,7 @@
 }
 
 .icon-likes{
-    width: 40px !important;
+    height: 40px !important;
     transition: transform .2s; /* Animation */
 }
 
@@ -28,14 +28,19 @@
 }
 
 .icon-count{
-    border: 1px solid gray;
+    border: 1px solid #CFD2D2;
     border-radius: 20px;
-    padding: 0px 7px 0 0;
-    width: 50px;
-    height: 27px;
+    padding: 3px 5px;
     .icon{
         margin-right: 4px;
     }
+}
+[class^="bi-"]::before, [class*=" bi-"]::before {
+    font-size:18px;
+}
+
+.btn-link{
+    text-decoration:none !important;
 }
 
 .dropup .dropdown-toggle::after{

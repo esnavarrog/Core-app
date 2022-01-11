@@ -40,7 +40,7 @@
                     <% post.poly_likes.select(:emoji).group(:emoji).each do |poly_like| %>
                         <div class="d-flex align-items-center icon-count">
                             <span class="icon">
-                                <%= inline_svg_tag('icons/emojis/'+poly_like.emoji+'.svg', style:'width:30px;') %>
+                                <%= image_tag('icons/emojis/'+poly_like.emoji+'.png', style:'width:25px;') %>
                             </span>
                             <span>
                                 <%= post.poly_likes.where(emoji:poly_like.emoji).count %>
@@ -60,7 +60,7 @@
             <% if user_signed_in? %>
             <div class="row-likes d-flex justify-content-between">
                 <div class="btn-group dropup w-100">
-                    <button id="button-like" class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-hand-thumbs-up"></i> Me gusta</button>
+                    <button id="button-like" class="btn btn-link btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-hand-thumbs-up"></i> Me gusta</button>
                     <ul class="dropdown-menu dropdown-menu-likes">
                         <div class="d-flex justify-content-between">
                             <a class="like-button-emoji" data-post="<%= post.id %>" data-emoji="0" data-type="Post">
@@ -84,9 +84,9 @@
                         </div>
                     </ul>
                   </div>
-                <div class="btn btn-light btn-sm comment-button" data-input="<%= post.id %>"><i class="bi bi-chat"></i> Comentar</div>
+                <div class="btn btn-link btn-sm comment-button" data-input="<%= post.id %>"><i class="bi bi-chat"></i> Comentar</div>
             </div>
-            <hr>
+            <hr id="hr-bottom-<%= post.id %>" class="<%= post.comments.present? ? '' : 'd-none' %>">
             <div id="input-comment-put-<%= post.id %>" class="input-group input-group-comment d-none">
                 <input type="text" id="input-comment-<%= post.id %>" data-button="button-comment-<%= post.id %>" class="form-control input-comment" placeholder="Comenta aquí..." aria-label="Recipient's username">
                 <button id="button-comment-<%= post.id %>" class="btn btn-outline-secondary button-comment" data-id="<%= post.id %>" data-type="Post" data-url="<%= comment_new_url %>" type="button" data-input="input-comment-<%= post.id %>">Comenta</button>

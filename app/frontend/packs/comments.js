@@ -26,6 +26,7 @@ function events() {
         $('.input-group-comment').addClass('d-none')
         if($('#input-comment-put-'+input).hasClass('d-none')){
             $('#input-comment-put-'+input).removeClass('d-none')
+            $("#hr-bottom-"+input).removeClass('d-none')
             $('#input-comment-'+input).trigger("focus");
         }else{
             $('#input-comment-put-'+input).addClass('d-none')

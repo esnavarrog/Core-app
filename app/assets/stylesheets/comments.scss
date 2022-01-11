@@ -22,9 +22,10 @@ $lightHoverPrimary:#FF5733;
 
 .row-likes{
     margin:0 20px;
-    .btn-light{
+    .btn-link{
         text-align: center;
-        margin-left: 0;
+        width: 100%;
+        margin: 0 !important;
     }
 }
 
@@ -44,7 +45,10 @@ $lightHoverPrimary:#FF5733;
     }
     .button-comment{
         border-radius: 0 20px 20px 0 !important;
-        border: 1px solid #ced4da;
+        border: 1px solid #ced4da !important;
+        &:hover{
+            background-color: $lightHoverPrimary;
+        }
     }
 
 }
