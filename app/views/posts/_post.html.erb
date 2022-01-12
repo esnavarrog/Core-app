@@ -35,27 +35,29 @@
             <%= image_tag(post.img_url(:normal), class:'img-published') %>
         <% end %>
         <div>
-            <div class="conteo-likes d-flex justify-content-between align-items-center">
-                <div class="d-flex" id="likes-post-<%= post.id %>">
-                    <% post.poly_likes.select(:emoji).group(:emoji).each do |poly_like| %>
-                        <div class="d-flex align-items-center icon-count">
-                            <span class="icon">
-                                <%= image_tag('icons/emojis/'+poly_like.emoji+'.png', style:'width:25px;') %>
-                            </span>
-                            <span>
-                                <%= post.poly_likes.where(emoji:poly_like.emoji).count %>
-                            </span>
-                        </div>
+            <%= link_to see_comments_path(id:post.id), class:"link-none #{(post.comments.present? || post.poly_likes.present?) ? '' : 'disabled'}", id:"link-post-#{post.id}", remote:true do %>
+                <div class="conteo-likes d-flex justify-content-between align-items-center">
+                    <div class="d-flex" id="likes-post-<%= post.id %>">
+                        <% post.poly_likes.select(:emoji).group(:emoji).each do |poly_like| %>
+                            <div class="d-flex align-items-center icon-count">
+                                <span class="icon">
+                                    <%= image_tag('icons/emojis/'+poly_like.emoji+'.png', style:'width:25px;') %>
+                                </span>
+                                <span>
+                                    <%= post.poly_likes.where(emoji:poly_like.emoji).count %>
+                                </span>
+                            </div>
+                        <% end %>
+                    </div>
+                    <% if post.comments.count > 1 %>
+                        <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentarios</div>
+                    <% elsif post.comments.count == 1 %>
+                        <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentario</div>
+                    <% elsif post.comments.count < 1 %>
+                        <div id="count-comments-<%= post.id %>">Sin comentarios</div>
                     <% end %>
                 </div>
-                <% if post.comments.count > 1 %>
-                    <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentarios</div>
-                <% elsif post.comments.count == 1 %>
-                    <div id="count-comments-<%= post.id %>"><%= post.comments.count %> comentario</div>
-                <% elsif post.comments.count < 1 %>
-                    <div id="count-comments-<%= post.id %>">Sin comentarios</div>
-                <% end %>
-            </div>
+            <% end %>
             <hr>
             <% if user_signed_in? %>
             <div class="row-likes d-flex justify-content-between">
@@ -95,8 +97,8 @@
             <%end%>
             <div id="body-post-<%= post.id %>" class="box-comments">
                 <% post.comments.last(2).each do |comment| %>
-                    <div class="d-flex align-items-center">
-                        <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar') if User.find(comment.user).avatar? %>
+                    <div class="d-flex">
+                        <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') if User.find(comment.user).avatar? %>
                         <span>
                             <div class="title-message">
                                 <%= User.find(comment.user.to_i).nickname %>

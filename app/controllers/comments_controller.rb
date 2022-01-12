@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
         end
     end
 
+    def see_comments
+        @post = Post.find(params[:id])
+        @comments = @post.comments.order(created_at: :asc)
+        @poly_likes
+    end
+
     private
 
     def comment_params

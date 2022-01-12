@@ -1,0 +1,3 @@
+$('#modal-comments').modal('toggle')
+$('#modal-content-comments').find('.modal-header-likes').html('<%= j render './poly_likes/poly_likes' %>')
+$('#modal-content-comments').find('.modal-body').html('<%= j render @comments %>')

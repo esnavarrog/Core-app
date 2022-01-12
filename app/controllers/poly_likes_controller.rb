@@ -15,6 +15,8 @@ class PolyLikesController < ApplicationController
             @poly_like = PolyLike.new
             @poly_like.likeable_id = params[:likeable_id]
             @poly_like.likeable_type = params[:likeable_type]
+            @post = Post.find(params[:likeable_id]) if params[:likeable_type] == "Post"
+            @girl = Girl.find(params[:likeable_id]) if params[:likeable_type] == "Girl"
             if params[:emoji]
                 @poly_like.emoji = params[:emoji].to_i
             end

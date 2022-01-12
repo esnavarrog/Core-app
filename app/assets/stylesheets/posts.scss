@@ -15,6 +15,14 @@ $primaryColor: #C70039;
         width: 100%;
     }
 }
+.link-none{
+    text-decoration: none;
+}
+
+.disabled{
+    pointer-events: none;
+    cursor: default;
+}
 .content-published{
     margin: auto 16px;
     .user-published{

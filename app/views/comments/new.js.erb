@@ -9,3 +9,5 @@ $('#hr-bottom-<%= @post.id %>').removeClass('d-none')
 <% end %>
 $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn('slow')
     $('#comment-<%= @comment.id %>').addClass('animate__bounceIn')
+
+$('#link-post-<%= @post.id %>').removeClass('disabled')
