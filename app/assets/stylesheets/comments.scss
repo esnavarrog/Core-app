@@ -23,9 +23,22 @@ $lightHoverPrimary:#FF5733;
 .row-likes{
     margin:0 20px;
     .btn-link{
+        color: #6F6F6F !important;
         text-align: center;
         width: 100%;
         margin: 0 !important;
+    }
+}
+
+#modal-comments{
+    .modal-dialog{
+        margin:auto !important;
+    }
+    .modal-header{
+        padding: 5px 1rem;
+    }
+    .modal-content{
+        height: 100vh !important;
     }
 }
 
@@ -36,6 +49,20 @@ $lightHoverPrimary:#FF5733;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 0;
+}
+
+.links-comment{
+    margin-left: 55px;
+    font-size: 10px !important;
+    margin-bottom: 5px;
+    color:#999;
+    .btn-link{
+        font-size: 10px;
+        padding: 0;
+        color:#999 !important;
+        margin-top: 0;
+        font-weight: 600;
+    }
 }
 
 .input-group-comment{

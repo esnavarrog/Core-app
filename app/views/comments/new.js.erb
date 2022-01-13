@@ -8,6 +8,7 @@ $('#hr-bottom-<%= @post.id %>').removeClass('d-none')
     $('#count-comments-<%= @post.id %>').html('<div id="count-comments-<%= @post.id %>"><%= @post.comments.count %> comentario</div>')
 <% end %>
 $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn('slow')
+$('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-modal-<%= @post.id %>').fadeIn('slow')
     $('#comment-<%= @comment.id %>').addClass('animate__bounceIn')
 
 $('#link-post-<%= @post.id %>').removeClass('disabled')

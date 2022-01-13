@@ -1,0 +1,9 @@
+$('#modal-content-comments').find('.modal-body').html('<%= j render @comments %>')
+
+function scrollSmoothToBottom (id) {
+   $("#body-post-modal-<%= @post.id %>").animate({
+      scrollTop: document.querySelector("#body-post-modal-<%= @post.id %>").scrollHeight
+   }, 500);
+}
+
+scrollSmoothToBottom();

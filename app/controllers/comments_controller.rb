@@ -17,8 +17,13 @@ class CommentsController < ApplicationController
 
     def see_comments
         @post = Post.find(params[:id])
-        @comments = @post.comments.order(created_at: :asc)
+        @comments = @post.comments.order(created_at: :asc).last(6)
         @poly_likes
+    end
+
+    def all_comments
+        @post = Post.find(params[:id])
+        @comments = @post.comments.order(created_at: :asc)
     end
 
     private

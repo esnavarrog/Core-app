@@ -27,7 +27,7 @@ svg.tea{
   
     #teabag{
         transform-origin: top center;
-        transform: rotate(3deg);
+        transform: rotate(6deg);
         animation: swing 2s infinite;
     }
   
@@ -46,7 +46,7 @@ svg.tea{
 }
 
 @keyframes swing{
-    50%{ transform: rotate(-3deg); }
+    50%{ transform: rotate(-4deg); }
 }
 
 @keyframes steamLarge{

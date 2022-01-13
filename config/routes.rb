@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   post 'create_post', to: 'posts#create'
   post 'delete_like', to: 'poly_likes#delete_like'
   get 'see_comments', to: 'comments#see_comments'
+  get 'all_comments', to: 'comments#all_comments'
 end
 
