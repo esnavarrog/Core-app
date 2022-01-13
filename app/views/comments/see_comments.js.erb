@@ -5,4 +5,6 @@ $('#modal-content-comments').find('.modal-body').html('<%= j render @comments %>
 $('#modal-content-comments').find('.modal-body').prepend('<%= link_to "Ver anteriores", all_comments_path(id:@post.id), class:"btn btn-link btn-xs link-last-comments", remote:true %>')
 <% end %>
 $('#modal-content-comments').find('.modal-body').attr('id', "body-post-modal-<%= @post.id %>")
+<% if user_signed_in? %>
 $('#modal-content-comments').find('.modal-footer').html('<%= j render "input_comment" %>')
+<% end %>
