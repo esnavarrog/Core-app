@@ -29,6 +29,11 @@ body{
     font-family: 'Montserrat', sans-serif !important;
 }
 
+html, body{
+    max-width:100% !important;
+    overflow-x: hidden !important
+}
+
 .row {
     --bs-gutter-x: 10px !important;
 }
