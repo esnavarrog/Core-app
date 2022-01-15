@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'posts/update'
   post 'comment_new', to: 'comments#create'
   resources :girls, path:'chicas'
+  resources :inscriptions
   resources :girls do
     resources :posts do
       resources :comments, only: [:create]
@@ -20,5 +21,6 @@ Rails.application.routes.draw do
   post 'delete_like', to: 'poly_likes#delete_like'
   get 'see_comments', to: 'comments#see_comments'
   get 'all_comments', to: 'comments#all_comments'
+  get 'formulary_inscription', to:'girls#formulary_inscription'
 end
 

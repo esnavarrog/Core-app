@@ -1,0 +1,38 @@
+<%= form_with(model:@inscription, data:{remote:true}, class:'modal-body') do |f|%>
+    <div class="title-form">Ingresa los datos de la transferencia o depósito.</div>
+    <p>Para verificar la transferencia o depósito debes ingresar los datos</p>
+    <div class="form-group mb-2">
+        <%= f.label :rut, 'Rut Depositante *' %>
+        <%= f.text_field :rut, class:'form-control', placeholder:'Digita el rut...' %>
+    </div>
+    <div class="form-group mb-2">
+        <%= f.label :name, 'Nombre Depositante *' %>
+        <%= f.text_field :name, class:'form-control', placeholder:'Digita el nombre...' %>
+    </div>
+    <div class="form-group mb-2">
+        <%= f.label :number_operation, 'Número de operación' %>
+        <%= f.text_field :number_operation, class:'form-control', placeholder:'Digita el N° operación...' %>
+    </div>
+    <div class="form-group mb-2">
+        <%= f.label :amount, 'Monto depositado *' %>
+        <%= f.text_field :amount, class:'form-control', placeholder:'Digita el monto...' %>
+    </div>
+    <div class="form-group mb-2">
+        <%= f.label :hour, 'Hora depósito *' %>
+        <%= f.text_field :hour, class:'form-control datetimepicker' %>
+    </div>
+    <div class="form-group mb-2">
+        <%= f.label :commentary, 'Observaciones o comentarios' %>
+        <%= f.text_area :commentary, class:'form-control', style:"height: 100px;" %>
+    </div>
+
+    <div class="copyright">
+        Resguardaremos todos tus datos privados.
+        Todo está protegido y encriptado.
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary me-2" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+        <%= f.submit 'Subir datos', class:'btn btn-outline-primary' %>
+    </div>
+<% end %>

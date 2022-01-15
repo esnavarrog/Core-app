@@ -35,6 +35,10 @@ class GirlsController < ApplicationController
     end
   end
 
+  def formulary_inscription
+    
+  end
+
   # PATCH/PUT /girls/1 or /girls/1.json
   def update
     if @girl.update(girl_params)

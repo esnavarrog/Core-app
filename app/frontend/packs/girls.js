@@ -62,4 +62,12 @@ function events() {
         $('#modal-publish').modal('show');
         $('#'+$(this).data('button')).click()
     })
+
+    $(document).ready(function(){
+        $(".datetimepicker").flatpickr({
+            enableTime: true,
+            dateFormat: "d-m-Y H:i",
+            locale: "es"
+        });
+    })
 }

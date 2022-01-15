@@ -22,3 +22,6 @@ require("packs/girls")
 require("packs/posts")
 require("packs/comments")
 require("packs/poly_likes")
+require("packs/inscriptions")
+require("flatpickr")
+require("flatpickr/dist/l10n/es.js").default.es;

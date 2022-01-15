@@ -1,5 +1,65 @@
-<h1>New Girl</h1>
+<div class="container">
+    <div class="box-general">
+        <h1>Crea tu perfil de escort</h1>
+        
+        <!-- <%= render 'form' %> -->
+        
+        <% if current_user.present? && current_user.role != 'girl'  %>
+        
+        <div class="row" id="first-info">
+            <div class="box-header">
+                <div class="title">Para crear tu perfil, selecciona si eres escort o agencia.</div>
+                <p>Se te otorgará acceso al momento de verificar tu pago</p>
+                <h5>Haz click aquí para seguir con el proceso...</h5>
+                <div class="row d-flex justify-content-between" style="width: 90%; margin: 40px auto; height: 200px;">
+                    <button class="btn btn-primary col-xs-12 col-md-5 mb-3 button-select-type-user" data-target="box-of-info-escort"><i class="bi bi-person-fill"></i><br> Escort Independiente</button>
+                    <button class="btn btn-primary col-xs-12 col-md-5 mb-3 button-select-type-user" data-target="box-of-info-agency"><i class="bi bi-people-fill"></i><br> Agencia</button>
+                </div>
+            </div>
+        </div>
+        
+            <div class="box-content" id="box-of-info-agency">
+                <h1>Que necesitas para crear tu perfil.</h1>
+                <ul>
+                    <li>Primero debes estar logueado y tener un usuario activo.</li>
+                    <li>Primero envía un mensaje al admin vía Telegram <a href="http://www.telegram.com">Contacto</a> para informarte de los planes para escort independiente o agencia.</li>
+                    <li>Una vez realizadas las acciones solicitadas por nuestro admin, ingresa a este formulario. <br>
+                        <%= link_to 'Ir al Formulario', new_inscription_path(), class:'btn btn-outline-primary', remote:true %></li>
+                </ul>
+        
+                <h1>Que puedes hacer con tu perfil de Agencia.</h1>
+                <ul>
+                    <li>Con tu perfil de agencia puedes crear varios portafolios.</li>
+                    <li>Puedes editar, eliminar a tú gusto las publicaciones y censurar los comentarios maliciosos. <strong>El portafolio de escort lo dominas tú.</strong> </li>
+                    <li>Puedes subir contenido de una foto o video por publicación, más un texto de descripción o insentivo, desde celular acepta emojis dentro del texto, por eso te recomendamos que publiques desde el mobil.</li>
+                    <li>Puedes subir tu galería de fotos de inicio, con un máximo de 5 fotos. Si tienes más..., las puedes ocupar en crear publicaciones interactivas.</li>
+                    <li>Puedes dar like a los comentarios positivos he insentivar a que más usuarios comenten, a mayor cantidad de comentarios, mas atractiva serás, y tu post será mas visto.</li>
+                    <li>Puedes comentar y responder en los reportes de los usuarios, te aconsejo que siempre le pidas a tu cliente que haga su reporte, eso llamará a mas clientes.</li>
+                    <li>Puedes modificar por completo tu portafolio, para cambiar alguna chica que ya no trabaje con ustedes.</li>
+                    <li>Dependiendo de tu plan, puedes crear los portafolios que necesites.</li>
+                </ul>
+        
+                <h1>Que no puedes hacer con tu perfil.</h1>
+                <ul>
+                    <li>No podrás eliminar comentarios ni mensajes del blog, para ello debes ponerte en contacto con el admin, él juzgará si no cumplen las normas.</li>
+                    <li>Obviamente no puedes modificar el portafolio de otras chicas que no estén en tu lista</li>
+                </ul>
+            </div>
+    
+            <div id="box-of-info-escort" class="box-content">
+                info escort
+            </div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', girls_path %>
+            <%= render './inscriptions/modals/modal_new_inscription' %>
+        
+            <%end%>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <%= link_to 'Back', girls_path %>
+</div>

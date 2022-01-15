@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :girls
   has_many :poly_likes
+  has_many :inscriptions
   validates_presence_of :nickname
   validates_uniqueness_of :nickname
   enum role: [:user, :admin_super, :girl ]

@@ -1,0 +1,79 @@
+// Place all the styles related to the Inscriptions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
+$rosa: #BF396A;
+$azul: #1b959a;
+.succes-inscription{
+    max-width:900px;
+    max-height: 900px;
+    border-radius:4px;
+    padding: 24px 40px;
+    text-align: center;
+    h1{
+        font-size:24px;
+        color: white;
+        font-weight:bold;
+    }
+    p{
+        font-size: 16px;
+        color:white;
+    }
+    background: rgb(34,193,195);
+    background: linear-gradient(140deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
+}
+
+.icon-success{
+    width:30%;
+}
+
+.box-general{
+    h1{
+        margin-bottom: 24px !important;
+        
+    }
+    padding:24px;
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow:$box_shadow;
+    text-align: center;
+    .box-header{
+        p{
+            color: grey;
+        }
+        .title{
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+    .box-content{
+        display: none;
+        text-align: left;
+        li{
+            margin-bottom: 14px;
+        }
+        h1{
+            font-size:1.5rem;
+            font-weight: 600;
+            line-height: 24px;
+            color: $azul;
+        }
+        strong{
+            color: $rosa;
+        }
+    }
+}
+.copyright{
+    font-size:10px;
+    text-align:left;
+    margin-bottom: 24px;
+}
+
+.modal-body{
+    .title-form{
+        font-size:24px;
+        color: $rosa;
+    }
+}

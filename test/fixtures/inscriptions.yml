@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rut: MyString
+  name: MyString
+  date: 2022-01-14
+  hour: 2022-01-14 22:34:58
+  amount: 1
+  number_operation: MyString
+  commentary: MyText
+  user: one
+
+two:
+  rut: MyString
+  name: MyString
+  date: 2022-01-14
+  hour: 2022-01-14 22:34:58
+  amount: 1
+  number_operation: MyString
+  commentary: MyText
+  user: two
