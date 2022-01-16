@@ -11,6 +11,10 @@ class GirlsController < ApplicationController
     @post = @girl.posts.build
     @posts = @girl.posts.order(created_at: :desc)
     @like = @girl.poly_likes.where(likeable_type:'Girl')
+    gallery = @girl.gallery_urls.last(8)
+    gallery.slice!(0)
+    @gallery = gallery
+    @gallery_first = @girl.gallery_urls[0]
   end
 
   # GET /girls/new
@@ -109,7 +113,8 @@ class GirlsController < ApplicationController
         :cintura,
         :pagos,
         :modalidad,
-        :service_type
+        :service_type, 
+        gallery:[]
         )
     end
 end

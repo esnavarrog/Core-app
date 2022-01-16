@@ -3,6 +3,8 @@ class Girl < ApplicationRecord
     extend FriendlyId
     friendly_id :name, use: :slugged
     mount_uploader :avatar, AvatarUploader
+    mount_uploaders :gallery, GalleryUploader
+    serialize :gallery, JSON
     mount_uploader :portada, PortadaUploader
     has_many :posts
     belongs_to :user

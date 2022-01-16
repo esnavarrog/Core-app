@@ -28,11 +28,29 @@
             <!-- Gallery -->
             <div id="box-img-thumb" class="form-details sticky-md-top" style="top: 60px;">
                 <h3>Fotos</h3>
-                <div class="container d-flex justify-content-between" style="margin-bottom: 8px !important;">
-                    <div id="box-images-thumb" class="row">
-                        <%= render "./posts/post_thumb" %>
+                
+                <div id="gallery-images-girl" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%= image_tag(@gallery_first, class:'d-block w-100') %>
+                        </div>
+                        
+                        <% @gallery.each do |img| %>
+                            <div class="carousel-item">
+                                <%= image_tag(img, class:'d-block w-100') %>
+                            </div>
+                        <%end%>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                    
     
             </div>
         </div>

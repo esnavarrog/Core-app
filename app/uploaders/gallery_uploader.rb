@@ -1,4 +1,4 @@
-class PostUploader < CarrierWave::Uploader::Base
+class GalleryUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -17,12 +17,12 @@ class PostUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url(*args)
+  # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  end
+  # end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
@@ -31,14 +31,13 @@ class PostUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  PNG_JPG = %w(png jpg jpeg)
-  GIF = %w(gif)
   # Create different versions of your uploaded files:
+  # version :thumb do
+  #   process resize_to_fit: [50, 50]
+  # end
   version :thumb do
     process resize_to_fill: [100, 100]
   end
-
-  
 
   version :normal do
     process resize_to_limit: [720, 680]
@@ -56,16 +55,13 @@ class PostUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  
   def extension_allowlist
-    PNG_JPG + GIF
+    %w(jpg jpeg png)
   end
-
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    ext = original_filename.split('.')[1]
-    return ext
-  end
+  # def filename
+  #   "something.jpg" if original_filename
+  # end
 end
