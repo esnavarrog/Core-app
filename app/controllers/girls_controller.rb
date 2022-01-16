@@ -108,7 +108,8 @@ class GirlsController < ApplicationController
         :cadera,
         :cintura,
         :pagos,
-        :modalidad
+        :modalidad,
+        :service_type
         )
     end
 end

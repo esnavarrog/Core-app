@@ -3,7 +3,7 @@
     <% if post.img.present? %>
         <div class="col-4 mb-2">
             <a href="#post-<%= post.id %>">
-                <%= image_tag(post.img_url(:thumb)) %>
+                <% image_tag(post.img_url(:thumb)) %>
             </a>
         </div>
     <% end %>

@@ -26,6 +26,15 @@
         <%= form.label :price, 'Precio' %>
           <%= form.select :price, Girl::PRICE_LIST,{}, {class:'form-control', id:'precio-hora'}%>
       </div>
+
+      <div class="form-group">
+        <label for="girl_service_type">Que servicio brindas?</label>
+        <select name="girl[service_type]" id="girl_service_type"  class="form-control">
+          <option value="escort">Escort</option>
+          <option value="massage">Masajista</option>
+          <option value="virtual">Servicios Virtuales</option>
+        </select>
+      </div>
       <div class="form-group">
         <%= form.label :description, ' Descripción' %>
           <%= form.text_area :description, class:'form-control' %>

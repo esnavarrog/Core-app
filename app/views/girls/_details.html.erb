@@ -10,38 +10,52 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent" style="min-height: 225px;">
-    <div class="tab-pane fade show active p-3" id="info" role="tabpanel" aria-labelledby="info-tab">
-        <% if @girl.edad? %>
-            <strong>Edad:</strong> <span><%= @girl.edad %> años</span><br>
-        <% end %>
-        <% if @girl.kilos? %>
-            <strong>Peso:</strong> <span><%= @girl.kilos %> kg.</span><br>
-        <% end %>
-        <% if @girl.estatura? %>
-            <strong>Estatura:</strong> <span>1.<%= @girl.estatura %> mts.</span><br>
-        <% end %>
-        <% if @girl.busto? && @girl.cintura? && @girl.cadera? %>
-            <strong>Medidas:</strong> <span><%= @girl.busto %></span>-<span><%= @girl.cintura %></span>-<span><%= @girl.cadera %></span><br>
-        <% end %>
-        <% if @girl.cabello? %>
-            <strong>Cabello:</strong> <span><%= @girl.cabello %></span><br>
-        <% end %>
-        <% if @girl.ojos? %>
-            <strong>Ojos:</strong> <span><%= @girl.ojos %></span><br>
-        <% end %>
-        <% if @girl.depilacion? %>
-            <strong>Depilación:</strong> <span><%= @girl.depilacion %></span><br>
-        <% end %>
-        <% if @girl.modalidad? %>
-            <strong>Atención en:</strong> <span><%= @girl.modalidad %></span><br>
-        <% end %>
+    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+        <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-details">Editar Info</div>
+
+        <div class="p-3">
+            <% if @girl.service_type != 'escort' %>
+                <strong>Tipo de Servicio:</strong> 
+                <span>
+                    <%= enum_i18n(Girl,:service_type ,@girl.service_type) %>
+                </span><br>
+            <% end %>
+            <% if @girl.edad? %>
+                <strong>Edad:</strong> <span><%= @girl.edad %> años</span><br>
+            <% end %>
+            <% if @girl.kilos? %>
+                <strong>Peso:</strong> <span><%= @girl.kilos %> kg.</span><br>
+            <% end %>
+            <% if @girl.estatura? %>
+                <strong>Estatura:</strong> <span>1.<%= @girl.estatura %> mts.</span><br>
+            <% end %>
+            <% if @girl.busto? && @girl.cintura? && @girl.cadera? %>
+                <strong>Medidas:</strong> <span><%= @girl.busto %></span>-<span><%= @girl.cintura %></span>-<span><%= @girl.cadera %></span><br>
+            <% end %>
+            <% if @girl.cabello? %>
+                <strong>Cabello:</strong> <span><%= @girl.cabello %></span><br>
+            <% end %>
+            <% if @girl.ojos? %>
+                <strong>Ojos:</strong> <span><%= @girl.ojos %></span><br>
+            <% end %>
+            <% if @girl.depilacion? %>
+                <strong>Depilación:</strong> <span><%= @girl.depilacion %></span><br>
+            <% end %>
+            <% if @girl.modalidad? %>
+                <strong>Atención en:</strong> <span><%= @girl.modalidad %></span><br>
+            <% end %>
+        </div>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        
+        <div class="btn btn-light">Agregar Servicios</div>
+
     </div>
-    <div class="tab-pane fade p-3 text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <h1>Cuidado COVID:</h1>  
-        <p>Mascarilla, Alcohol gel, Toallas desechables</p> 
+    <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="btn btn-light">Agregar Salud</div>
+        <div class="p-3">
+            <h1>Cuidado COVID:</h1>  
+            <p>Mascarilla, Alcohol gel, Toallas desechables</p> 
+        </div>
     </div>
   </div>
   

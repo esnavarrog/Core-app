@@ -94,3 +94,10 @@ es:
       day: Día
       month: Mes
       year: Año
+  activerecord:
+    attributes:
+      girls:
+        service_types:
+          escort: "Escort"
+          massage: "Masajista"
+          virtual: "Servicios Virtuales"

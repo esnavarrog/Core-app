@@ -12,9 +12,7 @@ class PostsController < ApplicationController
       @post.user = current_user
 
       @posts = @girl.posts.order(created_at: :desc)
-      puts '++++++++++++'
-      puts @post.inspect
-      puts '++++++++++++'
+
       @post.save
       
     else

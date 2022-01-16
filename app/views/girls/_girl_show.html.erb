@@ -24,8 +24,8 @@
                 <%= @girl.address %>
             </div>
             <div class="edad">
-                <%= @girl.edad ?  "#{@girl.edad} años" : "" %><%= @girl.nacionalidad ? ', ' + @girl.nacionalidad.capitalize : '' %>
-                <%= @girl.nacionalidad != "Otra" ? inline_svg_tag("icons/flag/flag_#{@girl.nacionalidad}.svg", class:'flag-icon') : '' %>
+                <%= @girl.edad ?  "#{@girl.edad} años" : "" %><%= @girl.nacionalidad.present? && @girl.nacionalidad != 'Otra' && @girl.edad.present? ? ', ' : '' %><%= @girl.nacionalidad.present? && @girl.nacionalidad != 'Otra' ? @girl.nacionalidad.capitalize : '' %>
+                <%= @girl.nacionalidad.present? && @girl.nacionalidad != "Otra" ? inline_svg_tag("icons/flag/flag_#{@girl.nacionalidad}.svg", class:'flag-icon') : '' %>
             </div>
             <div class="atencion">
                 <%= @girl.horario %>

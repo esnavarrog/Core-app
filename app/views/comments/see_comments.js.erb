@@ -8,3 +8,10 @@ $('#modal-content-comments').find('.modal-body').attr('id', "body-post-modal-<%=
 <% if user_signed_in? %>
 $('#modal-content-comments').find('.modal-footer').html('<%= j render "input_comment" %>')
 <% end %>
+
+$(".input-comment").keypress(function(e) {
+    var button = $(this).data('button');
+    if (e.which == 13) {
+        $("#" + button).click()
+    };
+});

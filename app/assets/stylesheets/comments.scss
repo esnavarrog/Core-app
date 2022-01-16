@@ -31,9 +31,9 @@ $lightHoverPrimary:#FF5733;
     }
 }
 
-#modal-comments{
+.modal{
     .modal-dialog{
-        margin:auto !important;
+        margin:0 auto !important;
     }
     .modal-header{
         padding: 5px 1rem;

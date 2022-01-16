@@ -232,6 +232,11 @@ h1{
     }
 }
 
+.link-title{
+    color: $rosa;
+    text-decoration: none;
+}
+
 @media (max-width: 959.9px){
     .grid{
         width: 100vw;

@@ -1,10 +1,16 @@
 <div class="modal-body">
     <%= form_with(model: @girl, id:'form-details-info') do |form| %>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
-                <%= form.label :edad %>
-                <%= form.text_field :edad, class:'form-control' %>
-            </div>
+    <div class="form-group">
+        <label for="girl_service_type">Que servicio brindas?</label>
+        <select name="girl[service_type]" id="girl_service_type" class="form-control" >
+          <option value="escort">Escort</option>
+          <option value="massage">Masajista</option>
+          <option value="virtual">Servicios Virtuales</option>
+        </select>
+      </div>
+        <div class="form-group">
+            <%= form.label :edad %>
+            <%= form.text_field :edad, class:'form-control' %>
         </div>
         <div class="col-sm-12 col-md-6">
             <div class="form-group">
@@ -13,7 +19,7 @@
                     <div class="input-group-text">
                         1.
                     </div>
-                    <%= form.select :estatura, Girl::ESTATURA %>
+                    <%= form.select :estatura, Girl::ESTATURA, {}, {class:'form-select'} %>
                 </div>
             </div>
         </div>
@@ -24,7 +30,7 @@
                     <div class="input-group-text">
                         Color
                     </div>
-                    <%= form.select :cabello, Girl::CABELLO_LIST %>
+                    <%= form.select :cabello, Girl::CABELLO_LIST, {}, {class:'form-select'} %>
                 </div>
             </div>
         </div>
@@ -35,7 +41,7 @@
                     <div class="input-group-text">
                         kg
                     </div>
-                    <%= form.select :kilos, Girl::KILOS %>
+                    <%= form.select :kilos, Girl::KILOS, {}, {class:'form-select'} %>
                 </div>
             </div>
         </div>
@@ -46,7 +52,7 @@
                     <div class="input-group-text">
                         Color
                     </div>
-                    <%= form.select :ojos, Girl::OJOS_LIST %>
+                    <%= form.select :ojos, Girl::OJOS_LIST, {}, {class:'form-select'} %>
                 </div>
             </div>
         </div>
@@ -57,7 +63,7 @@
                     <div class="input-group-text">
                         Tipo
                     </div>
-                    <%= form.select :depilacion, Girl::DEPILACION_LIST %>
+                    <%= form.select :depilacion, Girl::DEPILACION_LIST, {}, {class:'form-select'} %>
                 </div>
             </div>
         </div>
@@ -68,19 +74,19 @@
                 <div class="input-group-text">
                     Busto
                 </div>
-                <%= form.select :busto, Girl::CM %>
+                <%= form.select :busto, Girl::CM, {}, {class:'form-select'} %>
             </div>
             <div class="input-group mb-2">
                 <div class="input-group-text">
                     Cintura
                 </div>
-                <%= form.select :cintura, Girl::CM %>
+                <%= form.select :cintura, Girl::CM, {}, {class:'form-select'} %>
             </div>
             <div class="input-group mb-2">
                 <div class="input-group-text">
                     Cadera
                 </div>
-                <%= form.select :cadera, Girl::CM %>
+                <%= form.select :cadera, Girl::CM, {}, {class:'form-select'} %>
             </div>
         </div>
         <div class="form-group">
@@ -89,7 +95,7 @@
                 <div class="input-group-text">
                     Tipo
                 </div>
-                <%= form.select :modalidad, Girl::TRABAJO_LIST %>
+                <%= form.select(:modalidad, Girl::TRABAJO_LIST, {}, {class:'form-select'}) %>
             </div>
         </div>
     

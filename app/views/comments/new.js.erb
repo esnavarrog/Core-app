@@ -1,4 +1,5 @@
 $('#input-comment-<%= @post.id %>').val('')
+$('#input-comment-modal-<%= @post.id %>').val('')
 $('#count-comments').html('<%= @post.comments.count %>')
 $('#hr-bottom-<%= @post.id %>').removeClass('d-none')
 

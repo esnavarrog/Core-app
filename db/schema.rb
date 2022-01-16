@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_013457) do
+ActiveRecord::Schema.define(version: 2022_01_16_021103) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_013457) do
     t.string "modalidad"
     t.integer "user_id"
     t.string "slug"
+    t.integer "service_type", default: 0
     t.index ["slug"], name: "index_girls_on_slug", unique: true
     t.index ["user_id"], name: "index_girls_on_user_id"
   end
