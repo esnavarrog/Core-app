@@ -38,8 +38,6 @@ class PostUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [100, 100]
   end
 
-  
-
   version :normal do
     process resize_to_limit: [720, 680]
     process convert: 'png'
