@@ -1,5 +1,21 @@
-<div class="input-group input-group-comment">
-    <input id="input-comment-modal-<%= @post.id %>" type="text" data-button="button-comment-modal-<%= @post.id %>" class="form-control input-comment" placeholder="Comenta aquí..." aria-label="Recipient's username">
-    <button id="button-comment-modal-<%= @post.id %>" class="btn btn-outline-secondary button-comment" data-id="<%= @post.id %>" data-type="Post" data-url="<%= comment_new_url %>" type="button" data-input="input-comment-modal-<%= @post.id %>">Comenta</button>
+
+<div class="box-comments mb-0" style="margin: 0;width: 100%;">
+    <div class="d-flex comment-link-<%= @post.id %>" id=""></div>
+</div>
+<div id="input-comment-put-modal-<%= @post.id %>" class="input-group input-group-comment m-0">
+    <input type="text" id="input-comment-modal-<%= @post.id %>" 
+        data-button="button-comment-modal-<%= @post.id %>" 
+        class="form-control input-comment" 
+        placeholder="Comenta aquí...">
+    <button id="button-comment-modal-<%= @post.id %>" 
+            class="btn btn-outline-secondary button-comment" 
+            data-id="<%= @post.id %>" 
+            data-type="Post" 
+            data-url="<%= comment_new_url %>" 
+            data-post="<%= @post.id %>"
+            type="button" 
+            data-input="input-comment-modal-<%= @post.id %>">
+        Comenta
+    </button>
 </div>
 <div class="badge rounded-pill bg-danger badge-error-comment d-none" id="error-<%= @post.id %>"></div>

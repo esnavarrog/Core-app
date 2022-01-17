@@ -1,15 +1,26 @@
-$('#input-comment-<%= @post.id %>').val('')
-$('#input-comment-modal-<%= @post.id %>').val('')
-$('#count-comments').html('<%= @post.comments.count %>')
-$('#hr-bottom-<%= @post.id %>').removeClass('d-none')
 
-<% if @post.comments.count > 1 %>
-    $('#count-comments-<%= @post.id %>').html('<div id="count-comments-<%= @post.id %>"><%= @post.comments.count %> comentarios</div>')
-<% elsif @post.comments.count == 1 %>
-    $('#count-comments-<%= @post.id %>').html('<div id="count-comments-<%= @post.id %>"><%= @post.comments.count %> comentario</div>')
+<% if params[:commentable_type] == 'Post' %>
+
+    $('#input-comment-<%= @post.id %>').val('')
+    $('#input-comment-modal-<%= @post.id %>').val('')
+    $('#count-comments').html('<%= @post.comments.count %>')
+    $('#hr-bottom-<%= @post.id %>').removeClass('d-none')
+    <% if @post.comments.count > 1 %>
+        $('#count-comments-<%= @post.id %>').html('<div id="count-comments-<%= @post.id %>"><%= @post.comments.count %> comentarios</div>')
+    <% elsif @post.comments.count == 1 %>
+        $('#count-comments-<%= @post.id %>').html('<div id="count-comments-<%= @post.id %>"><%= @post.comments.count %> comentario</div>')
+    <% end %>
+    $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn('slow')
+    $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-modal-<%= @post.id %>').fadeIn('slow')
+
+    $('#link-post-<%= @post.id %>').removeClass('disabled')
+<% elsif params[:commentable_type] == 'Comment' %>
+
+    $('#count-reply-<%= @reply.id %>').html('<div class="btn btn-link">Ver <%= @reply.comments.count %> <%= @reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></div><i class="bi bi-dot"></i>')
+    $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#comment-reply-<%= @reply.id %>').fadeIn('slow')
+    $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#comment-reply-modal-<%= @reply.id %>').fadeIn('slow')
+
 <% end %>
-$('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn('slow')
-$('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-modal-<%= @post.id %>').fadeIn('slow')
+    
     $('#comment-<%= @comment.id %>').addClass('animate__bounceIn')
 
-$('#link-post-<%= @post.id %>').removeClass('disabled')

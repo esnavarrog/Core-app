@@ -252,6 +252,27 @@ body{
     }
 }
 
+.carousel-indicators [data-bs-target]{
+    height:30px !important;
+    border-radius:4px;
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+    display: flex;
+    justify-content: center;
+    .active{
+        -moz-box-shadow: 0px 0px 30px #ffffff;
+        -webkit-box-shadow: 0px 0px 30px #ffffff;
+        box-shadow: 0px 0px 30px #ffffff; 
+    }
+    .bottom-carrousel{
+        width:30px;
+        height:30px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+}
+
+
 .informacion{
     text-align: center;
     margin-top: 5%;

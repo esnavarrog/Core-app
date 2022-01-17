@@ -1,11 +1,11 @@
 
 <div id="comment-<%= comment.id %>" class="d-flex">
     <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-    <span>
+    <span >
         <div class="title-message">
             <%= User.find(comment.user.to_i).nickname %>
         </div>
-        <div class="message-message">
+        <div id="message-<%= comment.id %>" class="message-message">
             <%= comment.message %>
         </div>
     </span>
@@ -13,9 +13,48 @@
 <div class="links-comment d-flex align-items-center">
     <% if user_signed_in? %>
         <!-- <div class="btn btn-link">Me gusta</div> 
-        <i class="bi bi-dot"></i> 
-        <div class="btn btn-link">Responder</div> 
-        <i class="bi bi-dot"></i>  -->
+            <i class="bi bi-dot"></i>  -->
+            <div class="btn btn-link link-reply" data-comment="comment-<%= comment.id %>" data-post="<%= @post.id %>" data-id="<%= comment.id %>" data-type="Comment">Responder</div> 
+            <i class="bi bi-dot"></i> 
+    <% end %>
+    <% if comment.comments.present? %>
+        <div id="count-reply-<%= comment.id %>">
+            <div class="btn btn-link">Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>
+            <i class="bi bi-dot"></i> 
+        </div>
     <% end %>
     <%= time_ago_in_words(comment.created_at) %>
 </div>
+<div id="comment-reply-modal-<%= comment.id %>" class="box-comments">
+<% comment.comments.last(2).each do |reply| %>
+    <div id="comment-box-<%= reply.id %>" class="d-flex">
+        <%= image_tag(User.find(reply.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+        <span>
+            <div class="title-message">
+                <%= User.find(reply.user.to_i).nickname %>
+            </div>
+            <div class="message-message">
+                <%= reply.message %>
+            </div>
+        </span>
+    </div>
+    <div class="links-comment d-flex align-items-center">
+        <% if user_signed_in? %>
+            <!-- <div class="btn btn-link">Me gusta</div> 
+                <i class="bi bi-dot"></i>  -->
+                <div class="btn btn-link link-reply" data-comment="comment-box-<%= reply.id %>" data-post="<%= @post.id %>" data-id="<%= reply.id %>" data-type="Comment">Responder</div> 
+                <i class="bi bi-dot"></i> 
+        <% end %>
+        <% if reply.comments.present? %>
+            <div id="count-reply-<%= reply.id %>">
+                <div class="btn btn-link">Ver <%= reply.comments.count %> <%= reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>
+                <i class="bi bi-dot"></i> 
+            </div>
+        <% end %>
+        <%= time_ago_in_words(reply.created_at) %>
+    </div>
+    <div id="comment-reply-<%= reply.id %>" class="box-comments"></div>
+<% end %>
+</div>
+
+

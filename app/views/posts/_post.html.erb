@@ -91,6 +91,9 @@
                 </div>
             </div>
             <hr id="hr-bottom-<%= post.id %>" class="<%= post.comments.present? ? '' : 'd-none' %>">
+            <div class="box-comments mb-0">
+                <div class="d-flex comment-link-<%= post.id %>" id=""></div>
+            </div>
             <div id="input-comment-put-<%= post.id %>" class="input-group input-group-comment d-none">
                 <input type="text" id="input-comment-<%= post.id %>" 
                     data-button="button-comment-<%= post.id %>" 
@@ -100,6 +103,7 @@
                         class="btn btn-outline-secondary button-comment" 
                         data-id="<%= post.id %>" 
                         data-type="Post" 
+                        data-post="<%= post.id %>"
                         data-url="<%= comment_new_url %>" 
                         type="button" 
                         data-input="input-comment-<%= post.id %>">
@@ -110,7 +114,7 @@
             <%end%>
             <div id="body-post-<%= post.id %>" class="box-comments">
                 <% post.comments.last(2).each do |comment| %>
-                    <div class="d-flex">
+                    <div id="comment-box-<%= comment.id %>" class="d-flex">
                         <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
                         <span>
                             <div class="title-message">
@@ -124,12 +128,19 @@
                     <div class="links-comment d-flex align-items-center">
                         <% if user_signed_in? %>
                             <!-- <div class="btn btn-link">Me gusta</div> 
-                            <i class="bi bi-dot"></i> 
-                            <div class="btn btn-link">Responder</div> 
-                            <i class="bi bi-dot"></i>  -->
+                                <i class="bi bi-dot"></i>  -->
+                                <div class="btn btn-link link-reply" data-comment="comment-box-<%= comment.id %>" data-post="<%= post.id %>" data-id="<%= comment.id %>" data-type="Comment">Responder</div> 
+                                <i class="bi bi-dot"></i> 
+                        <% end %>
+                        <% if comment.comments.present? %>
+                            <div id="count-reply-<%= comment.id %>">
+                                <div class="btn btn-link">Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>
+                                <i class="bi bi-dot"></i> 
+                            </div>
                         <% end %>
                         <%= time_ago_in_words(comment.created_at) %>
                     </div>
+                    <div id="comment-reply-<%= comment.id %>" class="box-comments"></div>
                 <%end%>
             </div>
         </div>

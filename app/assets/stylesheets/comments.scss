@@ -6,6 +6,9 @@ $lightHoverPrimary:#FF5733;
 .box-comments{
     margin-top:.4rem !important;
     margin-bottom:.4rem !important;
+    .box-comments{
+        margin-left: 30px;
+    }
     span{
         padding: 5px 10px;
         border-radius: 10px;
@@ -43,6 +46,17 @@ $lightHoverPrimary:#FF5733;
     }
 }
 
+.comment-link{
+    border: 1px solid #CFD2D2;
+    border-radius: 4px 4px 0 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 5px 0 5px;
+    border-bottom: 0;
+}
+
+
+
 .conteo-likes{
     padding: .4rem 0 0 0;
     font-size: 12px;
@@ -57,6 +71,11 @@ $lightHoverPrimary:#FF5733;
     font-size: 10px !important;
     margin-bottom: 5px;
     color:#999;
+    [class^="bi-"]::before, [class*=" bi-"]::before{
+        line-height:0 !important;
+        display: flex;
+        align-items: center;
+    }
     .btn-link{
         font-size: 10px;
         padding: 0;
@@ -67,7 +86,7 @@ $lightHoverPrimary:#FF5733;
 }
 
 .input-group-comment{
-    padding: 0 10px;
+    padding: 0 5px;
     input{
         border-radius: 20px 0 0 20px;
     }
@@ -78,8 +97,19 @@ $lightHoverPrimary:#FF5733;
             background-color: $lightHoverPrimary;
         }
     }
+    .reply-comment{
+        border-radius: 0 0 0 20px !important;
+    }
+    .reply-button{
+        border-radius: 0 0 20px 0 !important;
+    }
 
 }
+
+
+
+
+
 .badge-error-comment{
     margin-left: 10px;
     margin-bottom: 12px;
