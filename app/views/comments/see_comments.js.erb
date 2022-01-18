@@ -9,6 +9,8 @@ $('#modal-content-comments').find('.modal-body').attr('id', "body-post-modal-<%=
 $('#modal-content-comments').find('.modal-footer').html('<%= j render "input_comment" %>')
 <% end %>
 
+$('#modal-content-comments').find('.link-reply').attr('data-modal', 'true')
+
 $(".input-comment").keypress(function(e) {
     var button = $(this).data('button');
     if (e.which == 13) {

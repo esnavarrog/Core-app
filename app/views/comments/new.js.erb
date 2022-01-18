@@ -12,6 +12,7 @@
     <% end %>
     $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-<%= @post.id %>').fadeIn('slow')
     $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#body-post-modal-<%= @post.id %>').fadeIn('slow')
+    $('#modal-content-comments').find('.link-reply').attr('data-modal', 'true')
 
     $('#link-post-<%= @post.id %>').removeClass('disabled')
 <% elsif params[:commentable_type] == 'Comment' %>

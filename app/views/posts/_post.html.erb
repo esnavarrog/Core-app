@@ -29,7 +29,7 @@
             <%= post.content %>
         </div>
         <% if post.video.present? %>
-            <%= video_tag post.video_url(:mp4), :controls => true %>
+            <%= video_tag post.video_url(:mp4), :controls => true, class:'video-published' %>
         <% end %>
         <% if post.img.present? %>
             <%= image_tag(post.img_url(:normal), class:'img-published') %>
@@ -86,14 +86,14 @@
                         </div>
                     </ul>
                   </div>
-                <div class="btn btn-link btn-sm comment-button fw-bold" data-input="<%= post.id %>" data-type="Post" data-post="<%= post.id %>">
+                <div class="btn btn-link btn-sm comment-button fw-bold" data-modal="false" data-input="<%= post.id %>" data-type="Post" data-post="<%= post.id %>">
                     <i class="bi bi-chat"></i> Comentar
                 </div>
             </div>
             <hr id="hr-bottom-<%= post.id %>" class="<%= post.comments.present? ? '' : 'd-none' %>">
             <div class="box-comments mb-0">
                 <div class="d-flex comment-link-<%= post.id %>" id=""></div>
-                <div class="close-reply close-reply-<%= post.id %> d-none comment-button" data-input="<%= post.id %>" data-type="Post" data-post="<%= post.id %>"><i class="bi bi-x"></i></div>
+                <div class="close-reply close-reply-<%= post.id %> d-none comment-button" data-modal="false" data-input="<%= post.id %>" data-type="Post" data-post="<%= post.id %>"><i class="bi bi-x"></i></div>
             </div>
             <div id="input-comment-put-<%= post.id %>" class="input-group input-group-comment d-none">
                 <input type="text" id="input-comment-<%= post.id %>" 
