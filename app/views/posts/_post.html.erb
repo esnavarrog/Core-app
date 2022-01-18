@@ -86,13 +86,14 @@
                         </div>
                     </ul>
                   </div>
-                <div class="btn btn-link btn-sm comment-button fw-bold" data-input="<%= post.id %>">
+                <div class="btn btn-link btn-sm comment-button fw-bold" data-input="<%= post.id %>" data-type="Post" data-post="<%= post.id %>">
                     <i class="bi bi-chat"></i> Comentar
                 </div>
             </div>
             <hr id="hr-bottom-<%= post.id %>" class="<%= post.comments.present? ? '' : 'd-none' %>">
             <div class="box-comments mb-0">
                 <div class="d-flex comment-link-<%= post.id %>" id=""></div>
+                <div class="close-reply close-reply-<%= post.id %> d-none comment-button" data-input="<%= post.id %>" data-type="Post" data-post="<%= post.id %>"><i class="bi bi-x"></i></div>
             </div>
             <div id="input-comment-put-<%= post.id %>" class="input-group input-group-comment d-none">
                 <input type="text" id="input-comment-<%= post.id %>" 
@@ -135,12 +136,12 @@
                         <% if comment.comments.present? %>
                             <div id="count-reply-<%= comment.id %>">
                                 <div class="btn btn-link">Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>
-                                <i class="bi bi-dot"></i> 
                             </div>
+                            <i class="bi bi-dot"></i> 
                         <% end %>
                         <%= time_ago_in_words(comment.created_at) %>
                     </div>
-                    <div id="comment-reply-<%= comment.id %>" class="box-comments"></div>
+                    <div class="comment-reply-<%= comment.id %> box-comments"></div>
                 <%end%>
             </div>
         </div>

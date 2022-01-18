@@ -1,6 +1,8 @@
 
 <div class="box-comments mb-0" style="margin: 0;width: 100%;">
     <div class="d-flex comment-link-<%= @post.id %>" id=""></div>
+    <div class="close-reply close-reply-<%= @post.id %> d-none comment-button" style="top: 5px;" data-input="<%= @post.id %>" data-type="Post" data-post="<%= @post.id %>"><i class="bi bi-x"></i></div>
+
 </div>
 <div id="input-comment-put-modal-<%= @post.id %>" class="input-group input-group-comment m-0">
     <input type="text" id="input-comment-modal-<%= @post.id %>" 
@@ -15,7 +17,7 @@
             data-post="<%= @post.id %>"
             type="button" 
             data-input="input-comment-modal-<%= @post.id %>">
-        Comenta
+            <%= inline_svg_tag('icons/icon_send.svg') %>
     </button>
 </div>
 <div class="badge rounded-pill bg-danger badge-error-comment d-none" id="error-<%= @post.id %>"></div>

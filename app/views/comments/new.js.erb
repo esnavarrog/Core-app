@@ -16,11 +16,8 @@
     $('#link-post-<%= @post.id %>').removeClass('disabled')
 <% elsif params[:commentable_type] == 'Comment' %>
 
-    $('#count-reply-<%= @reply.id %>').html('<div class="btn btn-link">Ver <%= @reply.comments.count %> <%= @reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></div><i class="bi bi-dot"></i>')
-    $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#comment-reply-<%= @reply.id %>').fadeIn('slow')
-    $('<%= escape_javascript render partial: @comment %>').hide().appendTo('#comment-reply-modal-<%= @reply.id %>').fadeIn('slow')
-
+    $('#count-reply-<%= @reply.id %>').html('<div class="btn btn-link">Ver <%= @reply.comments.count %> <%= @reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>')
+    $('.comment-reply-<%= @reply.id %>').append('<%= escape_javascript render partial: @comment %>')
 <% end %>
     
-    $('#comment-<%= @comment.id %>').addClass('animate__bounceIn')
 

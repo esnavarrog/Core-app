@@ -4,6 +4,7 @@
 $lightHoverPrimary:#FF5733;
 
 .box-comments{
+    position: relative;
     margin-top:.4rem !important;
     margin-bottom:.4rem !important;
     .box-comments{
@@ -90,9 +91,14 @@ $lightHoverPrimary:#FF5733;
     input{
         border-radius: 20px 0 0 20px;
     }
+    .input-comment{
+        border-right: 0 !important;
+    }
     .button-comment{
         border-radius: 0 20px 20px 0 !important;
         border: 1px solid #ced4da !important;
+        box-shadow: none !important;
+        border-left: 0 !important;
         &:hover{
             background-color: $lightHoverPrimary;
         }
@@ -106,9 +112,23 @@ $lightHoverPrimary:#FF5733;
 
 }
 
+.modal-header-likes{
+    min-height: 40px;
+}
 
+.close-reply{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    padding: 1px 3px 0 3px;
+    border: 1px solid #ced4da;
+    border-radius: 0 4px 0 10px;
+    cursor: pointer;
+}
 
-
+.link-reply, .count-reply{
+    box-shadow: none !important;
+}
 
 .badge-error-comment{
     margin-left: 10px;

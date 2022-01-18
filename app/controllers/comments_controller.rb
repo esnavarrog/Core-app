@@ -6,13 +6,13 @@ class CommentsController < ApplicationController
         @comment.commentable_type = params[:commentable_type]
         @comment.message = params[:message]
         @comment.user = current_user.id if current_user.present?
-        if params[:commentable_type] == 'Post'
-            @post = Post.find(params[:commentable_id])
-        else
-            @post = Post.find(params[:post_id])
-            @reply = Comment.find(params[:commentable_id])
-        end
         if @comment.save
+            if params[:commentable_type] == 'Post'
+                @post = Post.find(params[:commentable_id])
+            else
+                @post = Post.find(params[:post_id])
+                @reply = Comment.find(@comment.commentable_id)
+            end
             render :new
         else
             puts @comment.errors.messages.first

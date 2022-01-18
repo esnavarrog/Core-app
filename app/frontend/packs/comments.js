@@ -1,15 +1,32 @@
 $(document).on('turbolinks:load', events)
 
 function events() {
-    $('body').on('click', '.button-comment', reply)
-
-    function reply(e) {
+    $('body').on('click', '.button-comment', function reply(e) {
         let url = $(this).data('url')
-        let input = $(this).data('input')
-        let message = $('#'+input).val()
+        let message = $('#'+$(this).data('input')).val()
         let typeComment = $(this).data('type')
         let postId = $(this).data('id')
         let post = $(this).data('post')
+        $.ajax({
+            url: url,
+            method: 'POST',
+            dataType: 'script',
+            data: {
+                message: message,
+                commentable_id: postId,
+                commentable_type: typeComment, 
+                post_id:post
+            }
+        })
+    })
+
+    function reply(e) {
+        let url = $(this).data('url')
+        let message = $('#'+$(this).data('input')).val()
+        let typeComment = $(this).data('type')
+        let postId = $(this).data('id')
+        let post = $(this).data('post')
+        console.log(postId)
         $.ajax({
             url: url,
             method: 'POST',
@@ -25,7 +42,13 @@ function events() {
 
     $('body').on('click', '.comment-button', function(){
         let input = $(this).data('input')
+        let postType = $(this).data('type')
+
         open_comment(input)
+        $('#button-comment-'+input).removeClass('reply-button').attr('data-type', postType).attr('data-id', input)
+        $('#input-comment-'+input).removeClass('reply-comment').val('').attr('placeholder', 'Commenta...')
+        $('.comment-link-'+input).removeClass('comment-link').html('')
+        $('.close-reply-'+ input).addClass('d-none')
 
     })
 
@@ -62,8 +85,8 @@ function events() {
         $('#input-comment-modal-'+ idPost).addClass('reply-comment').attr('placeholder', 'Responde...');
         $(buttonComment).attr('data-type',''+ classType);
         $(buttonCommentModal).attr('data-type',''+ classType);
-        $('.comment-link-'+ idPost).addClass('comment-link').html(message)
-        
+        $('.comment-link-'+ idPost).addClass('comment-link animate__fadeInUp').html(message)
+        $('.close-reply-'+ idPost).removeClass('d-none')
         open_comment(idPost)
         $('#input-comment-put-modal-'+ idPost).removeClass('d-none')
     })
