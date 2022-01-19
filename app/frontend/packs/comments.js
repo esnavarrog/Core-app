@@ -90,7 +90,7 @@ function events() {
         }
     }
 
-    $('body').on('contextmenu', '.img-published, .video-published', (e) => {
+    $('body').on('contextmenu', '.img-published, .video-published, .img-carousel, .description', (e) => {
         e.preventDefault();
     })
 
