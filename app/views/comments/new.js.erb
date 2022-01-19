@@ -20,5 +20,7 @@
     $('#count-reply-<%= @reply.id %>').html('<div class="btn btn-link">Ver <%= @reply.comments.count %> <%= @reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>')
     $('.comment-reply-<%= @reply.id %>').append('<%= escape_javascript render partial: @comment %>')
 <% end %>
-    
 
+$('.link-reply-<%= @comment.id %>').addClass('d-none')
+    
+$('#comment-<%= @comment.id %>').addClass('animate__bounceIn')

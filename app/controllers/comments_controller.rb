@@ -26,9 +26,24 @@ class CommentsController < ApplicationController
         @poly_likes
     end
 
+    def see_reply
+        @post = Post.find(params[:post_id])
+        @comment = Comment.find(params[:id])
+        @comments = @comment.comments.order(created_at: :desc)
+    end
+
     def all_comments
         @post = Post.find(params[:id])
         @comments = @post.comments.order(created_at: :asc)
+    end
+
+    def input_modal
+        comment = Comment.find(params[:commentable_id])
+        @post = comment
+        @modal = params[:modal]
+        @comment = params[:comment]
+        @target = params[:target]
+        @commentable_type = params[:commentable_type]
     end
 
     private

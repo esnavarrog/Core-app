@@ -1,0 +1,3 @@
+$('#modal-comment-<%= @comment.id %>').html('<%= j render "modal_reply" %>')
+$('.modal-body-<%= @comment.id %>').html('<%= j render @comments %>')
+$('#modal-reply-<%= @comment.id %>').modal('toggle')

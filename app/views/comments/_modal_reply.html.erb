@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-reply-<%= @comment.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div id="modal-content-comments" class="modal-content modal-content-reply">
+            <div class="modal-header">
+                <div class="modal-header-likes d-flex"></div>
+                <button type="button" class="btn close-modal" data-modal="#modal-reply-<%= @comment.id %>">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            </div>
+            <div class="box-comments focus">
+                <p>Respuestas de...</p>
+                <div id="reply-comment-<%= @comment.id %>">
+                    <div class="d-flex comment-<%= @comment.id %>">
+                        <%= image_tag(User.find(@comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+                        <span >
+                            <div class="title-message">
+                                <%= User.find(@comment.user.to_i).nickname %>
+                            </div>
+                            <div id="message-<%= @comment.id %>" class="message-message">
+                                <%= @comment.message %>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="links-comment d-flex align-items-center">
+                    <% if user_signed_in? %>
+                        <!-- <div class="btn btn-link">Me gusta</div> 
+                            <i class="bi bi-dot"></i>  -->
+                            <%= link_to 'Responder', input_modal_path(target: '.comment-link-modal-'+@comment.id.to_s, modal:'#modal-reply-'+@comment.id.to_s, comment:'#reply-comment-'+@comment.id.to_s, commentable_id:@comment.id, commentable_type:'Comment' ), class:'btn btn-link link-reply-comment', remote:true %>
+                            <i class="bi bi-dot"></i> 
+                            
+                    <% end %>
+                    <% if @comment.comments.present? %>
+                        <div id="count-reply-<%= @comment.id %>">
+                            <div class="btn btn-link count-reply"><%= @comment.comments.count %> <%= @comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>
+                        </div>
+                        <i class="bi bi-dot"></i> 
+                    <% end %>
+                    <%= time_ago_in_words(@comment.created_at) %>
+                </div>
+            </div>
+            <div class="modal-body modal-body-<%= @comment.id %> box-comments"></div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

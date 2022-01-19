@@ -1,0 +1,7 @@
+$('<%= @modal %>').find('.modal-footer').html('<%= j render "input_comment" %>')
+$('<%= @target %>').replaceWith($('<%= @comment %>').html())
+$('.close-reply-modal-<%= @post.id %>').removeClass('d-none')
+$('#button-comment-modal-<%= @post.id %>').addClass('reply-button').attr('data-type', '<%= @commentable_type %>')
+$('.close-reply-modal-<%= @post.id %>').attr('data-type', '<%= @commentable_type %>')
+$('#input-comment-modal-<%= @post.id %>').addClass('reply-comment')
+$('<%= @modal %>').find('.modal-footer').find('.comment-<%= @post.id %>').addClass('comment-link')

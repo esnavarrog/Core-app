@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   get 'see_comments', to: 'comments#see_comments'
   get 'all_comments', to: 'comments#all_comments'
   get 'formulary_inscription', to:'girls#formulary_inscription'
+  get 'see_reply', to: 'comments#see_reply'
+  get 'input_modal', to: 'comments#input_modal'
 end
 

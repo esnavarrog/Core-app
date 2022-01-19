@@ -20,26 +20,6 @@ function events() {
         })
     })
 
-    function reply(e) {
-        let url = $(this).data('url')
-        let message = $('#'+$(this).data('input')).val()
-        let typeComment = $(this).data('type')
-        let postId = $(this).data('id')
-        let post = $(this).data('post')
-        console.log(postId)
-        $.ajax({
-            url: url,
-            method: 'POST',
-            dataType: 'script',
-            data: {
-                message: message,
-                commentable_id: postId,
-                commentable_type: typeComment, 
-                post_id:post
-            }
-        })
-    }
-
     $('body').on('click', '.comment-button', function(){
         let input = $(this).data('input')
         let postType = $(this).data('type')
@@ -50,6 +30,7 @@ function events() {
             $('#button-comment-modal-'+postId).replaceWith(button_comment_modal(input, postType, postId, ''))
             $('#input-comment-modal-'+input).removeClass('reply-comment').val('').attr('placeholder', 'Commenta...')
             $('.comment-link-modal-'+input).removeClass('comment-link').html('')
+            $('.modal-footer .comment-'+input).removeClass('comment-link').html('')
             $('.close-reply-modal-'+ input).addClass('d-none')
         }else{
             open_comment(input, false)
@@ -58,8 +39,6 @@ function events() {
             $('.comment-link-'+input).removeClass('comment-link').html('')
             $('.close-reply-'+ input).addClass('d-none')
         }
-
-
     })
 
     function button_comment(id, type, post, className){
@@ -149,4 +128,14 @@ function events() {
         }
 
     })
+
+    $('body').on('click', '.close-modal', function() {
+        var modal = $(this).data('modal')
+        $(modal).remove()
+    })
+
+    $('body').on('click', '.close-general-modal', function() {
+        $('.modal-backdrop').remove()
+    })
+
 }

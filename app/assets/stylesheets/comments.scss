@@ -3,12 +3,21 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $lightHoverPrimary:#FF5733;
 
+.form-control:focus{
+    outline:0 !important;
+    border-color: #ced4da !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0) !important;
+}
 .box-comments{
     position: relative;
     margin-top:.4rem !important;
     margin-bottom:.4rem !important;
     .box-comments{
-        margin-left: 30px;
+        position: relative;
+        border-left: 2px solid #a25020c7;
+        margin-left: 24px;
+        padding-left: 10px;
+        border-radius: 10px 0 0 10px;
     }
     span{
         padding: 5px 10px;
@@ -133,4 +142,37 @@ $lightHoverPrimary:#FF5733;
 .badge-error-comment{
     margin-left: 10px;
     margin-bottom: 12px;
+}
+
+.modal-content-reply{
+    .modal-header{
+        justify-content:left !important;
+    }
+    .close-modal{
+        padding: 20px 12px;
+        border-radius: 50%;
+    }
+    .modal-footer{
+        .box-comments{
+            padding-left: 0 !important;
+            border-left:0 !important;
+            border-radius: 0 !important;
+            .close-reply{
+                height: 25px;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+    .focus{
+        p{
+            margin-bottom: 0;
+        }
+        border-left: 2px solid #CFD2D2;
+        border-radius: 0;
+        background-color: #91fdeed4;
+        padding: 5px;
+        margin-right: 24px;
+        box-shadow: rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
+    }
 }
