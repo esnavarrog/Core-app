@@ -29,7 +29,7 @@
             <%= post.content %>
         </div>
         <% if post.video.present? %>
-            <%= video_tag post.video_url(:mp4), :controls => true, class:'video-published' %>
+            <%= video_tag post.video_url(:mp4), :controls => true, class:'video-published video-js vjs-theme-city' %>
         <% end %>
         <% if post.img.present? %>
             <%= image_tag(post.img_url(:normal), class:'img-published') %>
