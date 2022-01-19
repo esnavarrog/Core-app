@@ -130,19 +130,21 @@
                         <% if user_signed_in? %>
                             <!-- <div class="btn btn-link">Me gusta</div> 
                                 <i class="bi bi-dot"></i>  -->
-                                <div class="btn btn-link link-reply" data-comment="comment-box-<%= comment.id %>" data-post="<%= post.id %>" data-id="<%= comment.id %>" data-type="Comment">Responder</div> 
+                                <div class="btn btn-link link-reply" data-comment="comment-box-<%= comment.id %>" data-post="<%= post.id %>" data-id="<%= comment.id %>" data-type="Comment">Responder</div>
                                 <i class="bi bi-dot"></i> 
                         <% end %>
                         <% if comment.comments.present? %>
                             <div id="count-reply-<%= comment.id %>">
-                                <div class="btn btn-link" href="<%= see_reply_path(id:comment.id) %>" data-remote="true">Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>
+                                <%= link_to see_reply_path(comment_id:comment.id, post_id: post.id, for_post:true, modal:false), class:'btn btn-link', remote:true do %> 
+                                    Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %>
+                                <% end %>
                             </div>
                             <i class="bi bi-dot"></i> 
                             <div id="modal-comment-<%= comment.id %>"></div>
                         <% end %>
                         <%= time_ago_in_words(comment.created_at) %>
                     </div>
-                    <div class="comment-reply-<%= comment.id %> box-comments"></div>
+                    <div class="comment-post-reply-<%= comment.id %> box-comments"></div>
                 <%end%>
             </div>
         </div>

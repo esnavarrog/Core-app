@@ -109,19 +109,16 @@ function events() {
         let message = $('#'+ $(this).data('comment')).html()
 
         if(modal){
-            console.log(modal)
             $('#button-comment-modal-'+idPost).replaceWith(button_comment_modal(idClass, classType, idPost, 'reply-button'));
-            $('#input-comment-modal-'+ idPost).addClass('reply-comment').attr('placeholder', 'Responde...');
+            $('#input-comment-modal-'+ idPost).addClass('reply-comment').attr('placeholder', 'Responde...').val('');
             $('#input-comment-put-modal-'+ idPost).removeClass('d-none')
             $('.comment-link-modal-'+ idPost).addClass('comment-link animate__fadeInUp').html(message)
             $('.close-reply-modal-'+ idPost).removeClass('d-none')
             open_comment(idPost, true)
             
         }else{
-            console.log(modal)
             $('#button-comment-'+idPost).replaceWith(button_comment(idClass, classType, idPost, 'reply-button'));
-            $('#input-comment-'+ idPost).addClass('reply-comment').attr('placeholder', 'Responde...');
-
+            $('#input-comment-'+ idPost).addClass('reply-comment').attr('placeholder', 'Responde...').val('');
             $('.comment-link-'+ idPost).addClass('comment-link animate__fadeInUp').html(message)
             $('.close-reply-'+ idPost).removeClass('d-none')
             open_comment(idPost, false)
@@ -131,11 +128,12 @@ function events() {
 
     $('body').on('click', '.close-modal', function() {
         var modal = $(this).data('modal')
-        $(modal).remove()
+        modal = $(modal);
+        // modal.remove()
     })
 
     $('body').on('click', '.close-general-modal', function() {
-        $('.modal-backdrop').remove()
+        // $('.modal-backdrop').remove()
     })
 
 }

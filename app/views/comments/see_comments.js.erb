@@ -2,14 +2,12 @@ $('#modal-comments').modal('toggle')
 $('#modal-content-comments').find('.modal-header-likes').html('<%= j render './poly_likes/poly_likes' %>')
 $('#modal-content-comments').find('.modal-body').html('<%= j render @comments %>')
 <% if @post.comments.count > 6 %>
-$('#modal-content-comments').find('.modal-body').prepend('<%= link_to "Ver anteriores", all_comments_path(id:@post.id), class:"btn btn-link btn-xs link-last-comments", remote:true %>')
+$('#modal-content-comments').find('.modal-body').prepend('<%= link_to "Ver anteriores", all_comments_path(id:@post.id, modal:true), class:"btn btn-link btn-xs link-last-comments", remote:true %>')
 <% end %>
 $('#modal-content-comments').find('.modal-body').attr('id', "body-post-modal-<%= @post.id %>")
 <% if user_signed_in? %>
 $('#modal-content-comments').find('.modal-footer').html('<%= j render "input_comment" %>')
 <% end %>
-
-$('#modal-content-comments').find('.link-reply').attr('data-modal', 'true')
 
 $(".input-comment").keypress(function(e) {
     var button = $(this).data('button');

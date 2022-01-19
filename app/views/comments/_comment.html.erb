@@ -1,42 +1,13 @@
 
-<div id="comment-<%= comment.id %>" class="d-flex">
-    <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-    <span >
-        <div class="title-message">
-            <%= User.find(comment.user.to_i).nickname %>
-        </div>
-        <div id="message-<%= comment.id %>" class="message-message">
-            <%= comment.message %>
-        </div>
-    </span>
-</div>
-<div class="links-comment d-flex align-items-center">
-    <% if user_signed_in? %>
-        <!-- <div class="btn btn-link">Me gusta</div> 
-            <i class="bi bi-dot"></i>  -->
-            <div class="btn btn-link link-reply link-reply-<%= comment.id %>" data-comment="comment-<%= comment.id %>" data-post="<%= @post.id %>" data-id="<%= comment.id %>" data-type="Comment">Responder</div> 
-            <i class="bi bi-dot link-reply-<%= comment.id %>"></i> 
-            
-    <% end %>
-    <% if comment.comments.present? %>
-        <div id="count-reply-<%= comment.id %>">
-            <a class="btn btn-link count-reply" href="<%= see_reply_path(id:comment.id, post_id:@post.id) %>" data-remote="true">Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></a>
-        </div>
-        <i class="bi bi-dot"></i> 
-        <div id="modal-comment-<%= comment.id %>"></div>
-    <% end %>
-    <%= time_ago_in_words(comment.created_at) %>
-</div>
-<div class="comment-reply-<%= comment.id %> box-comments">
-<% comment.comments.last(2).each do |reply| %>
-    <div id="comment-box-<%= reply.id %>" class="d-flex ">
-        <%= image_tag(User.find(reply.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-        <span>
+<div class="box-comment">
+    <div id="comment-<%= comment.id %>" class="d-flex">
+        <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+        <span >
             <div class="title-message">
-                <%= User.find(reply.user.to_i).nickname %>
+                <%= User.find(comment.user.to_i).nickname %>
             </div>
-            <div class="message-message">
-                <%= reply.message %>
+            <div id="message-<%= comment.id %>" class="message-message">
+                <%= comment.message %>
             </div>
         </span>
     </div>
@@ -44,21 +15,57 @@
         <% if user_signed_in? %>
             <!-- <div class="btn btn-link">Me gusta</div> 
                 <i class="bi bi-dot"></i>  -->
-                <!-- <div class="btn btn-link link-reply" data-comment="comment-box-<%= reply.id %>" data-post="<%= @post.id %>" data-id="<%= reply.id %>" data-type="Comment">Responder</div> 
-                <i class="bi bi-dot"></i>  -->
+                <div class="btn btn-link link-reply link-reply-<%= comment.id %>" data-comment="comment-<%= comment.id %>" data-post="<%= @post.id %>" data-id="<%= comment.id %>" data-type="Comment" data-modal="<%= @modal %>">Responder</div> 
+                <i class="bi bi-dot link-reply-<%= comment.id %>"></i> 
                 
         <% end %>
-        <% if reply.comments.present? %>
-            <div id="count-reply-<%= reply.id %>">
-                <a class="btn btn-link count-reply" href="<%= see_reply_path(id:reply.id, post_id:@post.id) %>" data-remote="true">Ver <%= reply.comments.count %> <%= reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></a>
-            </div>
-            <i class="bi bi-dot"></i> 
-            <div id="modal-comment-<%= reply.id %>"></div>
-        <% end %>
-        <%= time_ago_in_words(reply.created_at) %>
+            <div id="count-reply-<%= comment.id %>">
+                <% if comment.comments.present? %>
+                    <a class="btn btn-link count-reply" href="<%= see_reply_path(comment_id:comment.id, post_id:@post.id, modal:@modal) %>" data-remote="true">Ver <%= comment.comments.count %> <%= comment.comments.count < 2 ? 'respuesta' : 'respuestas' %></a>
+                    <% end %>
+                </div>
+                <% if comment.comments.present? %>
+                    <i class="bi bi-dot"></i>
+                <% end %>
+            <div id="modal-comment-<%= comment.id %>"></div>
+        <%= time_ago_in_words(comment.created_at) %>
     </div>
-    <div class="comment-reply-<%= reply.id %> box-comments"></div>
-<% end %>
+</div>
+
+<div class="comment-reply-<%= comment.id %> box-comments">
+    <% comment.comments.last(2).each do |reply| %>
+    <div class="box-comment">
+            <div id="comment-box-<%= reply.id %>" class="d-flex comment-box">
+                <%= image_tag(User.find(reply.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+                <span>
+                    <div class="title-message">
+                        <%= User.find(reply.user.to_i).nickname %>
+                    </div>
+                    <div class="message-message">
+                        <%= reply.message %>
+                    </div>
+                </span>
+            </div>
+            <div class="links-comment d-flex align-items-center">
+                <% if user_signed_in? %>
+                    <!-- <div class="btn btn-link">Me gusta</div> 
+                        <i class="bi bi-dot"></i>  -->
+                        <div class="btn btn-link link-reply" data-comment="comment-box-<%= reply.id %>" data-post="<%= @post.id %>" data-id="<%= reply.id %>" data-type="Comment" data-modal="<%= @modal %>">Responder</div> 
+                        <i class="bi bi-dot"></i> 
+                        
+                <% end %>
+                <% if reply.comments.present? %>
+                    <div id="count-reply-<%= reply.id %>">
+                        <a class="btn btn-link count-reply" href="<%= see_reply_path(comment_id:reply.id, post_id:@post.id, modal:@modal) %>" data-remote="true">Ver <%= reply.comments.count %> <%= reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></a>
+                    </div>
+                    <i class="bi bi-dot"></i> 
+                    <div id="modal-comment-<%= reply.id %>"></div>
+                <% end %>
+                <%= time_ago_in_words(reply.created_at) %>
+            </div>
+            <div class="comment-reply-<%= reply.id %> box-comments"></div>
+        </div>
+        <% end %>
 </div>
 
 

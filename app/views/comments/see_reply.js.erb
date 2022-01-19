@@ -1,3 +1,6 @@
-$('#modal-comment-<%= @comment.id %>').html('<%= j render "modal_reply" %>')
-$('.modal-body-<%= @comment.id %>').html('<%= j render @comments %>')
-$('#modal-reply-<%= @comment.id %>').modal('toggle')
+<% if @modal %>
+$('.comment-reply-<%= @comment.id %>').html('<%= j render @comments %>')
+<% end %>
+<% if @for_post %>
+$('.comment-post-reply-<%= @comment.id %>').html('<%= j render @comments %>')
+<% end %>

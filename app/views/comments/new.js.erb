@@ -17,10 +17,17 @@
     $('#link-post-<%= @post.id %>').removeClass('disabled')
 <% elsif params[:commentable_type] == 'Comment' %>
 
-    $('#count-reply-<%= @reply.id %>').html('<div class="btn btn-link">Ver <%= @reply.comments.count %> <%= @reply.comments.count < 2 ? 'respuesta' : 'respuestas' %></div>')
+    $('#count-reply-<%= @reply.id %>').html('<%= link_to see_reply_path(comment_id:@reply.id, post_id: @post.id, for_post:true, modal:false), class:'btn btn-link', remote:true do %> Ver <%= @reply.comments.count %> <%= @reply.comments.count < 2 ? 'respuesta' : 'respuestas' %><% end %>')
     $('.comment-reply-<%= @reply.id %>').append('<%= escape_javascript render partial: @comment %>')
+    $('.comment-post-reply-<%= @reply.id %>').append('<%= escape_javascript render partial: @comment %>')
 <% end %>
 
 $('.link-reply-<%= @comment.id %>').addClass('d-none')
-    
 $('#comment-<%= @comment.id %>').addClass('animate__bounceIn')
+
+$('.comment-link-<%= @post.id %>').removeClass('comment-link animate__fadeInUp').html('')
+$('.comment-link-modal-<%= @post.id %>').removeClass('comment-link animate__fadeInUp').html('')
+$('.input-comment').removeClass('reply-comment')
+$('.button-comment').removeClass('reply-button')
+$('.close-reply').addClass('d-none')
+$('#input-comment-put-<%= @post.id %>').addClass('d-none')
