@@ -39,12 +39,7 @@ $lightHoverPrimary:#FF5733;
             top: -30px;
             left: -2px;
         }
-        .box-comment:last-child::after{
-            content:'';
-            height:100%;
-            border: 1px solid white;
-            left: -2px;
-        }
+        
     }
     span{
         padding: 5px 10px;
