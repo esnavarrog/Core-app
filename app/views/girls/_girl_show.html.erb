@@ -13,7 +13,7 @@
         <%= link_to @like.present? ? delete_like_path(likeable_id:@girl.id, likeable_type:'Girl') : poly_likes_path(likeable_id:@girl.id, likeable_type:'Girl'), class:"btn btn-light #{@like.present? ? 'animate__heartBeat' : ''}", id:"like-girl", method:"POST", remote:true do %>
             <%= inline_svg_tag 'icons/heart.svg' %>
         <% end %>
-        <%= link_to :root, class:'btn btn-light to_dashboard' do %>
+        <%= link_to :root, class:'btn btn-light to_dashboard shadow' do %>
             <%= inline_svg_tag 'icons/icon_chevron_left.svg' %>
         <%end%>
     </picture>

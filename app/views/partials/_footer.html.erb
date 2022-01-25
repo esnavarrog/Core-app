@@ -1,3 +1,51 @@
-<div class="footer">
-    <div class="title-footer">Core.cl</div>
+<div class="footer d-flex justify-content-around align-items-center">
+    <%= link_to :root, class:'btn btn-link shadow-none' do %>
+        <i class="bi bi-border-all"></i>
+    <%end%>
+    <div class="btn btn-link shadow-none">
+        <i class="bi bi-file-earmark-post"></i>
+    </div>
+    <div class="btn btn-link shadow-none">
+        <i class="bi bi-suit-heart-fill"></i>
+    </div>
+    <div class="btn-group dropup">
+        <button class="btn btn-link shadow-none" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-nav fade">
+            <% if user_signed_in? %>
+                <li>
+                    <%= link_to edit_registration_path(current_user), class:'dropdown-item' do %>
+                        <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %> Perfil
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to destroy_user_session_path, class:'dropdown-item', method: :delete do %>
+                        <%= inline_svg_tag('icons/icon_sign-out.svg') %> Salir
+                    <% end %>
+                </li>
+            <% else %>
+                <li>
+                    <%= link_to new_user_session_path, class:'dropdown-item' do %>
+                        <%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to new_user_registration_path, class:'dropdown-item' do %>
+                        <i class="bi bi-plus-square"></i> Crear Cuenta
+                    <% end %>
+                </li>
+            <% end %>
+            <hr>
+            <li>
+                <a href="" class="dropdown-item"><i class="bi bi-bell"></i> Legal</a>
+            </li>
+            <li>
+                <a href="" class="dropdown-item"><i class="bi bi-book"></i> Blog</a>
+            </li>
+            <li>
+                <a href="" class="dropdown-item"><i class="bi bi-cloud-upload"></i> Publica tu Anuncio</a>
+            </li>
+        </ul>
+    </div>
 </div>

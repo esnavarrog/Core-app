@@ -35,7 +35,7 @@ class PortadaUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
   version :medium do
-    process resize_to_fill: [940, 340]
+    process resize_to_fill: [940, 500]
     process convert: 'png'
   end
 

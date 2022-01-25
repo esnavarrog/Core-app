@@ -1,46 +1,6 @@
 <div class="header row">
     <div class="col text-start">
-        <div class="col btn-group back ">
-            <button class="btn btn-light btn-lg" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-menu-down"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-nav fade">
-                <% if user_signed_in? %>
-                    <li>
-                        <%= link_to edit_registration_path(current_user), class:'dropdown-item' do %>
-                            <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %> Perfil
-                        <% end %>
-                    </li>
-                    <li>
-                        <%= link_to destroy_user_session_path, class:'dropdown-item', method: :delete do %>
-                            <%= inline_svg_tag('icons/icon_sign-out.svg') %> Salir
-                        <% end %>
-                    </li>
-                <% else %>
-                    <li>
-                        <%= link_to new_user_session_path, class:'dropdown-item' do %>
-                            <%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
-                        <% end %>
-                    </li>
-                    <li>
-                        <%= link_to new_user_registration_path, class:'dropdown-item' do %>
-                            <i class="bi bi-plus-square"></i> Crear Cuenta
-                        <% end %>
-                    </li>
-                <% end %>
-                <hr>
-                <li>
-                    <a href="" class="dropdown-item"><i class="bi bi-bell"></i> Legal</a>
-                </li>
-                <li>
-                    <a href="" class="dropdown-item"><i class="bi bi-book"></i> Blog</a>
-                </li>
-                <li>
-                    <a href="" class="dropdown-item"><i class="bi bi-cloud-upload"></i> Publica tu Anuncio</a>
-                </li>
-            </ul>
-        </div>
-        
+
     </div>
     <div class="col d-flex justify-content-center align-items-center"><h1><%= link_to 'Core', :root, class:'link-title' %></h1></div>
     
