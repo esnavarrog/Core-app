@@ -79,16 +79,21 @@ body{
 
     position: relative;
     .to_dashboard{
-        position: absolute;
+        position: fixed;
         left: 5px;
         border-radius: 50%;
-        height: 30px;
-        width: 30px;
+        height: 35px;
+        width:35px;
         padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         top: 10px;
+        z-index: 1030;
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        &:hover{
+            transform: scale(1.2)
+        }
     }
     #like-girl{
         position: absolute;
@@ -589,7 +594,6 @@ hr{
         border-radius: 0 !important;
         clip-path: polygon(0 0, 100% 0, 100% 66%, 0% 100%);
     }
-    
 }
 
 @media(min-width:760px){
@@ -598,9 +602,7 @@ hr{
     }
 }
 @media (min-width: 760px) and (max-width: 939.9px){
-    .img-circle{
-        // top: 60%;
-    }
+
     .form-details{
         border-radius: 0 8px 8px 0;
     }
