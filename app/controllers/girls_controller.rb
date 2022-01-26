@@ -10,7 +10,7 @@ class GirlsController < ApplicationController
   def show
     @post = @girl.posts.build
     @posts = @girl.posts.order(created_at: :desc)
-    @like = @girl.poly_likes.where(likeable_type:'Girl')
+    @like = PolyLike.find_by(likeable_id:@girl.id, likeable_type:'Girl')
     gallery = @girl.gallery_urls.last(8)
     gallery.slice!(0)
     @gallery = gallery

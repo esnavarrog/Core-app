@@ -35,11 +35,8 @@ class PolyLikesController < ApplicationController
     end
 
     def delete_like
-        like = Girl.find(params[:likeable_id]).poly_likes.where(user_id:current_user.id, likeable_type: "Girl", likeable_id:params[:likeable_id])
-        puts '+++++++++++++'
-        puts like[0].inspect
-        puts '+++++++++++++'
-        @like = like[0]
+        @like = PolyLike.find(params[:id])
+        @girl_id = @like.likeable_id
         @like.destroy
         render :delete_like
     end

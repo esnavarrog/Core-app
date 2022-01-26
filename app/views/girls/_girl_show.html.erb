@@ -11,7 +11,7 @@
         <%= image_tag(@girl.portada_url(:medium), class:'portada') %>
         <div class="img-circle-box">
             <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle') if @girl.avatar? %>
-            <%= link_to @like.present? ? delete_like_path(likeable_id:@girl.id, likeable_type:'Girl') : poly_likes_path(likeable_id:@girl.id, likeable_type:'Girl'), class:"btn btn-light #{@like.present? ? 'animate__heartBeat' : ''}", id:"like-girl", method:"POST", remote:true do %>
+            <%= link_to @like.present? ? delete_like_path(id:@like.id) : poly_likes_path(likeable_id:@girl.id, likeable_type:'Girl'), class:"btn btn-light #{@like.present? ? 'animate__heartBeat' : ''}", id:"like-girl", method:"POST", remote:true do %>
                 <%= inline_svg_tag 'icons/heart.svg' %>
             <% end %>
         </div>

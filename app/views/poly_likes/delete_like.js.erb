@@ -1,2 +1,2 @@
 $('#like-girl').removeClass('animate__heartBeat')
-$('#like-girl').attr('href', "<%= poly_likes_path(likeable_id:params[:likeable_id], likeable_type:'Girl') %>")
+$('#like-girl').attr('href', "<%= poly_likes_path(likeable_id:@girl_id, likeable_type:'Girl') %>")
