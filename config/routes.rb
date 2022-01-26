@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :dashboard do
     resources :girls
   end
+  get 'mis_chicas', to:'girls#mis_chicas'
   post 'poly_likes', to: 'poly_likes#create'
   post 'create_post', to: 'posts#create'
   post 'delete_like', to: 'poly_likes#delete_like'

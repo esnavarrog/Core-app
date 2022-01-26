@@ -1,0 +1,18 @@
+<div class="text-center mt-24 mb-24">
+    <h2>Estas son tus chicas favoritas</h2>
+    <h4>Dale click al corazon dentro de la publicación de la chica para hacerla favorita.</h4>
+    
+</div>
+<% if @girls.present? %>
+    <% @girls.each do |like| %>
+        <% girl = Girl.find(like.likeable_id) %>
+        <div class="grid">
+            <%= render partial:'girl', locals:{girl:girl} %>
+        </div>
+    <% end %>
+
+<% else %>
+<div class="text-center mt-24 mb-24">
+    <h3>Aún no tienes chicas en favoritos</h3>
+</div>
+<% end %>

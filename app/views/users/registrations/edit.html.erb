@@ -9,10 +9,4 @@
   <h1>Estas son las chicas que te gustan.</h1>
 </div>
 
-<% likes = PolyLike.where(user_id:current_user.id, likeable_type:'Girl') %>
-<% likes.each do |like| %>
-  <% girl = Girl.find(like.likeable_id) %>
-  <div class="grid">
-    <%= render partial:'./girls/girl', locals:{girl:girl} %>
-  </div>
-<% end %>
+

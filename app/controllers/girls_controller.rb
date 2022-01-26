@@ -39,6 +39,10 @@ class GirlsController < ApplicationController
     end
   end
 
+  def mis_chicas
+    @girls = PolyLike.where(user_id:current_user.id, likeable_type:'Girl')
+  end
+
   def formulary_inscription
     
   end
