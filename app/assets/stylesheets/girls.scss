@@ -141,11 +141,17 @@ body{
     }
 }
 
-.dropup{
-    .dropdown-menu{
-        right: 0;
+.footer{
+    .dropup{
+        .dropdown-menu{
+            right: 0;
+            a:hover{
+                color: white !important;
+            }
+        }
     }
 }
+
 .section-form{
     margin-bottom: 24px;
     .form-group{

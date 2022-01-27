@@ -70,4 +70,13 @@ function events() {
             locale: "es"
         });
     })
+
+    // dropdown animations
+
+    $('.dropdown').on('show.bs.dropdown', function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).slideToggle(300);
+    })
+    $('.dropdown').on('hide.bs.dropdown', function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).slideToggle(300);
+    })
 }
