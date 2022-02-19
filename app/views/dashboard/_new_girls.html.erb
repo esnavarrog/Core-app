@@ -1,0 +1,6 @@
+
+<% @new_girls.each do |girl| %>
+    <div id="new-girls" class="slider_container">
+        <%= link_to image_tag(girl.avatar_url(:thumb)), girl, class:'item' %>
+    </div>
+<% end %>

@@ -1,18 +1,29 @@
-        <div class="text-center mt-24 mb-24">
-            <h2>Fácil y sencillo</h2>
-            <h4>Únete al club de las mas lindas chicas</h4>
-            <div class="mb-3">
-                <%= link_to 'Únete', new_girl_path, class:'btn btn-outline-primary' %>
-            </div>
+    <section class="box_last_girls">
+        <h4 class="title_head">
+            Últimas Chicas
+        </h4>
+        <div class="horizontal_slider">
+            <%= render 'new_girls' %>
         </div>
-        <div class="grid">
-           <%= render @girls %>
-        </div>
+    </section>
 
+    <% if @destacadas.present? %>
+    <section class="box_destacadas">
+        <h4 class="title_head">
+            Destacadas
+        </h4>
+        <%= render 'destacadas' %>
+    </section>
+    <%end%>
+
+    <section class="grid" style="margin-top: 10px;">
+        <%= render @girls %>
+    </section>
+    
     <div class="box-bottom mt-100 text-center">
         <h1>Club Escort</h1>
         <h3>Únete a la comunidad</h3>
         <h6>Sé parte de la mejor multiplataforma de anuncios de modelos y entretenimiento para adultos en Santiago de Chile.</h6>
-        <button class="btn btn-outline-primary mt-24">COMIENZA</button>
+        <%= link_to 'Únete', new_girl_path, class:'btn btn-outline-primary' %>
     </div>
 

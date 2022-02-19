@@ -13,6 +13,7 @@ class Girl < ApplicationRecord
     validates :avatar, presence: {message: "La FOTO DE PORTADA no puede estar en blanco"}
     validates :price, presence: {message: "La PRECIO no puede estar en blanco"}
     enum service_type: [:escort, :massage, :virtual ]
+    enum status: [:destacada, :normal]
 
 
     accepts_nested_attributes_for :posts, reject_if: :all_blank, allow_destroy: true
