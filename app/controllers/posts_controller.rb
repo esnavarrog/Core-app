@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_girl
+  before_action :set_girl, except: [:index]
+
+  def index
+    @posts = Post.order(created_at: :desc)
+  end
 
   def new
     @post = Post.new

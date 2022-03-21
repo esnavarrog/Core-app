@@ -3,9 +3,9 @@
     <div id="post-<%= post.id %>" class="form-details form-profile published">
         <div class="content-published d-flex justify-content-between ">
             <div class="user-published d-flex align-items-center">
-                <%= image_tag(@girl.avatar_url(:thumb), class:'img-circle-avatar') if @girl.avatar? %>
+                <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
                 <div class="ms-3">
-                    <span><%= @girl.name.capitalize %></span>
+                    <span><%= post.girl.name.capitalize %></span>
                     <div class="datetime-published">
                         <%= time_ago_in_words post.created_at %>
                     </div>
@@ -17,7 +17,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>
-                        <%= link_to girl_post_path(@girl, post), class:"dropdown-item", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                        <%= link_to girl_post_path(post.girl, post), class:"dropdown-item", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
                             <i class="bi bi-trash "></i> Eliminar
                         <% end %>
                     </li>

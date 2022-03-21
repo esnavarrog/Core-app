@@ -15,34 +15,52 @@
 
         <div class="p-3">
             <% if @girl.service_type != 'escort' %>
+            <div class="d-flex justify-content-between">
                 <strong>Tipo de Servicio:</strong> 
-                <span>
+                <div>
                     <%= enum_i18n(Girl,:service_type ,@girl.service_type) %>
-                </span><br>
+                </div>
+            </div>
             <% end %>
             <% if @girl.edad? %>
-                <strong>Edad:</strong> <span><%= @girl.edad %> años</span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Edad:</strong> <div><%= @girl.edad %> años</div>
+            </div>
             <% end %>
             <% if @girl.kilos? %>
-                <strong>Peso:</strong> <span><%= @girl.kilos %> kg.</span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Peso:</strong> <div><%= @girl.kilos %> kg.</div>
+            </div>
             <% end %>
             <% if @girl.estatura? %>
-                <strong>Estatura:</strong> <span>1.<%= @girl.estatura %> mts.</span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Estatura:</strong> <span>1.<%= @girl.estatura %> mts.</span>
+            </div>
             <% end %>
             <% if @girl.busto? && @girl.cintura? && @girl.cadera? %>
-                <strong>Medidas:</strong> <span><%= @girl.busto %></span>-<span><%= @girl.cintura %></span>-<span><%= @girl.cadera %></span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Medidas:</strong> <div><span><%= @girl.busto %></span>-<span><%= @girl.cintura %></span>-<span><%= @girl.cadera %></span></div>
+            </div>
             <% end %>
             <% if @girl.cabello? %>
-                <strong>Cabello:</strong> <span><%= @girl.cabello %></span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Cabello:</strong> <span><%= @girl.cabello %></span>
+            </div>
             <% end %>
             <% if @girl.ojos? %>
-                <strong>Ojos:</strong> <span><%= @girl.ojos %></span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Ojos:</strong> <span><%= @girl.ojos %></span>
+            </div>
             <% end %>
             <% if @girl.depilacion? %>
-                <strong>Depilación:</strong> <span><%= @girl.depilacion %></span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Depilación:</strong> <span><%= @girl.depilacion %></span>
+            </div>
             <% end %>
             <% if @girl.modalidad? %>
-                <strong>Atención en:</strong> <span><%= @girl.modalidad %></span><br>
+            <div class="d-flex justify-content-between">
+                <strong>Atención en:</strong> <span><%= @girl.modalidad %></span>
+            </div>
             <% end %>
         </div>
     </div>

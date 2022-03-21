@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'comment_new', to: 'comments#create'
   resources :girls, path:'chicas'
   resources :inscriptions
+  resources :posts
   resources :girls do
     resources :posts do
       resources :comments, only: [:create]
