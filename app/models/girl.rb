@@ -44,7 +44,7 @@ class Girl < FilterableRecord
 
     def self.fetch(options = {})
         collection = super(options)
-        collection = search_filter(collection,["name", "service"], options)
+        # collection = search_filter(collection,["name", "service"], options)
         # collection = section_filter(collection,options)
         collection = attribute_filter(collection,"status",options)
     end

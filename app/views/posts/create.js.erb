@@ -1,6 +1,6 @@
 $('#modal-publish').modal("toggle")
 $('#box-images-thumb').html("<%= j render './posts/post_thumb' %>")
-$('#box-published').html("<%= j render @post %>")
+$('#box-published').prepend("<%= j render @post %>")
 $('#post-<%= @post.id %>').addClass('border-rose')
 
 $('#post_img').val('')
