@@ -9,42 +9,29 @@ function events() {
 
     // pagination
     $(window).on('scroll', function(){
-
-        if ($(window).scrollTop() + $(window).height() == $(document).height()){
-            let url = $('#paginate-posts .pagination .next a').attr('href');
-            console.log(url)
-            if(url){
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    dataType: "script"
-                });
-            }else{
-                console.log('no esta paginando')
-                $('#paginate-posts').removeClass('d-none').html('No tenemos más publicaciones.')
-            }
-        }else{
-            console.log('no pagina')
+        if ($(window).scrollTop() + window.innerHeight == $(document).height()){
+            console.log('listo')
+            pagination()
         }
     })
-    $('window').on('touchmove', function(event) {
 
-        event.preventDefault(); 
-    
-        var distanceY = window.pageYOffset
-        if (distanceY > 0) {
-            let url = $('#paginate-posts .pagination .next a').attr('href');
-            console.log(url)
-            if(url){
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    dataType: "script"
-                });
-            }else{
-                console.log('no esta paginando')
-                $('#paginate-posts').removeClass('d-none').html('No tenemos más publicaciones.')
-            }
+    $('window').on('touchmove', function(event) {
+        if ($(window).scrollTop() + window.innerHeight == $(document).height()){
+            console.log('listo molbil')
+            pagination()
         }
     });
+
+    function pagination(){
+        let url = $('#paginate-posts .pagination .next a').attr('href');
+        if(url){
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "script"
+            });
+        }else{
+            $('#paginate-posts').removeClass('d-none').html('No tenemos más publicaciones.')
+        }
+    }
 }

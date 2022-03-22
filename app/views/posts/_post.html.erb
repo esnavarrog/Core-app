@@ -3,9 +3,23 @@
 <div id="post-<%= post.id %>" class="form-details form-profile published">
         <div class="content-published d-flex justify-content-between ">
             <div class="user-published d-flex align-items-center">
-                <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
+                <% if action_name == "index" %>
+                    <%= link_to post.girl do %>
+                        <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
+                    <%end%>
+                <%else%>
+                    <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
+                <%end%>
                 <div class="ms-3">
-                    <span><%= post.girl.name.capitalize %></span>
+                    <span>
+                        <% if action_name == "index" %>
+                            <%= link_to post.girl do %>
+                                <%= post.girl.name.capitalize %>
+                            <% end %>
+                        <% else %>
+                            <%= post.girl.name.capitalize %>
+                        <% end %>
+                    </span>
                     <div class="datetime-published">
                         <%= time_ago_in_words post.created_at %>
                     </div>
