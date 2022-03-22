@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class Post < FilterableRecord
 
   mount_uploader :img, PostUploader
   mount_uploader :video, VideoUploader
@@ -12,4 +12,12 @@ class Post < ApplicationRecord
   def set_success(format, opts)
     self.success = true
   end
+
+  def self.fetch(options = {})
+    collection = super(options)
+    collection = search_filter(collection,["name", "service"], options)
+    # collection = section_filter(collection,options)
+    collection = attribute_filter(collection,"status",options)
+  end
+
 end

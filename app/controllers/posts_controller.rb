@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_girl, except: [:index]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    options = params
+    @posts = Post.fetch(options)
   end
 
   def new

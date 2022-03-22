@@ -1,6 +1,6 @@
 
-<% @posts.each do |post| %>
-    <div id="post-<%= post.id %>" class="form-details form-profile published">
+
+<div id="post-<%= post.id %>" class="form-details form-profile published">
         <div class="content-published d-flex justify-content-between ">
             <div class="user-published d-flex align-items-center">
                 <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
@@ -151,4 +151,3 @@
             </div>
         </div>
     </div>
-<% end %>

@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $primaryColor: #C70039;
+$box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
+
 
 .published{
     padding: 12px 0 .2rem 0 !important;
@@ -52,4 +54,22 @@ trix-editor.form-control{
 
 .dropstart{
     margin-right: -12px;
+}
+
+.box-posts{
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+#paginate-posts{
+    margin: 30px auto;
+    width: 80%;
+    font-size: 16px;
+    font-weight: 600;
+    color: $primaryColor;
+    text-align: center;
+    border-radius: 5px;
+    background: white;
+    padding: 10px;
+    box-shadow: $box_shadow;
 }

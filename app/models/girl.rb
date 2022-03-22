@@ -1,4 +1,4 @@
-class Girl < ApplicationRecord
+class Girl < FilterableRecord
 
     extend FriendlyId
     friendly_id :name, use: :slugged
@@ -42,6 +42,12 @@ class Girl < ApplicationRecord
     KILOS = (20..100).to_a
     CM = (20..150).to_a
 
+    def self.fetch(options = {})
+        collection = super(options)
+        collection = search_filter(collection,["name", "service"], options)
+        # collection = section_filter(collection,options)
+        collection = attribute_filter(collection,"status",options)
+    end
 
     def format_number
         if price != 'consultar'

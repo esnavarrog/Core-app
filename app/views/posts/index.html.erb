@@ -1,8 +1,7 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-7 col-sm-12">
-            <%= render @posts %>
-        </div>
+    <div id="box-posts" class="box-posts">
+        <%= render @posts %>
     </div>
-</div>
+    <div id="paginate-posts" class="d-none">
+        <%= paginate @posts, remote:true %>
+    </div>
 <%= render './comments/modal_comments' %>

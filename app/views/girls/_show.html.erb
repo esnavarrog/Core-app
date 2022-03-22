@@ -61,7 +61,10 @@
         <div class="col-sm-12 col-md-7">
             <%= render 'girls/modules/add_publication' %>
             <div id="box-published">
-                <%= render "./posts/post" %>
+                <%= render @posts %>
+            </div>
+            <div id="paginate-posts" class="d-none">
+                <%= paginate @posts, remote:true %>
             </div>
         </div>
     </div>

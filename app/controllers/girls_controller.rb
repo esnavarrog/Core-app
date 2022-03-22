@@ -8,8 +8,10 @@ class GirlsController < ApplicationController
 
   # GET /girls/1 or /girls/1.json
   def show
+    options = params
     @post = @girl.posts.build
-    @posts = @girl.posts.order(created_at: :desc)
+    @posts = @girl.posts.fetch(options)
+    # @posts = @girl.posts.order(created_at: :desc).page params[:page]
     @like = PolyLike.find_by(likeable_id:@girl.id, likeable_type:'Girl')
     gallery = @girl.gallery_urls.last(8)
     gallery.slice!(0)
