@@ -3,6 +3,9 @@ class PostsController < ApplicationController
 
   def index
     options = params
+    puts '+++++++++++++'
+    puts params[:data]
+    puts '+++++++++++++'
     @posts = Post.fetch(options)
   end
 

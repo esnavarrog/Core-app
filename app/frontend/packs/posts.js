@@ -11,24 +11,27 @@ function events() {
     $(window).on('scroll', function(){
         if ($(window).scrollTop() + window.innerHeight == $(document).height()){
             console.log('listo')
-            pagination()
+            pagination("pc")
         }
     })
 
-    $('window').on('touchmove', function(event) {
+    $('window').on('touchmove', function() {
         if ($(window).scrollTop() + window.innerHeight == $(document).height()){
             console.log('listo molbil')
-            pagination()
+            pagination("mobil")
         }
     });
 
-    function pagination(){
+    function pagination(displau){
         let url = $('#paginate-posts .pagination .next a').attr('href');
         if(url){
             $.ajax({
                 type: "GET",
                 url: url,
-                dataType: "script"
+                dataType: "script",
+                data:{
+                    data:displau
+                }
             });
         }else{
             $('#paginate-posts').removeClass('d-none').html('No tenemos más publicaciones.')
