@@ -10,7 +10,7 @@ function events() {
     // pagination
     $(window).on('scroll', function(){
 
-        if ($(window).scrollTop() + $(window).height() == $(document).height()-90){
+        if ($(window).scrollTop() + $(window).height() == $(document).height()){
             let url = $('#paginate-posts .pagination .next a').attr('href');
             console.log(url)
             if(url){
