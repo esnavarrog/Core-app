@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  prepend_before_action :check_captcha, only: [:create]
   # GET /resource/sign_up
   def new
     super
@@ -41,6 +41,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
   def user_params
     params.require(:user).permit(:role)
+  end
+  def check_captcha
+    unless verify_recaptcha
+      self.resource = resource_class.new configure_permitted_parameters
+      #resource.validate # Look for any other validation errors besides Recaptcha
+      respond_with_navigational(resource) { render :new }
+    end
   end
   protected
 

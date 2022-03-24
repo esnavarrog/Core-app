@@ -5,8 +5,29 @@
     <%= link_to posts_path, class:'btn btn-link shadow-none' do %>
         <i class="bi bi-file-earmark-post"></i>
     <% end %>
-    <%= link_to mis_chicas_path, class:'btn btn-link shadow-none' do %>
-        <i class="bi bi-suit-heart-fill"></i>
+    <% if user_signed_in? %>
+        <%= link_to mis_chicas_path, class:'btn btn-link shadow-none' do %>
+            <i class="bi bi-suit-heart-fill"></i>
+        <% end %>
+    <% else %>
+        <div class="btn-group dropdown dropup">
+            <button class="btn btn-link shadow-none" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-suit-heart-fill"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-heart dropdown-menu-nav fade">
+                <li><span class="dropdown-item-text">Para acceder a tus favoritas, debes iniciar sesión o registrarte.</span></li>
+                <li>
+                    <%= link_to new_user_session_path, class:'dropdown-item' do %>
+                        <%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to new_user_registration_path, class:'dropdown-item' do %>
+                        <i class="bi bi-plus-square"></i> Crear Cuenta
+                    <% end %>
+                </li>
+            </ul>
+        </div>
     <% end %>
     <div class="btn-group dropdown dropup">
         <button class="btn btn-link shadow-none" type="button" data-bs-toggle="dropdown">

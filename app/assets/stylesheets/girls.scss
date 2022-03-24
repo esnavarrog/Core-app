@@ -149,6 +149,14 @@ body{
                 color: white !important;
             }
         }
+        .dropdown-menu-heart{
+            right: -80px;
+            .dropdown-item-text {
+                display: block;
+                padding: 0.25rem 1rem;
+                color: $rosa;
+            }
+        }
     }
 }
 

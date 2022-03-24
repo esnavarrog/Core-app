@@ -1,7 +1,14 @@
+    <div  class="paginate d-flex justify-content-center" style="margin-top:50px;">
+        <%= paginate @posts, theme:'bootstrap-5',
+            pagination_class: "pagination-sm flex-wrap justify-content-center pagination-centered",
+            nav_class: "d-inline-block", remote:true %>
+    </div>
     <div id="box-posts" class="box-posts">
         <%= render @posts %>
     </div>
-    <div id="paginate-posts" class="d-none mb-3">
-        <%= paginate @posts, remote:true %>
+    <div class="paginate d-flex justify-content-center" style="margin-bottom:100px;">
+        <%= paginate @posts, theme:'bootstrap-5',
+            pagination_class: "pagination-sm flex-wrap justify-content-center pagination-centered",
+            nav_class: "d-inline-block", remote:true %>
     </div>
 <%= render './comments/modal_comments' %>

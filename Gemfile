@@ -36,6 +36,8 @@ gem 'devise-i18n'
 gem 'fog-aws'
 gem 'friendly_id', '~> 5.4.0'
 gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
+gem "recaptcha", require: "recaptcha/rails"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

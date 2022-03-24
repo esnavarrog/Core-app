@@ -1,2 +1,7 @@
+<% if action_name == "index" %>
+$('#box-posts').html('<%= j render @posts %>')
+$('.paginate').html('<%= j paginate @posts, theme:"bootstrap-5", pagination_class: "pagination-sm flex-wrap justify-content-center", nav_class: "d-inline-block", remote:true %>')
+<%else%>
 $('#box-posts').append('<%= j render @posts %>')
-$('#paginate-posts').html('<%= j paginate @posts, remote:true %>')
+$('#paginate-posts').html('<%= j paginate @posts, theme:"bootstrap-5", pagination_class: "pagination-sm flex-wrap justify-content-center", nav_class: "d-inline-block", remote:true %>')
+<%end%>
