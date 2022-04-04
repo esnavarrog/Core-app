@@ -1,18 +1,30 @@
-    <section class="box_last_girls">
-        <h4 class="title_head">
-            Últimas Chicas
-        </h4>
-        <div class="horizontal_slider">
-            <%= render 'new_girls' %>
+    <section class="nav-header">
+        <div class="container">
+            <%= link_to 'Únete a ...', new_girl_path, class:'btn btn-link' %>
+        </div>
+    </section>
+    <section class="box_last_girls banner">
+        <div class="container">
+            <h4 class="title_head">
+                Chicas Nuevas
+            </h4>
+            <div class="horizontal_slider">
+                <%= render 'new_girls' %>
+            </div>
+
         </div>
     </section>
 
     <% if @destacadas.present? %>
     <section class="box_destacadas">
-        <h4 class="title_head">
-            Destacadas
-        </h4>
-        <%= render 'destacadas' %>
+        <div class="container">
+            <h4 class="title_head">
+                Chicas Destacadas
+            </h4>
+            <div class="">
+                <%= render 'destacadas' %>
+            </div>
+        </div>
     </section>
     <%end%>
 

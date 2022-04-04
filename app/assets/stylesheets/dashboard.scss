@@ -239,20 +239,19 @@ h1{
 
 .box_last_girls{
     background-color: white;
-    margin-top: 30px;
-    padding: 10px;
-    margin-bottom: 10px;
-    .title_head{
-        font-size: 12px;
-        margin-bottom: 0;
-        font-weight: 600;
+    padding: 0 10px 10px 10px;
+    box-shadow:$box_shadow;
+    border-bottom: 2px solid #BF396A;
+    .container{
+        margin: 0 auto;
+
     }
     .horizontal_slider{
         display:inline-flex;
         width: 100%;
-        overflow-x: scroll;
+        overflow-x: auto;
+        border-collapse: collapse;
         margin-top:10px;
-    
         .slider_container{
             display: block;
             white-space: nowrap;
@@ -262,13 +261,80 @@ h1{
             }
             
             .item img{
+                border-radius: 50%;
                 width: 100px;
+                box-shadow: $box_shadow;
             }
         }
     }
 }
 
+.title_head{
+    font-size: 12px;
+    font-weight: 600;
+    color: white !important;
+    padding: 3px;
+    background: $rosa;
+    width: fit-content;
+    border-radius: 0 0 10px 10px;
+    margin: 0;
+    box-shadow: $box_shadow;
+}
 
+.box_destacadas{
+    padding: 0;
+    border-bottom: 2px solid #BF396A;
+    position:relative;
+    .container{
+        margin: 0 auto;
+        padding: 0 !important;
+    }
+    .title_head{
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+.nav-header{
+    background-color: $rosa;
+    width: 100%;
+    padding: 10px;
+    box-shadow: $box_shadow;
+    .container{
+        margin: 0 auto !important;
+    }
+    .btn-link{
+        padding:0;
+        box-shadow:none;
+        color: white !important;
+        margin: 0;
+    }
+}
+
+#gallery-destacadas{
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+:root{
+    --gradient:  linear-gradient(132deg, rgba(254,216,11,1) 0%, rgba(249,243,224,1) 0%, rgba(218,184,66,1) 37%, rgba(255,255,255,1) 49%, rgba(218,184,66,1) 61%, rgba(246,237,208,1) 100%, rgba(254,216,12,1) 100%);
+}
+
+.banner{
+    width: 100%;
+    background-image: var(--gradient);
+    background-size: 300%;
+    border-top: 2px solid $rosa;
+    animation: fondo_anim 5s infinite alternate;
+}
+
+@keyframes fondo_anim{
+    0%{background-position: left;} /*por defecto*/
+    100%{background-position: right;}
+}
 
 @media (max-width: 959.9px){
     .grid{

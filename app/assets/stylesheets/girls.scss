@@ -564,12 +564,22 @@ hr{
     }
 }
 
+.nav{
+    border-bottom: 0 !important;
+}
+
 .nav-link{
     color: $rosa;
+    border-radius: 20px !important;
+    border: 1px solid transparent;
+    border-color: 1px solid #e9ecef !important;
 }
 
 .nav-tabs .nav-link.active{
     color: $negro !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid transparent;
+    border-color: #e9ecef !important;
 }
 
 #form-details-info{
@@ -588,6 +598,10 @@ hr{
             color: white;
         }
     }
+}
+
+.nav-tabs{
+
 }
 
 @keyframes latidos {
