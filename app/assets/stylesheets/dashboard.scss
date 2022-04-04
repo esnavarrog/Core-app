@@ -239,19 +239,19 @@ h1{
 
 .box_last_girls{
     background-color: white;
-    padding: 0 10px 10px 10px;
+    padding: 0;
     box-shadow:$box_shadow;
     border-bottom: 2px solid #BF396A;
     .container{
         margin: 0 auto;
-
+        padding: 0;
     }
     .horizontal_slider{
         display:inline-flex;
         width: 100%;
         overflow-x: auto;
         border-collapse: collapse;
-        margin-top:10px;
+        margin: 10px;
         .slider_container{
             display: block;
             white-space: nowrap;
@@ -318,6 +318,10 @@ h1{
     align-items: center;
     max-width: 700px;
     margin: 0 auto;
+}
+
+.carousel-caption{
+    top: 50%;
 }
 :root{
     --gradient:  linear-gradient(132deg, rgba(254,216,11,1) 0%, rgba(249,243,224,1) 0%, rgba(218,184,66,1) 37%, rgba(255,255,255,1) 49%, rgba(218,184,66,1) 61%, rgba(246,237,208,1) 100%, rgba(254,216,12,1) 100%);
