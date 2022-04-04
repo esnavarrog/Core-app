@@ -269,6 +269,13 @@ h1{
     }
 }
 
+.icon-girl-service{
+    background: $rosa;
+    border-radius: 10px;
+    height: 18px;
+    width: 30px;
+}
+
 .title_head{
     font-size: 12px;
     font-weight: 600;
@@ -309,6 +316,10 @@ h1{
         color: white !important;
         margin: 0;
     }
+}
+
+.btn-link.active{
+    color: $rosa !important;
 }
 
 #gallery-destacadas{

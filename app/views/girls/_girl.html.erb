@@ -8,10 +8,12 @@
             </div>
             <% if girl.service_type == 'massage' %>
             <div class="label-leyenda-girl">
+                <%= inline_svg_tag("icons/icon_massage.svg", class:'icon-girl-service') %>
                 Masajista
             </div>
             <% elsif girl.service_type == 'virtual' %>
             <div class="label-leyenda-girl">
+                <%= inline_svg_tag("icons/icon_virtual_service.svg", class:'icon-girl-service') %>
                 S.Virtual
             </div>
             <% end %>

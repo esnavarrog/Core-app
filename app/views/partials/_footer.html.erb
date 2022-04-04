@@ -1,12 +1,12 @@
 <div class="footer d-flex justify-content-around align-items-center">
-    <%= link_to :root, class:'btn btn-link shadow-none' do %>
+    <%= link_to :root, class:'btn btn-link shadow-none '+ (action_name == "index" && controller_name == 'dashboard' ? 'active' : '') do %>
         <i class="bi bi-border-all"></i>
     <%end%>
-    <%= link_to posts_path, class:'btn btn-link shadow-none' do %>
+    <%= link_to posts_path, class:'btn btn-link shadow-none '+ (action_name == "index" && controller_name == 'posts' ? 'active' : '') do %>
         <i class="bi bi-file-earmark-post"></i>
     <% end %>
     <% if user_signed_in? %>
-        <%= link_to mis_chicas_path, class:'btn btn-link shadow-none' do %>
+        <%= link_to mis_chicas_path, class:'btn btn-link shadow-none '+ (action_name == "mis_chicas" ? 'active' : '') do %>
             <i class="bi bi-suit-heart-fill"></i>
         <% end %>
     <% else %>
@@ -30,7 +30,7 @@
         </div>
     <% end %>
     <div class="btn-group dropdown dropup">
-        <button class="btn btn-link shadow-none" type="button" data-bs-toggle="dropdown">
+        <button class="btn btn-link shadow-none <%= action_name == "edit" && controller_name == 'registrations' ? 'active' : '' %>" type="button" data-bs-toggle="dropdown">
             <i class="bi bi-person-circle"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-nav fade">
