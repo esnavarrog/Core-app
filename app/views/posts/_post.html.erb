@@ -1,7 +1,7 @@
 
 
 <div id="post-<%= post.id %>" class="form-details form-profile published">
-        <div class="content-published d-flex justify-content-between ">
+        <div class="content-published <%= post.video.present? || post.img.present? ? 'active' : '' %> d-flex justify-content-between ">
             <div class="user-published d-flex align-items-center">
                 <% if action_name == "index" %>
                     <%= link_to post.girl do %>
@@ -30,17 +30,23 @@
                     <i class="bi bi-three-dots-vertical"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li>
-                        <%= link_to girl_post_path(post.girl, post), class:"dropdown-item", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
-                            <i class="bi bi-trash "></i> Eliminar
-                        <% end %>
-                    </li>
+                    <% if user_signed_in? && post.user == post.girl.user && post.girl.user == current_user %>
+                        <li>
+                            <%= link_to girl_post_path(post.girl, post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                                <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
+                            <% end %>
+                        </li>
+                    <% end %>
                 </ul>
             </div>
             
         </div>
-        <div class="content-published my-3">
-            <%= post.content %>
+        <div class="content-published my-3 <%= post.video.present? || post.img.present? ? 'active' : '' %>">
+            <% if post.video.present? || post.img.present? %>
+                <%= post.content %>
+            <%else%>
+                <%= post.content%>
+            <%end%>
         </div>
         <% if post.video.present? %>
             <%= video_tag post.video_url(:mp4), :controls => true, class:'video-published video-js vjs-theme-city' %>
@@ -133,16 +139,21 @@
                 <% post.comments.last(2).each do |comment| %>
                     <div id="comment-box-<%= comment.id %>" class="d-flex">
                         <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-                        <span>
+                        <span class="position-relative">
                             <div class="title-message">
                                 <%= User.find(comment.user.to_i).nickname %>
                             </div>
                             <div class="message-message">
                                 <%= comment.message %>
                             </div>
+                            <% if user_signed_in? && comment.user = current_user %>
+                                <%= link_to comment_path(comment), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
+                                    <%= inline_svg_tag('icons/icon_trash.svg') %>
+                                <% end %>
+                            <% end %>
                         </span>
                     </div>
-                    <div class="links-comment d-flex align-items-center">
+                    <div id="links-comment-<%= comment.id %>" class="links-comment d-flex align-items-center">
                         <% if user_signed_in? %>
                             <!-- <div class="btn btn-link">Me gusta</div> 
                                 <i class="bi bi-dot"></i>  -->

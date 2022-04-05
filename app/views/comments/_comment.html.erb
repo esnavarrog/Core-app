@@ -1,17 +1,22 @@
 
-<div class="box-comment">
+<div class="box-comment box-comment-<%= comment.id %>">
     <div id="comment-<%= comment.id %>" class="d-flex">
         <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-        <span >
+        <span class="position-relative">
             <div class="title-message">
                 <%= User.find(comment.user.to_i).nickname %>
             </div>
             <div id="message-<%= comment.id %>" class="message-message">
                 <%= comment.message %>
             </div>
+            <% if user_signed_in? && comment.user = current_user %>
+                <%= link_to comment_path(comment), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
+                    <%= inline_svg_tag('icons/icon_trash.svg') %>
+                <% end %>
+            <% end %>
         </span>
     </div>
-    <div class="links-comment d-flex align-items-center">
+    <div id="links-comment-<%= comment.id %>" class="links-comment d-flex align-items-center">
         <% if user_signed_in? %>
             <!-- <div class="btn btn-link">Me gusta</div> 
                 <i class="bi bi-dot"></i>  -->
@@ -37,16 +42,21 @@
     <div class="box-comment">
             <div id="comment-box-<%= reply.id %>" class="d-flex comment-box">
                 <%= image_tag(User.find(reply.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-                <span>
+                <span class="position-relative">
                     <div class="title-message">
                         <%= User.find(reply.user.to_i).nickname %>
                     </div>
                     <div class="message-message">
                         <%= reply.message %>
                     </div>
+                    <% if user_signed_in? && reply.user = current_user %>
+                        <%= link_to comment_path(reply), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
+                            <%= inline_svg_tag('icons/icon_trash.svg') %>
+                        <% end %>
+                    <% end %>
                 </span>
             </div>
-            <div class="links-comment d-flex align-items-center">
+            <div id="links-comment-<%= reply.id %>" class="links-comment d-flex align-items-center">
                 <% if user_signed_in? %>
                     <!-- <div class="btn btn-link">Me gusta</div> 
                         <i class="bi bi-dot"></i>  -->

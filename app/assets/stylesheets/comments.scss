@@ -1,7 +1,9 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-$lightHoverPrimary:#FF5733;
+$lightHoverPrimary:      #FF5733;
+$rosa:                   #BF396A;
+
 
 .form-control:focus{
     outline:0 !important;
@@ -197,4 +199,19 @@ $lightHoverPrimary:#FF5733;
         margin-right: 24px;
         box-shadow: rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
     }
+}
+
+.icon-comment-trash{
+    position: absolute;
+    right: -25px;
+    top: -5px;
+    box-shadow: none;
+    svg{
+        width: 15px;
+        fill: $rosa;
+    }
+}
+
+.position-relative{
+    position: relative;
 }

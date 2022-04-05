@@ -6,7 +6,9 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
 
 
 .published{
-    padding: 12px 0 .2rem 0 !important;
+    padding: 0 0 .2rem 0 !important;
+    position: relative;
+    overflow: hidden;
     .img-published{
         width: 100%;
     }
@@ -26,17 +28,54 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
     cursor: default;
 }
 .content-published{
-    margin: auto 16px;
+    margin: 10px 16px;
+    
     .user-published{
         a{
             color:$primaryColor;
+            font-weight: bold;
             text-decoration: none;
         }
         span{
             color: $primaryColor;
+            font-weight: bold;
         }
     }
     
+}
+.content-published.active{
+    margin: auto 16px;
+    position: absolute;
+    top: 10px;
+    width: 95%;
+    z-index: 1;
+    .trix-content{
+        top: 40px;
+        position: absolute;
+        background-color:rgba(0, 0, 0, 0.05);
+        color: white;
+        padding: 5px;
+        border-radius: 4px;
+    }
+    .user-published{
+        a{
+            color:white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        span{
+            color: white;
+            font-weight: bold;
+        }
+        .datetime-published{
+            color: white;
+        }
+    }
+    .dropstart{
+        .btn-link{
+            color: white !important;
+        }
+    }
 }
 
 .video-js{
@@ -58,6 +97,7 @@ trix-editor.form-control{
 
 .dropstart{
     margin-right: -12px;
+
 }
 
 .box-posts{

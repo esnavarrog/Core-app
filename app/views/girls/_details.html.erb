@@ -11,8 +11,9 @@
   </ul>
   <div class="tab-content" id="myTabContent" style="min-height: 225px;">
     <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+        <% if user_signed_in? && @girl.user == current_user %>
         <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-details">Editar Info</div>
-
+        <% end %>
         <div class="p-3">
             <% if @girl.service_type != 'escort' %>
             <div class="d-flex justify-content-between">

@@ -74,7 +74,9 @@ class FilterableRecord < ApplicationRecord
     def self.order_filter(collection, params = {})
         return collection unless collection.klass.attribute_names.include?(params[:order])
         table_name = collection.klass.table_name
-        
+        puts '****************'
+        puts params[:dir]
+        puts '****************'
         direction = params[:dir].present? ? params[:dir] : default_sort_dir
         if params[:order].present?
             collection.order("#{table_name}.#{params[:order]} #{direction}")

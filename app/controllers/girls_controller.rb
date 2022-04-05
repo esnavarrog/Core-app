@@ -9,6 +9,7 @@ class GirlsController < ApplicationController
   # GET /girls/1 or /girls/1.json
   def show
     options = params
+    options = options.merge({dir:'desc'})
     @post = @girl.posts.build
     @posts = @girl.posts.fetch(options)
     # @posts = @girl.posts.order(created_at: :desc).page params[:page]

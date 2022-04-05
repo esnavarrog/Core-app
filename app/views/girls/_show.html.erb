@@ -4,12 +4,13 @@
 </div>
 
 <div class="container-content">
-
-    <div class="form-perfil d-flex justify-content-start">
-        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-perfil">
-            Editar Perfil
-        </button>
-    </div>
+    <% if user_signed_in? && @girl.user == current_user %>
+        <div class="form-perfil d-flex justify-content-start">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-perfil">
+                Editar Perfil
+            </button>
+        </div>
+    <% end %>
 
     <div class="row">
         <div class="col-sm-12 col-md-5">
@@ -59,7 +60,9 @@
         </div>
 
         <div class="col-sm-12 col-md-7">
-            <%= render 'girls/modules/add_publication' %>
+            <% if user_signed_in? && @girl.user = current_user %>
+                <%= render 'girls/modules/add_publication' %>
+            <% end %>
             <div id="box-published">
                 <%= render @posts %>
             </div>

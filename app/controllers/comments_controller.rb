@@ -50,6 +50,11 @@ class CommentsController < ApplicationController
         @commentable_type = params[:commentable_type]
     end
 
+    def destroy
+        @comment = Comment.find(params[:id])
+        @comment.delete
+    end
+
     private
 
     def comment_params

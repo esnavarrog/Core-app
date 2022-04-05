@@ -15,6 +15,7 @@ class Post < FilterableRecord
 
   def self.fetch(options = {})
     collection = super(options)
+    collection = order_filter(collection, options)
     # collection = search_filter(collection,["name", "service"], options)
     # collection = section_filter(collection,options)
     # collection = attribute_filter(collection,"status",options)
