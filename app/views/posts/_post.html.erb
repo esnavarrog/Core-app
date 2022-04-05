@@ -36,6 +36,19 @@
                                 <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
                             <% end %>
                         </li>
+
+                    <% else %>
+                        <li><span class="dropdown-item-text">Para acceder a las opciones, debes iniciar sesión o registrarte.</span></li>
+                        <li>
+                            <%= link_to new_user_session_path, class:'dropdown-item' do %>
+                                <%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to new_user_registration_path, class:'dropdown-item' do %>
+                                <i class="bi bi-plus-square"></i> Crear Cuenta
+                            <% end %>
+                        </li>
                     <% end %>
                 </ul>
             </div>

@@ -52,7 +52,7 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
     .trix-content{
         top: 40px;
         position: absolute;
-        background-color:rgba(0, 0, 0, 0.05);
+        background-color:rgba(87, 0, 55, 0.2);
         color: white;
         padding: 5px;
         border-radius: 4px;
@@ -97,7 +97,11 @@ trix-editor.form-control{
 
 .dropstart{
     margin-right: -12px;
-
+    .dropdown-item-text{
+        font-size: 12px;
+        text-align: center;
+        color: $primaryColor;
+    }
 }
 
 .box-posts{
