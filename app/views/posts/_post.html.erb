@@ -159,7 +159,7 @@
                             <div class="message-message">
                                 <%= comment.message %>
                             </div>
-                            <% if user_signed_in? && comment.user = current_user %>
+                            <% if user_signed_in? && comment.user == current_user %>
                                 <%= link_to comment_path(comment), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
                                     <%= inline_svg_tag('icons/icon_trash.svg') %>
                                 <% end %>
