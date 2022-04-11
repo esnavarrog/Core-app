@@ -105,6 +105,9 @@ $rosa:                   #BF396A;
     font-size: 10px !important;
     margin-bottom: 5px;
     color:#999;
+    i{
+        vertical-align: middle;
+    }
     [class^="bi-"]::before, [class*=" bi-"]::before{
         line-height:0 !important;
         display: flex;
@@ -209,6 +212,12 @@ $rosa:                   #BF396A;
     svg{
         width: 15px;
         fill: $rosa;
+    }
+}
+
+.dropup-right{
+    .dropdown-menu{
+        right: -15px;
     }
 }
 

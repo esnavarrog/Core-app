@@ -1,0 +1,48 @@
+$primaryColor: #C70039;
+$box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
+
+.link-bottom-users{
+    a{
+        font-size:14px;
+        text-decoration: none;
+        color:$primaryColor;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+.links-users{
+    a{
+        margin-right: 5px;
+    }
+}
+
+.new_user{
+    .form-group{
+        label{
+            color: #72777c;
+            font-size: 14px;
+            font-weight:400;
+        }
+    }
+    .form-control{
+        outline:none !important;
+        border: none !important;
+        background-color: #fff !important;
+        box-shadow: 0px 0px 3px #24003e !important;
+        height: 40px;
+    }
+    .form-check-label{
+        color: #72777c;
+        font-size: 14px;
+    }
+    .form-check-input{
+        width: 1.1em;
+        height: 1.1em;
+        box-shadow:$box_shadow;
+    }
+}
+
+.box-shadow{
+    box-shadow:$box_shadow;
+}

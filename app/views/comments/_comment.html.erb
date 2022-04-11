@@ -2,17 +2,29 @@
 <div class="box-comment box-comment-<%= comment.id %>">
     <div id="comment-<%= comment.id %>" class="d-flex">
         <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
-        <span class="position-relative">
-            <div class="title-message">
-                <%= User.find(comment.user.to_i).nickname %>
+        <span class="position-relative d-flex">
+            <div>
+                <div class="title-message">
+                    <%= User.find(comment.user.to_i).nickname %>
+                </div>
+                <div id="message-<%= comment.id %>" class="message-message">
+                    <%= comment.message %>
+                </div>
             </div>
-            <div id="message-<%= comment.id %>" class="message-message">
-                <%= comment.message %>
+            <% if user_signed_in? && comment.user == current_user.id || @post.user == current_user %>
+            <div class="dropdown dropup dropup-right">
+                <button type="button" class="btn btn-link shadow-none p-0 ms-2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= inline_svg_tag('icons/icon_three_dots.svg') %>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <%= link_to comment_path(comment), class:"dropdown-item", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
+                            <%= inline_svg_tag('icons/icon_trash.svg') %>
+                            Eliminar
+                        <% end %>
+                    </li>
+                </ul>
             </div>
-            <% if user_signed_in? && comment.user = current_user %>
-                <%= link_to comment_path(comment), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
-                    <%= inline_svg_tag('icons/icon_trash.svg') %>
-                <% end %>
             <% end %>
         </span>
     </div>

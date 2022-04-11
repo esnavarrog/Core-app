@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-sm-12 col-md-7">
-            <% if user_signed_in? && @girl.user = current_user %>
+            <% if user_signed_in? && @girl.user == current_user %>
                 <%= render 'girls/modules/add_publication' %>
             <% end %>
             <div id="box-published">
