@@ -1,6 +1,10 @@
+    <%= render './partials/header' %>
+    <%= link_to :root, class:'btn btn-light to_dashboard shadow' do %>
+        <%= inline_svg_tag 'icons/icon_chevron_left.svg' %>
+    <%end%>
     <div  class="paginate d-flex justify-content-center" style="margin-top:50px;">
         <%= paginate @posts, theme:'bootstrap-5',
-            pagination_class: "pagination-sm flex-wrap justify-content-center pagination-centered",
+            pagination_class: "pagination flex-wrap justify-content-center pagination-centered",
             nav_class: "d-inline-block", remote:true %>
     </div>
     <div id="box-posts" class="box-posts">
@@ -8,7 +12,7 @@
     </div>
     <div class="paginate d-flex justify-content-center" style="margin-bottom:100px;">
         <%= paginate @posts, theme:'bootstrap-5',
-            pagination_class: "pagination-sm flex-wrap justify-content-center pagination-centered",
+            pagination_class: "pagination flex-wrap justify-content-center pagination-centered",
             nav_class: "d-inline-block", remote:true %>
     </div>
 <%= render './comments/modal_comments' %>

@@ -12,7 +12,7 @@
   <div class="tab-content" id="myTabContent" style="min-height: 225px;">
     <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
         <% if user_signed_in? && @girl.user == current_user %>
-        <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-details">Editar Info</div>
+            <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-details">Editar Info</div>
         <% end %>
         <div class="p-3">
             <% if @girl.service_type != 'escort' %>
@@ -66,11 +66,15 @@
         </div>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <div class="btn btn-light">Agregar Servicios</div>
+        <% if user_signed_in? && @girl.user == current_user %>
+            <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-services">Agregar Servicios</div>
+        <% end %>
 
     </div>
     <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="btn btn-light">Agregar Salud</div>
+        <% if user_signed_in? && @girl.user == current_user %>
+            <div class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-healt">Agregar Salud</div>
+        <% end %>
         <div class="p-3">
             <h1>Cuidado COVID:</h1>  
             <p>Mascarilla, Alcohol gel, Toallas desechables</p> 

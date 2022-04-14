@@ -106,9 +106,14 @@ trix-editor.form-control{
 
 .box-posts{
     max-width: 500px;
-    margin: 50px auto;
+    margin: 20px auto;
 }
-
+.paginate{
+    margin-top: 20px !important;
+    .pagination{
+        margin-bottom: 0;
+    }
+}
 #paginate-posts{
     margin: 30px auto;
     width: 80%;

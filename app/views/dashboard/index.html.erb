@@ -1,8 +1,5 @@
-    <section class="nav-header">
-        <div class="container">
-            <%= link_to 'Únete a ...', new_girl_path, class:'btn btn-link' %>
-        </div>
-    </section>
+    <%= render './partials/header' %>
+
     <section class="box_last_girls banner">
         <div class="container">
             <h4 class="title_head">
@@ -11,26 +8,28 @@
             <div class="horizontal_slider">
                 <%= render 'new_girls' %>
             </div>
-
         </div>
     </section>
 
-    <% if @destacadas.present? %>
-    <section class="box_destacadas">
-        <div class="container">
-            <h4 class="title_head">
-                Chicas Destacadas
-            </h4>
-            <div class="">
-                <%= render 'destacadas' %>
+    <div class="row">
+        <% if @destacadas.present? %>
+        <section class="box_destacadas col-sm-12 col-md-3">
+            <div class="container">
+                <h4 class="title_head">
+                    Chicas Destacadas
+                </h4>
+                <div class="">
+                    <%= render 'destacadas' %>
+                </div>
             </div>
-        </div>
-    </section>
-    <%end%>
+        </section>
+        <%end%>
+        
+        <section class="grid col-sm-12 col-md-9" style="margin-top: 10px;">
+            <%= render @girls %>
+        </section>
+    </div>
 
-    <section class="grid" style="margin-top: 10px;">
-        <%= render @girls %>
-    </section>
     
     <div class="box-bottom mt-100 text-center">
         <h1>Club Escort</h1>

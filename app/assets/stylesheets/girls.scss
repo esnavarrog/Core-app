@@ -81,26 +81,26 @@ body{
         margin-bottom: 0;
     }
 }
+.to_dashboard{
+    position: fixed;
+    left: 5px;
+    border-radius: 50% !important;
+    height: 35px;
+    width:35px;
+    padding: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    top: 50px;
+    z-index: 1030;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover{
+        transform: scale(1.2)
+    }
+}
 .picture-portada{
 
     position: relative;
-    .to_dashboard{
-        position: fixed;
-        left: 5px;
-        border-radius: 50%;
-        height: 35px;
-        width:35px;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: 10px;
-        z-index: 1030;
-        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-        &:hover{
-            transform: scale(1.2)
-        }
-    }
     #like-girl{
         position: absolute;
         border-radius: 50%;
