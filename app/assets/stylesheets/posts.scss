@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $primaryColor: #C70039;
 $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
+$text_shadow: -2px 3px 9px rgba(104,14,158,0.68);
 
 
 .published{
@@ -54,7 +55,9 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
         position: absolute;
         background-color:rgba(87, 0, 55, 0.3);
         color: white;
-        padding: 5px;
+        div{
+            padding: 5px;
+        }
         border-radius: 4px;
     }
     .user-published{
@@ -62,18 +65,22 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
             color:white;
             font-weight: bold;
             text-decoration: none;
+            text-shadow: $text_shadow;
         }
         span{
             color: white;
             font-weight: bold;
+            text-shadow: $text_shadow;
         }
         .datetime-published{
             color: white;
+            text-shadow: $text_shadow;
         }
     }
     .dropstart{
         .btn-link{
             color: white !important;
+            text-shadow: $text_shadow;
         }
     }
 }
