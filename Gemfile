@@ -36,6 +36,7 @@ gem 'devise-i18n'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
+gem "omniauth-rails_csrf_protection"
 gem 'fog-aws'
 gem 'friendly_id', '~> 5.4.0'
 gem 'kaminari'
