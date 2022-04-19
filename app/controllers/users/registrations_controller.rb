@@ -24,6 +24,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  
+
   # DELETE /resource
   # def destroy
   #   super
@@ -39,6 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
+  
   def user_params
     params.require(:user).permit(:role)
   end
@@ -51,6 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   protected
 
+  
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

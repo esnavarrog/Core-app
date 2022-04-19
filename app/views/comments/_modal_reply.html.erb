@@ -12,10 +12,11 @@
                 <p>Respuestas de...</p>
                 <div id="reply-comment-<%= @comment.id %>">
                     <div class="d-flex comment-<%= @comment.id %>">
-                        <%= image_tag(User.find(@comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+                        <% user_reply = User.find(@comment.user.to_i) %>
+                        <%= image_tag(user_reply.avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
                         <span >
                             <div class="title-message">
-                                <%= User.find(@comment.user.to_i).nickname %>
+                                <%= user_reply.nickname %>
                             </div>
                             <div id="message-<%= @comment.id %>" class="message-message">
                                 <%= @comment.message %>

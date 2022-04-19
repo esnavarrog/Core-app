@@ -151,11 +151,13 @@
             <div id="body-post-<%= post.id %>" class="box-comments">
                 <% post.comments.last(2).each do |comment| %>
                     <div id="comment-box-<%= comment.id %>" class="d-flex">
-                        <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+                        <% user = User.find(comment.user.to_i) %>
+                        <%= image_tag(user.avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+                        
                         <span class="position-relative d-flex">
                             <div>
                                 <div class="title-message">
-                                    <%= User.find(comment.user.to_i).nickname %>
+                                    <%= user.nickname %>
                                 </div>
                                 <div class="message-message">
                                     <%= comment.message %>

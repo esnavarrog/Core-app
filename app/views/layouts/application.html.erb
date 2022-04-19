@@ -23,6 +23,12 @@
       </div>
       <h1><%= inline_svg_tag('logomitardeloader.svg') %></h1>
     </div>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
       <%= yield %>
     <%= render './partials/footer' %>
   </body>

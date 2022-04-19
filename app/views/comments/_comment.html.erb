@@ -1,11 +1,12 @@
 
 <div class="box-comment box-comment-<%= comment.id %>">
     <div id="comment-<%= comment.id %>" class="d-flex">
-        <%= image_tag(User.find(comment.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+        <% user = User.find(comment.user.to_i) %>
+        <%= image_tag(user.avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
         <span class="position-relative d-flex">
             <div>
                 <div class="title-message">
-                    <%= User.find(comment.user.to_i).nickname %>
+                    <%= user.nickname %>
                 </div>
                 <div id="message-<%= comment.id %>" class="message-message">
                     <%= comment.message %>
@@ -53,7 +54,8 @@
     <% comment.comments.last(2).each do |reply| %>
     <div class="box-comment">
             <div id="comment-box-<%= reply.id %>" class="d-flex comment-box">
-                <%= image_tag(User.find(reply.user.to_i).avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
+                <% user_reply = User.find(reply.user.to_i) %>
+                <%= image_tag(user_reply.avatar_url(:thumb), class:'img-circle-avatar image-circle-avatar-comment') %>
                 <span class="position-relative">
                     <div class="title-message">
                         <%= User.find(reply.user.to_i).nickname %>
