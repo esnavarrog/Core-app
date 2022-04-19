@@ -307,17 +307,20 @@ h1{
 }
 
 .nav-header{
-    background-color: $rosa;
+    background-color: white;
     width: 100%;
     padding: 10px;
     box-shadow: $box_shadow;
     .container{
         margin: 0 auto !important;
     }
+    .logo-header{
+        height:40px;
+    }
     .btn-link{
         padding:0;
         box-shadow:none;
-        color: white !important;
+        color: $resaltColor !important;
         margin: 0;
     }
 }

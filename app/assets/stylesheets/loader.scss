@@ -14,8 +14,10 @@
 	transition: opacity 0.3s linear;
     h1{
         margin-top: 200px; 
-        margin-left: -73px;
-        font-size: 42px;
+        margin-left: -100px;
+        svg{
+            width: 150px;
+        }
     }
 }
 .hidden-loader{

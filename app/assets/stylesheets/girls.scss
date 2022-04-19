@@ -188,6 +188,9 @@ body{
 
 .container-girls-session{
     max-width: 500px !important;
+    .logo-header{
+        height:40px;
+    }
 }
 
 .check-animate{
@@ -614,10 +617,6 @@ hr{
             color: white;
         }
     }
-}
-
-.nav-tabs{
-
 }
 
 @keyframes latidos {

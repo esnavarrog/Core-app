@@ -40,9 +40,26 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
         width: 1.1em;
         height: 1.1em;
         box-shadow:$box_shadow;
+        transition: all 0.5s ease;
     }
 }
 
 .box-shadow{
     box-shadow:$box_shadow;
+}
+
+#button-upload-avatar{
+    background: white;
+    border: 2px;
+    border-style: dashed;
+    padding: 10px;
+    border-radius: 4px;
+    height: 100px;
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: #f0f8ff;
+        border-color: $primaryColor;
+        color: $primaryColor;
+        cursor: pointer;
+    }
 }

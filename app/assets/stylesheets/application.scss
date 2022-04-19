@@ -35,6 +35,10 @@ html, body{
     overflow-x: hidden !important;
 }
 
+a{
+    transition: all 0.5s ease;
+}
+
 a:hover{
     color: #FF5733 !important;
 }

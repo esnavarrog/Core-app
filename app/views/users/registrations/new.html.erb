@@ -1,8 +1,8 @@
 <div class="container container-girls-session">
+  <div class="d-flex justify-content-center align-content-center">
+    <h2 class="mb-0"><%= inline_svg_tag('logomitarde.svg', class:'logo-header') %></h2>
+  </div>
   <div class="card my-3">
-    <div class="card-header d-flex justify-content-center align-content-center">
-      <h2 class="mb-0">Crear Cuenta</h2>
-    </div>
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
@@ -17,7 +17,7 @@
           <%= f.text_field :nickname, autocomplete: false, class:'form-control' %>
         </div>
         <div class="form-group mb-3">
-          <%= f.label :avatar, class:'btn btn-primary button-upload d-flex align-items-center justify-content-center' do %>
+          <%= f.label :avatar, class:'d-flex align-items-center justify-content-center', id:'button-upload-avatar' do %>
           <i class="bi bi-upload me-2"></i> Sube tu avatar
           <% end %>
               
@@ -48,7 +48,7 @@
 
     </div>
   </div>
-  <div class="d-flex justify-content-between link-bottom-users align-items-center">
+  <div class="link-bottom-users">
     <%= render "users/shared/links" %>
     <%= link_to :root do %>
       <%= inline_svg_tag('icons/icon_arrow_left.svg') %>
