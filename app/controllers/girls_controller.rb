@@ -11,7 +11,7 @@ class GirlsController < ApplicationController
     options = params
     options = options.merge({dir:'desc'})
     @post = @girl.posts.build
-    @posts = @girl.posts.fetch(options)
+    @posts = @girl.posts.fetch(options).order(created_at: :desc)
     # @posts = @girl.posts.order(created_at: :desc).page params[:page]
     @like = PolyLike.find_by(likeable_id:@girl.id, likeable_type:'Girl')
     gallery = @girl.gallery_urls.last(8)

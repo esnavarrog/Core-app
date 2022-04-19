@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :timeoutable, :omniauthable
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable, :lockable, :trackable,
+         :recoverable, :rememberable, :validatable, :confirmable, :trackable,
          :omniauthable, omniauth_providers:[:facebook, :google_oauth2]
   mount_uploader :avatar, AvatarUploader
   has_many :posts
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :inscriptions
   validates_presence_of :nickname
   validates_uniqueness_of :nickname
-  enum role: [:user, :admin_super, :girl ]
+  enum role: [:user, :admin_super, :girl]
   enum status: [:active, :locked, :inactive]
 
 
