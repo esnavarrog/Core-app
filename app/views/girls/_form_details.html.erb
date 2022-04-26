@@ -1,18 +1,28 @@
 <div class="modal-body">
     <%= form_with(model: @girl, id:'form-details-info') do |form| %>
-    <div class="form-group">
-        <label for="girl_service_type">Que servicio brindas?</label>
-        <select name="girl[service_type]" id="girl_service_type" class="form-control" >
-          <option value="escort">Escort</option>
-          <option value="massage">Masajista</option>
-          <option value="virtual">Servicios Virtuales</option>
-        </select>
-      </div>
+        <div class="box-air d-flex flex-wrap justify-content-center">
+            <h5>Que servicio brindas?</h5>
+            <div class="form-inline d-flex justify-content-between">
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :service_type, :escort, id:'type-escort', checked: (@girl.service_type == "escort"), class:'input-checkbox' %>
+                    <label for="type-escort">Escort</label>
+                </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :service_type, :massage, id:'type-massage', checked: (@girl.service_type == "massage"), class:'input-checkbox' %>
+                    <label for="type-massage">Masajista</label>
+                </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :service_type, :virtual, id:'type-virtual', checked: (@girl.service_type == "virtual"), class:'input-checkbox' %>
+                    <label for="type-virtual">Virtual</label>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <%= form.label :edad %>
             <%= form.text_field :edad, class:'form-control' %>
         </div>
-        <div class="col-sm-12 col-md-6">
+        <div class="d-flex justify-content-between">
             <div class="form-group">
                 <%= form.label :estatura %>
                 <div class="input-group">
@@ -22,19 +32,6 @@
                     <%= form.select :estatura, Girl::ESTATURA, {}, {class:'form-select'} %>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
-                <%= form.label :cabello %>
-                <div class="input-group">
-                    <div class="input-group-text">
-                        Color
-                    </div>
-                    <%= form.select :cabello, Girl::CABELLO_LIST, {}, {class:'form-select'} %>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
             <div class="form-group">
                 <%= form.label :kilos, "Peso" %>
                 <div class="input-group">
@@ -45,15 +42,47 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
-                <%= form.label :ojos, "Ojos" %>
-                <div class="input-group">
-                    <div class="input-group-text">
-                        Color
-                    </div>
-                    <%= form.select :ojos, Girl::OJOS_LIST, {}, {class:'form-select'} %>
+        <div class="box-air d-flex flex-wrap justify-content-center">
+            <h5>Color de cabello</h5>
+            <div class="form-inline d-flex flex-wrap justify-content-between">
+                
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[0], id:'air-black', checked: (@girl.cabello == 'Negro'), class:'input-checkbox' %>
+                    <label for="air-black">Negro</label>
                 </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[1], id:'air-red', checked: (@girl.cabello == 'Pelirrojo'), class:'input-checkbox' %>
+                    <label for="air-red">Pelirrojo</label>
+                </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[2], id:'air-blond', checked: (@girl.cabello == 'Rubio'), class:'input-checkbox' %>
+                    <label for="air-blond">Rubio</label>
+                </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[3], id:'air-pink', checked: (@girl.cabello == 'Rosado'), class:'input-checkbox' %>
+                    <label for="air-pink">Rosado</label>
+                </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[4], id:'air-purple', checked: (@girl.cabello == 'Morado'), class:'input-checkbox' %>
+                    <label for="air-purple">Morado</label>
+                </div>
+                <div class="form-group form-group-radio">
+                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[5], id:'air-fantasy', checked: (@girl.cabello == 'Fantasía'), class:'input-checkbox' %>
+                    <label for="air-fantasy">Fantasía</label>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="box-air d-flex flex-wrap justify-content-center">
+            <div class="form-inline d-flex flex-wrap justify-content-between">
+                <h5>Color de ojos</h5>
+                <% Girl::OJOS_LIST.each do |color| %>
+                    <div class="form-group form-group-radio">
+                        <%= form.radio_button :ojos, color, id:'eye-'+color, checked: (@girl.ojos == color), class:'input-checkbox' %>
+                        <label for="eye-<%= color %>"><%= color %></label>
+                    </div>
+                <% end %>
             </div>
         </div>
         <div class="col-sm-12 col-md-6">

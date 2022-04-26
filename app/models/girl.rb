@@ -22,7 +22,7 @@ class Girl < FilterableRecord
     IDIOMA_LIST = ['Español', 'Español y Inglés', 'Inglés', 'Español y Francés', 'Frances', 'Español y Portuguéz', 'Portugues', 'Japonés', 'Chino', 'Alemán', 'Otro']
     ORAL_LIST = ['Oral C/C', 'Oral S/C', 'Oral S/C según higiene']
     OJOS_LIST = %w[Café Marrón Verdes Azules Miel]
-    CABELLO_LIST = %w[Negro Pelirrojo Rubio Rosado Morado Fantasía]
+    CABELLO_LIST = ["Negro", "Pelirrojo", "Rubio", "Rosado", "Morado", "Fantasía"]
     HORARIO_LIST = ['Lunes a Viernes', 'Lunes a Sábado', 'Full time', 'Consultar', 'Solo Noche']
     DEPILACION_LIST = ['Brasileña', 'Rebaje', 'Sin depilar', 'Formas']
     TRABAJO_LIST = ['Depto. Propio', 'Depto. Propio, hoteles y domicilio', 'Hoteles y domicilio', 'Solo moteles', 'Solo domicilio']

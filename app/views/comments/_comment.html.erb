@@ -64,9 +64,19 @@
                         <%= reply.message %>
                     </div>
                     <% if user_signed_in? && reply.user = current_user %>
-                        <%= link_to comment_path(reply), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
-                            <%= inline_svg_tag('icons/icon_trash.svg') %>
-                        <% end %>
+                        <div class="dropdown dropup dropup-right">
+                            <button type="button" class="btn btn-link shadow-none p-0 ms-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <%= inline_svg_tag('icons/icon_three_dots.svg') %>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <%= link_to comment_path(reply), class:"btn btn-link icon-comment-trash", method: :delete, data:{confirm:"Estás segura de eliminar este comentario?"}, remote: true do %>
+                                        <%= inline_svg_tag('icons/icon_trash.svg') %>
+                                        Eliminar
+                                    <% end %>
+                                </li>
+                            </ul>
+                        </div>
                     <% end %>
                 </span>
             </div>
