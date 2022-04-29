@@ -3,10 +3,7 @@ class PostsController < ApplicationController
 
   def index
     options = params
-    puts '+++++++++++++'
-    puts params[:data]
-    puts '+++++++++++++'
-    @posts = Post.fetch(options)
+    @posts = Post.fetch(options).order(created_at: :desc)
   end
 
   def new
