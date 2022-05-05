@@ -29,14 +29,14 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.action_mailer.default_url_options = { host: 'morescore-app.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'mitarde.cl' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
-    :domain => "morescore-app.herokuapp.com",
+    :domain => "mitarde.cl",
     :authentication => :plain,
     :user_name => ENV["USERNAME_EMAIL"],
     :password => ENV["PASSWORD_EMAIL"]
@@ -94,6 +94,8 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.force_ssl = true
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
