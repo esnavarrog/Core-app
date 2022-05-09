@@ -32,5 +32,7 @@ Rails.application.routes.draw do
   get 'see_reply', to: 'comments#see_reply'
   get 'reply', to: 'comments#reply'
   get 'input_modal', to: 'comments#input_modal'
+  get 'terms/terms_and_conditions'
+
 end
 
