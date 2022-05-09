@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'reply', to: 'comments#reply'
   get 'input_modal', to: 'comments#input_modal'
   get 'terms/terms_and_conditions'
-
+  get 'terms/politics_of_use'
+  get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
 end
 
