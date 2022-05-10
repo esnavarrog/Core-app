@@ -4,59 +4,14 @@
 </div>
 
 <div class="container-content">
-    <% if user_signed_in? && @girl.user == current_user %>
-        <div class="form-perfil d-flex justify-content-start">
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-perfil">
-                Editar Perfil
-            </button>
-        </div>
-    <% end %>
+    <%= render './girls/modules/config' %>
 
     <div class="row">
         <div class="col-sm-12 col-md-5">
             <!-- Detalles -->
-    
-            <div class="form-details">
-                <h3>Información</h3>
-                <div class="">
-                    <%= render "details"%>
-                </div>
-    
-            </div>
+            <%= render './girls/modules/details' %>
             <!-- Gallery -->
-            <% if @girl.gallery_urls.length > 0 %>
-            <div id="box-img-thumb" class="form-details sticky-md-top" style="top: 60px;">
-                <h3>Galería</h3>
-                
-                <div id="gallery-images-girl" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <% @girl.gallery_urls(:thumb).each_with_index do |img, i| %>
-                            <button type="button" data-bs-target="#gallery-images-girl"
-                             data-bs-slide-to="<%= i %>" class="<%= i == 0 ? 'active' : '' %>" aria-current="true" 
-                             aria-label="Slide <%= i %>"><%= image_tag(img, class:'bottom-carrousel') %></button>
-
-                        <%end%>
-                    </div>
-                    <div class="carousel-inner">
-                        <% @girl.gallery_urls(:normal).each_with_index do |img, i| %>
-                            <div class="carousel-item <%= i == 0 ? 'active' : '' %>">
-                                <%= image_tag(img, class:'d-block w-100 img-carousel') %>
-                            </div>
-                        <%end%>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#gallery-images-girl" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#gallery-images-girl" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
-                    
-    
-            </div>
-            <% end %>
+            <%= render './girls/modules/gallery' %>
         </div>
 
         <div class="col-sm-12 col-md-7">
@@ -71,10 +26,7 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- footer -->
-    
+</div>    
     <!-- modals -->
     <%= render 'girls/modals/modal_perfil' %>
     <%= render 'girls/modals/modal_details' %>

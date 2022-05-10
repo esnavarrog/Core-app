@@ -1,0 +1,12 @@
+<picture class="picture-portada d-flex justify-content-center">
+	<%= image_tag(@girl.portada_url(:medium), class:'portada') %>
+	<div class="img-circle-box">
+		<%= image_tag(@girl.avatar_url(:thumb), class:'img-circle') if @girl.avatar? %>
+		<%= link_to @like.present? ? delete_like_path(id:@like.id) : poly_likes_path(likeable_id:@girl.id, likeable_type:'Girl'), class:"btn btn-light #{@like.present? ? 'animate__heartBeat' : ''}", id:"like-girl", method:"POST", remote:true do %>
+			<%= inline_svg_tag 'icons/heart.svg' %>
+		<% end %>
+	</div>
+	<%= link_to :root, class:'btn btn-light to_dashboard shadow' do %>
+		<%= inline_svg_tag 'icons/icon_chevron_left.svg' %>
+	<%end%>
+</picture>

@@ -2,6 +2,10 @@
   <div class="d-flex justify-content-center align-content-center">
     <h2 class="mb-0"><%= inline_svg_tag('logomitarde.svg', class:'logo-header') %></h2>
   </div>
+  <div class="link-bottom-users mt-3">
+    <%= render "users/shared/links_top" %>
+  </div>
+  
   <div class="card box-shadow my-3">
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

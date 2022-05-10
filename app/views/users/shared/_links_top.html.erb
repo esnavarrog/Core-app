@@ -1,0 +1,21 @@
+<div class="row">
+	<%- if devise_mapping.omniauthable? %>
+		<%- resource_class.omniauth_providers.each do |provider| %>
+			<% case provider %>
+			<% when :google_oauth2 %>
+				<%= link_to omniauth_authorize_path(resource_name, provider), class:'btn btn-google col-sm-12 col-md-6 mb-1', method: :post do %>
+					<i class="bi bi-google"></i> Ingresa con Google
+				<% end %>
+			<% when :facebook %>
+				<%= link_to omniauth_authorize_path(resource_name, provider), class:"btn btn-#{provider} col-sm-12 col-md-6 mb-1", method: :post do %>
+					<i class="bi bi-facebook"></i> Ingresa con <%= OmniAuth::Utils.camelize(provider) %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
+<div class="tp-splitter-wrapper">
+	<div class="splitter"></div>
+	<div class="splitter-label">o usa</div>
+	<div class="splitter"></div>
+</div>

@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center flex-wrap pb-3">
+	<div class="informacion">
+		<div class="name">
+			<%= @girl.name.upcase %>
+		</div>
+		<div class="direction">
+			<%= inline_svg_tag('icons/map-pin.svg') %>
+			<%= @girl.address %>
+		</div>
+		<div class="edad">
+			<%= @girl.edad ?  "#{@girl.edad} años" : "" %><%= @girl.nacionalidad.present? && @girl.nacionalidad != 'Otra' && @girl.edad.present? ? ', ' : '' %><%= @girl.nacionalidad.present? && @girl.nacionalidad != 'Otra' ? @girl.nacionalidad.capitalize : '' %>
+			<%= @girl.nacionalidad.present? && @girl.nacionalidad != "Otra" ? inline_svg_tag("icons/flag/flag_#{@girl.nacionalidad}.svg", class:'flag-icon') : '' %>
+		</div>
+		<div class="atencion">
+			<%= @girl.horario %>
+		</div>
+		<div class="precio">
+			<% if @girl.price == 'a consultar' %>
+				Valor a consultar
+			<% else %>
+				Valor desde $<%= number_with_delimiter @girl.price.to_i, delimiter:'.' %>
+			<% end %>
+		</div>
+		<div id="contact-buttons" class="d-flex justify-content-center">
+			<a href="tel:+56<%= @girl.try(:phone) %>" class="btn btn-light">
+				<%= inline_svg_tag 'icons/phone.svg' %>
+			</a>
+			<%= link_to "https://wa.me/+56#{@girl.try(:phone)}?text=Hola%20#{@girl.name.titleize}%20#{(user_signed_in? && current_user.present?) ? 'soy%20'+current_user.nickname.titleize+'%20' : ''}te%20hablo%20desde%20MiTarde.cl,%20estas%20disponible?", target:"_blank", class:'circle btn btn-light' do %>
+				<%= inline_svg_tag('icons/icon_whatsapp.svg', class:'icon-whatsapp') %>
+			<% end %>
+		</div>
+	</div>
+</div>

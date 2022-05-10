@@ -37,6 +37,10 @@
                             <% end %>
                         </li>
 
+                    <% elsif user_signed_in? && current_user != post.girl.user %>
+                        <li>
+                            <%= link_to 'Reporta', "#", class:'dropdown-item', data:{confirm:"Estás segura de reportar este post?"} %>
+                        </li>
                     <% else %>
                         <li><span class="dropdown-item-text">Para acceder a las opciones, debes iniciar sesión o registrarte.</span></li>
                         <li>

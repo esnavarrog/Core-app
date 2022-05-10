@@ -17,16 +17,23 @@ class Girl < FilterableRecord
 
 
     accepts_nested_attributes_for :posts, reject_if: :all_blank, allow_destroy: true
-
+    
+    x = 10000
+    array = []
+    while x <= 170000
+        array << x
+        x = x+5000
+    end
+        
 
     IDIOMA_LIST = ['Español', 'Español y Inglés', 'Inglés', 'Español y Francés', 'Frances', 'Español y Portuguéz', 'Portugues', 'Japonés', 'Chino', 'Alemán', 'Otro']
     ORAL_LIST = ['Oral C/C', 'Oral S/C', 'Oral S/C según higiene']
-    OJOS_LIST = %w[Café Marrón Verdes Azules Miel]
+    OJOS_LIST = %w[Café Marrón Verdes Azules Miel Otro]
     CABELLO_LIST = ["Negro", "Pelirrojo", "Rubio", "Rosado", "Morado", "Fantasía"]
     HORARIO_LIST = ['Lunes a Viernes', 'Lunes a Sábado', 'Full time', 'Consultar', 'Solo Noche']
-    DEPILACION_LIST = ['Brasileña', 'Rebaje', 'Sin depilar', 'Formas']
+    DEPILACION_LIST = ['Completa', 'Brasilera', 'Cuadrado', 'Postal', 'Martini', 'Diamante', 'Corazón', 'Línea Bikini', 'Natural']
     TRABAJO_LIST = ['Depto. Propio', 'Depto. Propio, hoteles y domicilio', 'Hoteles y domicilio', 'Solo moteles', 'Solo domicilio']
-    PRICE_LIST = ['a consultar', '20000', '25000', '30000', '35000', '40000', '45000', '50000', '55000', '60000', '65000', '70000', '75000', '80000', '90000', '100000', '110000', '120000', '130000', '140000', '150000', '160000', '170000']
+    PRICE_LIST = array
     ADICIONALES_LIST = ['Sin adicionales', 'Adicionales consultar']
     FANTASIAS_LIST = ['Realizo fantasías', 'No realizo fantasías']
     POLOLA_LIST = ['Trato de polola', 'Atención porno', 'Amiga con ventaja', 'Atención de sumisa', 'Atención dominante']
@@ -48,6 +55,7 @@ class Girl < FilterableRecord
         # collection = section_filter(collection,options)
         collection = attribute_filter(collection,"status",options)
     end
+
 
     def format_number
         if price != 'consultar'

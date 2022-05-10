@@ -1,0 +1,7 @@
+<% if user_signed_in? && @girl.user == current_user %>
+    <div class="form-perfil d-flex justify-content-start">
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-perfil">
+            Editar Perfil
+        </button>
+    </div>
+<% end %>

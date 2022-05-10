@@ -2,7 +2,7 @@
     <%= form_with(model: @girl, id:'form-details-info') do |form| %>
         <div class="box-air d-flex flex-wrap justify-content-center">
             <h5>Que servicio brindas?</h5>
-            <div class="form-inline d-flex justify-content-between">
+            <div class="form-inline d-flex flex-wrap justify-content-between" style="width: 100%;">
                 <div class="form-group form-group-radio">
                     <%= form.radio_button :service_type, :escort, id:'type-escort', checked: (@girl.service_type == "escort"), class:'input-checkbox' %>
                     <label for="type-escort">Escort</label>
@@ -42,41 +42,49 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group">
+                    <%= form.label "Medidas" %>
+                    <div class="input-group mb-2">
+                        <div class="input-group-text">
+                            <%= image_tag 'busto', style:'height:40px' %>
+                        </div>
+                        <%= form.select :busto, Girl::CM, {}, {class:'form-select'} %>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-text">
+                            <%= image_tag 'cintura', style:'height:40px; width:60px;' %>
+                        </div>
+                        <%= form.select :cintura, Girl::CM, {}, {class:'form-select'} %>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-text">
+                            <%= image_tag 'cadera', style:'height:40px' %>
+                        </div>
+                        <%= form.select :cadera, Girl::CM, {}, {class:'form-select'} %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 d-flex justify-content-center">
+                <%= image_tag('silueta', style:'height:220px') %>
+            </div>
+        </div>
         <div class="box-air d-flex flex-wrap justify-content-center">
             <h5>Color de cabello</h5>
             <div class="form-inline d-flex flex-wrap justify-content-between">
-                
-                <div class="form-group form-group-radio">
-                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[0], id:'air-black', checked: (@girl.cabello == 'Negro'), class:'input-checkbox' %>
-                    <label for="air-black">Negro</label>
-                </div>
-                <div class="form-group form-group-radio">
-                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[1], id:'air-red', checked: (@girl.cabello == 'Pelirrojo'), class:'input-checkbox' %>
-                    <label for="air-red">Pelirrojo</label>
-                </div>
-                <div class="form-group form-group-radio">
-                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[2], id:'air-blond', checked: (@girl.cabello == 'Rubio'), class:'input-checkbox' %>
-                    <label for="air-blond">Rubio</label>
-                </div>
-                <div class="form-group form-group-radio">
-                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[3], id:'air-pink', checked: (@girl.cabello == 'Rosado'), class:'input-checkbox' %>
-                    <label for="air-pink">Rosado</label>
-                </div>
-                <div class="form-group form-group-radio">
-                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[4], id:'air-purple', checked: (@girl.cabello == 'Morado'), class:'input-checkbox' %>
-                    <label for="air-purple">Morado</label>
-                </div>
-                <div class="form-group form-group-radio">
-                    <%= form.radio_button :cabello, Girl::CABELLO_LIST[5], id:'air-fantasy', checked: (@girl.cabello == 'Fantasía'), class:'input-checkbox' %>
-                    <label for="air-fantasy">Fantasía</label>
-                </div>
-
+                <% Girl::CABELLO_LIST.each do |cabello| %>
+                    <div class="form-group form-group-radio">
+                        <%= form.radio_button :cabello, cabello, id:'cabello-'+cabello, checked: (@girl.cabello == cabello), class:'input-checkbox' %>
+                        <label for="cabello-<%= cabello %>"><%= cabello %></label>
+                    </div>
+                <% end %>
             </div>
         </div>
         
         <div class="box-air d-flex flex-wrap justify-content-center">
+            <h5>Color de ojos</h5>
             <div class="form-inline d-flex flex-wrap justify-content-between">
-                <h5>Color de ojos</h5>
                 <% Girl::OJOS_LIST.each do |color| %>
                     <div class="form-group form-group-radio">
                         <%= form.radio_button :ojos, color, id:'eye-'+color, checked: (@girl.ojos == color), class:'input-checkbox' %>
@@ -85,39 +93,19 @@
                 <% end %>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
-                <%= form.label :depilacion, "Depilación" %>
-                <div class="input-group">
-                    <div class="input-group-text">
-                        Tipo
+        <div class="box-air d-flex flex-wrap justify-content-center">
+            <h5>Tipo Pussy</h5>
+            <div class="form-inline d-flex flex-wrap justify-content-between">
+                <% Girl::DEPILACION_LIST.each do |depilation| %>
+                    <div class="form-group form-group-radio">
+                        <%= form.radio_button :depilacion, depilation, id:'depilation-'+depilation, checked: (@girl.depilacion == depilation), class:'input-checkbox' %>
+                        <label for="depilation-<%= depilation %>"><%= depilation %></label>
                     </div>
-                    <%= form.select :depilacion, Girl::DEPILACION_LIST, {}, {class:'form-select'} %>
-                </div>
+                <% end %>
             </div>
+            <%= image_tag 'depilacion', style:'width:100%', class:'mt-2' %>
         </div>
         
-        <div class="form-group">
-            <%= form.label "Medidas" %>
-            <div class="input-group mb-2">
-                <div class="input-group-text">
-                    Busto
-                </div>
-                <%= form.select :busto, Girl::CM, {}, {class:'form-select'} %>
-            </div>
-            <div class="input-group mb-2">
-                <div class="input-group-text">
-                    Cintura
-                </div>
-                <%= form.select :cintura, Girl::CM, {}, {class:'form-select'} %>
-            </div>
-            <div class="input-group mb-2">
-                <div class="input-group-text">
-                    Cadera
-                </div>
-                <%= form.select :cadera, Girl::CM, {}, {class:'form-select'} %>
-            </div>
-        </div>
         <div class="form-group">
             <%= form.label :modalidad, "Modalidad trabajo" %>
             <div class="input-group">
@@ -127,14 +115,8 @@
                 <%= form.select(:modalidad, Girl::TRABAJO_LIST, {}, {class:'form-select'}) %>
             </div>
         </div>
-    
-    
-    
-    
-    
-    
-   
-        <%= form.submit "Guardar", class:'btn btn-primary d-none', id:'submit-details-form' %>
+
+    <%= form.submit "Guardar", class:'btn btn-primary d-none', id:'submit-details-form' %>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>

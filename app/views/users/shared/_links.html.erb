@@ -19,14 +19,4 @@
     <%= link_to "No haz recibido las instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
   <% end %>
   
-  <div class="d-flex justify-content-between">
-    <%- if devise_mapping.omniauthable? %>
-      <%- resource_class.omniauth_providers.each do |provider| %>
-        <% if provider == :google_oauth2 %>
-          <%= link_to "Inicia Sesión con Google", omniauth_authorize_path(resource_name, provider), class:'btn btn-google', method: :post %>
-        <% else %>
-          <%= link_to "Inicia Sesión con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-#{provider}", method: :post %>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
+  
