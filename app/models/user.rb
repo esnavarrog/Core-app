@@ -27,6 +27,7 @@ class User < ApplicationRecord
       )
     end
     user.name = access_token.info.name
+    user.nickname = "#{access_token.info.name}#{access_token.provider}#{access_token.uid}"
     user.image = access_token.info.image
     user.uid = access_token.uid
     user.provider = access_token.provider
