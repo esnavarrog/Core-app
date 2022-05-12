@@ -31,6 +31,7 @@ class User < ApplicationRecord
     user.image = access_token.info.image
     user.uid = access_token.uid
     user.provider = access_token.provider
+    user.confirmed_at = Time.zone.now
     user.save
     user
   end

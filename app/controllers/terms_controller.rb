@@ -1,4 +1,4 @@
 class TermsController < ApplicationController
-             def terms_and_conditions
-             end
+	def terms_and_conditions
+	end
 end
