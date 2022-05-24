@@ -1,19 +1,22 @@
 $(document).on('turbolinks:load', events)
 
 function events() {
+    function loader(){
+        $('.loader').fadeOut(100);
+        $('#body').removeClass('hidden-loader');
+    }
+    
+    $(document).on('turbolinks:request-start', function(){
+        $('.loader').fadeIn(100);
+    });
+    
+    $(document).on('turbolinks:render', loader());
 
     $('body').on('submit', 'form', function () {
         $('.loader').fadeIn(100);
     })
 
-    function loader(){
-        setTimeout(function() {
-            $('.loader').fadeOut(300);
-            $('#body').removeClass('hidden-loader');
-        }, 300);
-    }
-
-    $('window').on('load', loader());
+    
 
     $('body').on('change', '#valor-consultar', function () {
         let checkbox = $(this);

@@ -1,4 +1,4 @@
-<%= form_with(model:[@girl, @post], data:{remote: true}) do |f| %>
+<%= form_with(model:[@girl, @post]) do |f| %>
     <div class="modal-body">
         <div class="form-group">
             <%= f.rich_text_area :content, class:'form-control' %>

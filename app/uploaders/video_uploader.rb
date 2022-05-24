@@ -17,6 +17,21 @@ class VideoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  # DEFAULTS = { watermark: {
+  #     path: Rails.root.join('watermark.png'),
+  #   } 
+  # }
+
+  # process :encode
+
+  # def encode
+  #   encode_video(:mp4, DEFAULTS) do |movie, params|
+  #     if movie.height < 720
+  #       params[:watermark][:path] = Rails.root.join('watermark.png')
+  #     end
+  #   end
+  # end
+
   version :mp4 do
     process :encode_video => [:mp4]
     def full_filename(for_file)

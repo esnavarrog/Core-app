@@ -14,6 +14,13 @@
  *= require_self
  */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import 'flatpickr/dist/flatpickr.css';
+
+@import 'video.js/dist/video-js.css';
+//@import '@videojs/themes/dist/city/index.css';
+@import '@videojs/themes/dist/fantasy/index.css';
+//@import '@videojs/themes/dist/forest/index.css';
+// @import '@videojs/themes/dist/sea/index.css';
 @import 'bootstrap/scss/bootstrap';
 @import 'variables';
 @import 'dashboard';
@@ -24,6 +31,7 @@
 @import 'images';
 @import 'users';
 @import 'poly_likes';
+@import 'videojs';
 
 body{
     background-color: #f0f8ff !important;

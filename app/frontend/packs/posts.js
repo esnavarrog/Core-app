@@ -36,4 +36,5 @@ function events() {
             $('#paginate-posts').removeClass('d-none').html('No tenemos más publicaciones.')
         }
     }
+
 }

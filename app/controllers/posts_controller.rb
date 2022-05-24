@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       @posts = @girl.posts.order(created_at: :desc)
 
       @post.save
-      
+      redirect_to @girl
     else
       render :form_error
     end

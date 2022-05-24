@@ -65,9 +65,12 @@
                 <%= post.content%>
             <%end%>
         </div>
-        <% if post.video.present? %>
-            <%= video_tag post.video_url(:mp4), :controls => true, class:'video-published video-js vjs-theme-city' %>
+        <% if post.video_url.present? %>
+            <video-js controls class='video-published vjs-theme-fantasy' data-setup='{"fluid":true}'>
+                <source src="<%= post.video_url %>" type="video/mp4">
+            </video-js>
         <% end %>
+
         <% if post.img.present? %>
             <%= image_tag(post.img_url(:normal), class:'img-published') %>
         <% end %>
