@@ -66,7 +66,7 @@
             <%end%>
         </div>
         <% if post.video_url.present? %>
-            <video-js controls class='video-published vjs-theme-fantasy' data-setup='{"fluid":true}'>
+            <video-js controls class='video-published video-js vjs-theme-fantasy' data-setup='{"fluid":true}'>
                 <source src="<%= post.video_url %>" type="video/mp4">
             </video-js>
         <% end %>
