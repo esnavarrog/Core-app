@@ -12,3 +12,9 @@ setTimeout(function(){
 }, 3000);
 
 
+    videojs('post-<%= @post.id %>', {}, function(){
+        this.load();
+    });
+
+
+
