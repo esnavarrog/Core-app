@@ -161,6 +161,9 @@ GEM
     kaminari-activerecord (1.2.2)
       activerecord
       kaminari-core (= 1.2.2)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     kaminari-core (1.2.2)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -341,6 +344,7 @@ DEPENDENCIES
   inline_svg
   jbuilder (~> 2.7)
   kaminari
+  kaminari-bootstrap
   listen (~> 3.3)
   omniauth-facebook
   omniauth-google-oauth2

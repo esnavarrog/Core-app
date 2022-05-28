@@ -1,5 +1,7 @@
-$('#box-published').append('<%= j render @posts %>')
-$('#paginate-posts').html('<%= j paginate @posts, remote:true %>')
+
+$('#post-<%= @post.id %>').replaceWith('<%= j render @post %>')
+alert('Haz canjeado esta publicación por <%= @post.price %>')
+
 var array = $('.video-js')
 for(var i=0; i < array.length; i++){
    let element = array[i]

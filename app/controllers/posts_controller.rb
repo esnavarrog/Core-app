@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_girl, except: [:index]
+  before_action :set_girl, except: [:index, :pay_post]
 
   def index
     options = params
@@ -31,6 +31,24 @@ class PostsController < ApplicationController
   end
 
   def update
+  end
+
+  def pay_post
+    @post = Post.find(params[:id])
+    if current_user.bit >= @post.price
+      @bit = Bit.new
+      @bit.price_pay = @post.price
+      @bit.post = @post
+      @bit.user = current_user
+      if @bit.save
+        current_user.discount(@post.price)
+        respond_to do |format|
+          format.js
+        end
+      else
+        render :pay_error
+      end
+    end
   end
 
   def set_girl

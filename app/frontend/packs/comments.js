@@ -136,10 +136,16 @@ function events() {
         // $('.modal-backdrop').remove()
     })
 
-    $(document).on('page:change', function(){
-        for( player in document.getElementsByClassName('video-js')){
-            videojs(player);
+    
+    var array = $('.video-js')
+    for(let i=0; i < array.length; i++){
+        let element = array[i]
+        if(element){
+            videojs(element.id, {}, function(){
+                this.load();
+            });
         }
-    })
+    }
 
+    
 }

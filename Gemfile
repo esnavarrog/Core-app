@@ -40,6 +40,7 @@ gem "omniauth-rails_csrf_protection"
 gem 'fog-aws'
 gem 'friendly_id', '~> 5.4.0'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 gem 'bootstrap5-kaminari-views'
 gem "recaptcha", require: "recaptcha/rails"
 

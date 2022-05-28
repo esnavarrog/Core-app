@@ -86,7 +86,17 @@ $text_shadow: -2px 3px 9px rgba(104,14,158,0.68);
 }
 
 .video-js{
-    height: 400px !important;
+    height: 500px;
+    width: 100%;
+}
+
+.block-post{
+    height: 500px;
+    width: 100%;
+    background-color: rgb(193, 193, 193);
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button-upload{

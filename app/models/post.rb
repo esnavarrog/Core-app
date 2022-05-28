@@ -8,6 +8,7 @@ class Post < FilterableRecord
   belongs_to :user
   has_many :comments, as: :commentable
   has_many :poly_likes, as: :likeable
+  has_many :bits
 
   def set_success(format, opts)
     self.success = true

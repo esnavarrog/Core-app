@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_19_205159) do
+ActiveRecord::Schema.define(version: 2022_05_28_064348) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2022_04_19_205159) do
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bits", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "price_pay"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_bits_on_post_id"
+    t.index ["user_id"], name: "index_bits_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -159,6 +169,7 @@ ActiveRecord::Schema.define(version: 2022_04_19_205159) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "video"
     t.integer "user_id"
+    t.integer "price", default: 0
     t.index ["girl_id"], name: "index_posts_on_girl_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -203,6 +214,7 @@ ActiveRecord::Schema.define(version: 2022_04_19_205159) do
     t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
     t.string "image"
+    t.integer "bit", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
@@ -210,6 +222,8 @@ ActiveRecord::Schema.define(version: 2022_04_19_205159) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bits", "posts"
+  add_foreign_key "bits", "users"
   add_foreign_key "girls", "users"
   add_foreign_key "inscriptions", "users"
   add_foreign_key "poly_likes", "users"

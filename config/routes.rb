@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'comment_new', to: 'comments#create'
   resources :girls, path:'chicas'
   resources :inscriptions
+  resources :bits
   resources :posts
   resources :girls do
     resources :posts do
@@ -35,5 +36,6 @@ Rails.application.routes.draw do
   get 'terms/terms_and_conditions'
   get 'terms/politics_of_use'
   get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
+  post 'pay_post', to:'posts#pay_post'
 end
 

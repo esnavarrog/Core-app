@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :girls
   has_many :poly_likes
   has_many :inscriptions
+  has_many :bits
   validates_presence_of :nickname
   validates_uniqueness_of :nickname
   enum role: [:user, :admin_super, :girl]
@@ -25,15 +26,21 @@ class User < ApplicationRecord
         email: access_token.info.email,
         password: Devise.friendly_token[0,20]
       )
+      user.nickname = "#{access_token.info.name}_#{access_token.uid.first(6)}"
     end
     user.name = access_token.info.name
-    user.nickname = "#{access_token.info.name}_#{access_token.uid.first(6)}"
     user.image = access_token.info.image
-    user.uid = access_token.uid
     user.provider = access_token.provider
+    user.uid = access_token.uid
     user.confirmed_at = Time.zone.now
     user.save
     user
+  end
+
+  def discount(pay)
+    discount = self.bit - pay
+    self.bit = discount
+    self.save
   end
 
 end
