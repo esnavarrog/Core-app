@@ -4,6 +4,8 @@
 $primaryColor: #C70039;
 $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3) 0px 1px 2px -1px;
 $text_shadow: -2px 3px 9px rgba(104,14,158,0.68);
+$resaltColor:            #900C3F;
+
 
 
 .published{
@@ -88,12 +90,24 @@ $text_shadow: -2px 3px 9px rgba(104,14,158,0.68);
 .video-js{
     height: 500px;
     width: 100%;
+    .vjs-big-play-button{
+        background-color:rgba(168, 25, 138, 0.4) !important;
+    }
+    .vjs-control-bar{
+        background-color:rgba(168, 25, 138, 0.4) !important;
+    }
+    .vjs-control{
+        color: white;
+    }
 }
 
 .block-post{
     height: 500px;
     width: 100%;
-    background-color: rgb(193, 193, 193);
+    background: asset-data-url("background.jpg");
+    background-size:     contain;
+    background-repeat:   no-repeat;
+    background-position: center center;
     display:flex;
     align-items: center;
     justify-content: center;

@@ -325,6 +325,15 @@ h1{
     }
 }
 
+.bits{
+    font-weight: 600;
+    color: #D96A29;
+    border: 1px solid #D96A29;
+    border-radius:3px;
+    padding: 5px;
+    box-shadow:$box_shadow;
+}
+
 .btn-link.active{
     color: $rosa !important;
 }

@@ -1,6 +1,6 @@
 class VideoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
   include CarrierWave::Video
 
@@ -17,27 +17,48 @@ class VideoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # DEFAULTS = { watermark: {
-  #     path: Rails.root.join('watermark.png'),
-  #   } 
-  # }
+  PROCESSED_DEFAULTS = { 
+    resolution: :same,
+    video_bitrate: :same,
+    video_codec: 'libx264',
+    constant_rate_factor: '30',
+    audio_codec: 'aac',
+    audio_bitrate: '64k',
+    audio_sample_rate: '44100',
+    watermark:{
+        path: Rails.root.join('watermark.png'),
+        position: :bottom_right,
+        pixels_from_edge: 10
+      }
+  }
 
-  # process :encode
+  process :save_video_duration
 
-  # def encode
-  #   encode_video(:mp4, DEFAULTS) do |movie, params|
-  #     if movie.height < 720
-  #       params[:watermark][:path] = Rails.root.join('watermark.png')
-  #     end
-  #   end
-  # end
+  def save_video_duration
+    video = Time.at(FFMPEG::Movie.new(file.file).duration).utc.strftime("%H:%M:%S")
+    res = FFMPEG::Movie.new(file.file).resolution
+    model.duration = video
+    model.resolution = res
+  end
 
-  version :mp4 do
-    process :encode_video => [:mp4]
-    def full_filename(for_file)
-      "#{File.basename(for_file, File.extname(for_file))}.mp4"
+  process :encode
+
+  def encode
+    if FFMPEG::Movie.new(file.file).video_codec != 'h264'
+      encode_video(:mp4, PROCESSED_DEFAULTS) do |movie, params|
+        if movie.height < 720
+          params[:watermark][:path] = Rails.root.join('watermark.png')
+        end
+      end
     end
   end
+
+  # version :mp4 do
+  #   process :encode_video => [:mp4]
+  #   def full_filename(for_file)
+  #     "#{File.basename(for_file, File.extname(for_file))}.mp4"
+  #   end
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -61,9 +82,9 @@ class VideoUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_allowlist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+    %w(mov mp4 3gp mkv webm m4v avi)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

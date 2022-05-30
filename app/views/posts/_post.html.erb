@@ -1,7 +1,7 @@
 
 
 <div id="post-<%= post.id %>" class="form-details form-profile published">
-    <% if post.price == 0 || current_user.bits.where(post_id:post.id).present? %>
+    <% if post.price == 0 || (current_user.present? && current_user.bits.where(post_id:post.id).present?) %>
 
     <div class="content-published <%= post.video.present? || post.img.present? ? 'active' : '' %> d-flex justify-content-between ">
         <div class="user-published d-flex align-items-center">
@@ -69,7 +69,7 @@
     </div>
     <% if post.video_url.present? %>
         <video id="video-<%= post.id %>" controls preload="auto" class='video-published video-js vjs-theme-forest vjs-big-play-centered' >
-            <source src="<%= post.video_url %>" type="<%= post.video.content_type %>">
+            <source src="<%= post.video.url %>" type="<%= post.video.content_type %>">
         </video>
     <% end %>
 
@@ -216,7 +216,7 @@
     
     <div class="block-post">
         <%= link_to pay_post_path(id:post), class:'btn btn-primary', method: :post, remote:true do %>
-            Canjea por <%= number_to_currency(post.price, precision:0) %>
+            Canjea por <%= post.price %>
         <% end %>
     </div>
     

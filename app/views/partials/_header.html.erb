@@ -1,6 +1,9 @@
 <section class="nav-header">
     <div class="container d-flex justify-content-between align-items-center">
         <%= link_to 'Únete al Club', new_girl_path, class:'btn btn-link' %>
+        <div class="bits">
+            <%= current_user.present? ? "#{current_user.bit} bits" : '' %>
+        </div>
         <%= inline_svg_tag('logomitarde.svg', class:'logo-header') %>
     </div>
 </section>
