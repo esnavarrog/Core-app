@@ -3,6 +3,15 @@
         <div class="form-group">
             <%= f.rich_text_area :content, class:'form-control' %>
         </div>
+        <div class="form-group m-3">
+            <label for="price">Precio para tu post</label>
+            <select name="post[price]" id="price" class="form-control">
+                <option value="0">Gratis</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </div>
 
         <div class="d-flex justify-content-between mt-2 ">
             <%= f.label :video, class:'btn btn-outline-primary button-upload d-flex align-items-center justify-content-center me-1' do %>
