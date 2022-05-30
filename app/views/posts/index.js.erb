@@ -5,3 +5,15 @@ $('.paginate').html('<%= j paginate @posts, theme:"bootstrap-5", pagination_clas
 $('#box-posts').append('<%= j render @posts %>')
 $('#paginate-posts').html('<%= j paginate @posts, theme:"bootstrap-5", pagination_class: "pagination flex-wrap justify-content-center", nav_class: "d-inline-block", remote:true %>')
 <%end%>
+
+window.scrollTo(0, 0);
+
+var array = $('.video-js')
+for(var i=0; i < array.length; i++){
+   let element = array[i]
+   if(element.id){
+      videojs(element.id, {}, function(){
+         this.load();
+      });
+   }
+}
