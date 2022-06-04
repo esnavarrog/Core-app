@@ -14,17 +14,13 @@ class Payment < ApplicationRecord
 	end
 
 	def webpay_object_data
-		# @tx = Transbank::Webpay::WebpayPlus::Transaction.new(::Transbank::Common::IntegrationCommerceCodes::WEBPAY_PLUS)
-		# @resp = @tx.create(
-		#   buy_order: buy_order,
-		#   session_id: session_id,
-		#   amount: amount,
-		# )
+		puts '+--------++++'
 		puts self.inspect
+		puts '+--------++++'
 		{
-			buy_order: buy_order,
-			session_id: session_id,
-			amount: amount
+			buy_order: self.buy_order,
+			session_id: self.session_id,
+			amount: self.amount
 		}
 	end
 end
