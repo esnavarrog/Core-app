@@ -1,5 +1,6 @@
 class WebpayPlus
-	URL_BASE = Rails.env.production? ? 'https://webpay3g.transbank.cl' : 'https://webpay3gint.transbank.cl'
+	# URL_BASE = Rails.env.production? ? 'https://webpay3g.transbank.cl' : 'https://webpay3gint.transbank.cl'
+	URL_BASE = 'https://webpay3gint.transbank.cl'
 
 	def self.init_transaction(order)
 		unless order.respond_to?(:webpay_object_data)
