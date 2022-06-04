@@ -10,9 +10,6 @@ class WebpayController < ApplicationController
     payment.update(tbk_token: params[:token_ws])
     payment.update(state: 'pending') 
 
-    puts '******************************'
-    puts result.map{|k,v| k=v}
-    puts '******************************'
     if(result && result['response_code'] == 0 && (payment = Payment.find_by(buy_order:result['buy_order'])))
       state = result['error_desc'].to_s
       accountingdate        = result['accounting_date'].to_s

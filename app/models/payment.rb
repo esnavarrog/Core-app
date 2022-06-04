@@ -6,12 +6,10 @@ class Payment < ApplicationRecord
 	def self.prepare_webpay(payment_params, current_user, webpay_payment)
 		payment = self.new
 		payment.amount = payment_params[:webpay_amount]
-		payment.user = current_user if current_user.present?
+		payment.user_id = current_user.id if current_user.present?
 		payment.bits = payment_params[:bits].to_i
 		payment.save
-		payment.session_id = "session-#{payment.id}"
-		payment.buy_order = "ordenDeCompra-#{payment.id}"
-		payment.save
+		payment.update(session_id:"session-#{payment.id}", buy_order: "ordenDeCompra-#{payment.id}")
 		payment
 	end
 
