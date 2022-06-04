@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_010450) do
+ActiveRecord::Schema.define(version: 2022_06_03_222625) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -151,6 +151,24 @@ ActiveRecord::Schema.define(version: 2022_05_30_010450) do
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.string "description"
+    t.integer "amount"
+    t.datetime "pay_date"
+    t.integer "user_id"
+    t.integer "payment_method_id"
+    t.boolean "verified"
+    t.string "tbk_transaction_id"
+    t.string "tbk_token"
+    t.string "state"
+    t.string "webpay_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "buy_order"
+    t.string "session_id"
+    t.integer "bits"
+  end
+
   create_table "poly_likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "likeable_type", null: false
@@ -228,6 +246,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_010450) do
   add_foreign_key "bits", "users"
   add_foreign_key "girls", "users"
   add_foreign_key "inscriptions", "users"
+  add_foreign_key "payments", "users"
   add_foreign_key "poly_likes", "users"
   add_foreign_key "posts", "girls"
   add_foreign_key "posts", "users"

@@ -30,6 +30,7 @@ class VideoUploader < CarrierWave::Uploader::Base
         position: :bottom_right,
         pixels_from_edge: 10
       }
+
   }
 
   process :save_video_duration

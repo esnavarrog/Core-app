@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :dashboard do
     resources :girls
   end
+  resources :payments
   get 'mis_chicas', to:'girls#mis_chicas'
   post 'poly_likes', to: 'poly_likes#create'
   post 'create_post', to: 'posts#create'
@@ -37,5 +38,12 @@ Rails.application.routes.draw do
   get 'terms/politics_of_use'
   get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
   post 'pay_post', to:'posts#pay_post'
+
+  #WebPay 
+  post '/webpay/webpay_final_url', :to => 'webpay#webpay_final_url', :as => :webpay_result
+  get '/webpay/webpay_return_url', :to => 'webpay#webpay_return_url', :as => :webpay_return_url
+  get 'webpay/success', :to => 'payments#webpay_success', :as => :webpay_success
+  get 'webpay/error', :to => 'payments#webpay_error', :as => :webpay_error
+  get 'webpay/nullify', :to => 'payments#webpay_nullify', :as => :webpay_nullify
 end
 

@@ -46,6 +46,11 @@ gem 'kaminari-bootstrap'
 gem 'bootstrap5-kaminari-views'
 gem "recaptcha", require: "recaptcha/rails"
 
+# webpay
+gem "signer", "~> 1.4.3"
+gem 'savon', '~> 2.12', '>= 2.12.1'
+gem 'transbank-sdk', git: "https://github.com/TransbankDevelopers/transbank-sdk-ruby.git", branch: 'master'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

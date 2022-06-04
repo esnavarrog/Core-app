@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  amount: 1
+  pay_date: 2022-05-31 21:14:22
+  user_id: 1
+  payment_method_id: 1
+  verified: false
+  tbk_transaction_id: MyString
+  tbk_token: MyString
+  state: MyString
+  webpay_data: MyString
+
+two:
+  description: MyString
+  amount: 1
+  pay_date: 2022-05-31 21:14:22
+  user_id: 1
+  payment_method_id: 1
+  verified: false
+  tbk_transaction_id: MyString
+  tbk_token: MyString
+  state: MyString
+  webpay_data: MyString
