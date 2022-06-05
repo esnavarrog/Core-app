@@ -53,7 +53,7 @@ class WebpayController < ApplicationController
       return                    
     else
       payment.update(description: "Pago con WebPay de: "+ current_user.nickname + " con errores")
-      redirect_to "payments/webpay_nullify"
+      redirect_to webpay_nullify_path
     end             
   end   
 
