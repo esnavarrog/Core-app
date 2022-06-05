@@ -39,6 +39,7 @@ class PaymentsController < ApplicationController
 	end
 	# Función que despliega información en el caso que el usuario haya cancelado la transacción
 	def webpay_nullify
+		@payment = Payment.where(tbk_token: params[:token_ws]).lock(true).take
 	end
 
 	private
