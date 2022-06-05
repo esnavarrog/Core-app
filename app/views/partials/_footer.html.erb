@@ -41,7 +41,7 @@
     <% end %>
     <div class="btn-group dropdown dropup">
         <button class="btn btn-link shadow-none <%= action_name == "edit" && controller_name == 'registrations' ? 'active' : '' %>" type="button" data-bs-toggle="dropdown">
-            <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %>
+            <%= user_signed_in? && current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %>
         </button>
         <ul class="dropdown-menu dropdown-menu-nav fade">
             <% if user_signed_in? %>
