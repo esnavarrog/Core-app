@@ -1,2 +1,7 @@
 $('#like-girl').removeClass('animate__heartBeat')
 $('#like-girl').attr('href', "<%= poly_likes_path(likeable_id:@girl_id, likeable_type:'Girl') %>")
+<% if @girl.poly_likes.count == 0 %>
+$('#like-count-girl').removeClass('like-count-girl').html('')
+<% else %>
+$('#like-count-girl').html('<%= @girl.poly_likes.count %>')
+<% end %>

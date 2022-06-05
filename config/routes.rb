@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :girls, path:'chicas'
   resources :inscriptions
   resources :bits
-  resources :posts
+  resources :posts, path:"publicaciones"
   resources :girls do
     resources :posts do
       resources :comments, only: [:create]
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :dashboard do
     resources :girls
   end
-  resources :payments
+  resources :payments, path:"pagos"
   get 'mis_chicas', to:'girls#mis_chicas'
   post 'poly_likes', to: 'poly_likes#create'
   post 'create_post', to: 'posts#create'

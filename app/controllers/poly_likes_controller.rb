@@ -37,6 +37,7 @@ class PolyLikesController < ApplicationController
     def delete_like
         @like = PolyLike.find(params[:id])
         @girl_id = @like.likeable_id
+        @girl = Girl.find(@girl_id)
         @like.destroy
         render :delete_like
     end

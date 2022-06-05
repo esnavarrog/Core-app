@@ -215,8 +215,20 @@
     <% else %>
     
     <div class="block-post">
-        <%= link_to pay_post_path(id:post), class:'btn btn-primary', method: :post, remote:true do %>
-            Canjea por <%= post.price %>
+        <% if user_signed_in? %>
+            <%= link_to pay_post_path(id:post), class:'btn btn-primary', data:{confirm:"Estás seguro de adquirir el acceso a este contenido?"}, method: :post, remote:true do %>
+                Canjea por <%= post.price %>
+            <% end %>
+        <% else %>
+            <%= link_to new_user_session_path, class:'btn btn-primary' do %>
+                <%= inline_svg_tag('icons/icon_sign-in.svg') %> Debes Iniciar Sesión
+            <% end %>
+        <% end %>
+    </div>
+    <div class="content-published">
+        <%= post.content %>
+        <% if post.duration.present? %>
+        Duración: <%= post.duration %>
         <% end %>
     </div>
     

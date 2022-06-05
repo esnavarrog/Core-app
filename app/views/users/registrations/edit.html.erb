@@ -1,12 +1,31 @@
-<div class="d-flex justify-content-center">
-  <%= link_to "Atrás", :back %>
-  <h2 class="mb-0">Hola <%=  current_user.try(:nickname).titleize %></h2>
+<%= render './partials/header' %>
+<div id="header-user" class="">
+  <div class="header-user-image"></div>
+  <h2 class="mb-0"><%=  @user.try(:nickname).titleize %></h2>
+  <%= @user.avatar.present? ? image_tag(@user.avatar_url(:thumb), class:'avatar-perfil-edit') : inline_svg_tag('icons/icon_person_circle.svg') %>
   <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-perfil"><i class="bi bi-pencil-square"></i></button>
 </div>
-
-<%= render "edit_form"%>
-<div class="container text-center">
-  <h1>Estas son las chicas que te gustan.</h1>
+<div class="activity">
+  <div class="comments-in-app">
+    <h5 class="text-end">Comentarios:</h5>
+    <p class="text-end"><%= Comment.where(user:@user.id).count %></p>
+  </div>
+  <div class="comments-in-app">
+    <h5 class="text-end">Ingreso:</h5>
+    <p class="text-end"><%= @user.created_at.strftime('%d %B') %></p>
+  </div>
+  <div class="comments-in-app">
+    <h5 class="text-end">Favoritas:</h5>
+    <p class="text-end"><%= @user.poly_likes.where(likeable_type:'Girl').count %></p>
+  </div>
+  <div class="comments-in-app">
+    <h5 class="text-end">Último Ingreso:</h5>
+    <p class="text-end"><%= time_ago_in_words @user.last_sign_in_at %></p>
+  </div>
 </div>
+
+<div class="container text-center">
+</div>
+<%= render "edit_form"%>
 
 

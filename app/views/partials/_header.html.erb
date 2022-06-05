@@ -1,11 +1,21 @@
 <section class="nav-header">
     <div class="container d-flex justify-content-between align-items-center">
-        <%= link_to 'Únete al Club', new_girl_path, class:'btn btn-link' %>
-        <% if user_signed_in? %>
-        <div class="bits">
-            <%= "#{current_user.bit} bits" %>
-        </div>
-        <%= inline_svg_tag('logomitarde.svg', class:'logo-header') %>
+        <% if user_signed_in? && !current_user.girl? %>
+            <%= link_to 'Únete', new_girl_path, class:'btn btn-link' %>
+        <% elsif user_signed_in? && current_user.girl? %>
+            <div class="bits">
+                <%= "#{Bit.where(post_id:current_user.girls.first.posts.ids, created_at:(Time.zone.now.beginning_of_month..Time.zone.now)).sum(:price_pay)} bits ganados" %>
+            </div>
+        <% else %>
+            <%= link_to new_user_session_path, class:'btn btn-link shadow-none' do %>
+                <%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
+            <% end %>
         <% end %>
+        <% if user_signed_in? && current_user.client? %>
+            <div class="bits">
+                <%= "#{current_user.bit} bits" %>
+            </div>
+        <% end %>
+            <%= inline_svg_tag('logomitarde.svg', class:'logo-header') %>
     </div>
 </section>

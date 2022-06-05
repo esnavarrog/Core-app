@@ -1,10 +1,20 @@
 <div class="footer d-flex justify-content-around align-items-center">
+    <!-- link of dashboard -->
     <%= link_to :root, class:'btn btn-link shadow-none '+ (action_name == "index" && controller_name == 'dashboard' ? 'active' : '') do %>
         <i class="bi bi-border-all"></i>
     <%end%>
+    <!-- link of posts -->
     <%= link_to posts_path, class:'btn btn-link shadow-none '+ (action_name == "index" && controller_name == 'posts' ? 'active' : '') do %>
         <i class="bi bi-file-earmark-post"></i>
     <% end %>
+
+    <!-- link of create new post -->
+    <% if user_signed_in? && action_name == "show" && controller_name == 'girls' && current_user == @girl.user %>
+        <div class="btn btn-link shadow-none" data-bs-toggle="modal" data-bs-target="#modal-publish">
+            <i class="bi bi-plus-circle-fill"></i>
+        </div>
+    <% end %>
+    <!-- link favorites -->
     <% if user_signed_in? %>
         <%= link_to mis_chicas_path, class:'btn btn-link shadow-none '+ (action_name == "mis_chicas" ? 'active' : '') do %>
             <i class="bi bi-suit-heart-fill"></i>
@@ -31,7 +41,7 @@
     <% end %>
     <div class="btn-group dropdown dropup">
         <button class="btn btn-link shadow-none <%= action_name == "edit" && controller_name == 'registrations' ? 'active' : '' %>" type="button" data-bs-toggle="dropdown">
-            <i class="bi bi-person-circle"></i>
+            <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %>
         </button>
         <ul class="dropdown-menu dropdown-menu-nav fade">
             <% if user_signed_in? %>

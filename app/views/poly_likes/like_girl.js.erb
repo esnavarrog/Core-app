@@ -1,4 +1,5 @@
 
 $('#like-girl').addClass('animate__heartBeat')
 $('#like-girl').attr('href', '<%= delete_like_path(id:@poly_like.id) %>')
+$('#like-count-girl').addClass('like-count-girl').html('<%= @girl.poly_likes.count %>')
 

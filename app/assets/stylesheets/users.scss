@@ -85,6 +85,16 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
     box-shadow:$box_shadow;
 }
 
+.avatar-perfil-edit{
+    width: 100px !important;
+    border-radius:50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 3px solid white;
+    box-shadow:$box_shadow;
+}
+
 #button-upload-avatar{
     background: white;
     border: 2px;
@@ -99,4 +109,61 @@ $box_shadow:rgba(158, 158, 158, 0.25) 0px 2px 2px -1px, rgba(146, 146, 146, 0.3)
         color: $primaryColor;
         cursor: pointer;
     }
+}
+
+#header-user{
+    position: relative;
+    padding: 0;
+    height: 200px;
+    background: asset-data-url("header_user.jpg");
+    width: 80%;
+    border-radius:4px 4px 0 0;
+    margin: 10px auto 0;
+    background-size: cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    
+    h2{
+        position: absolute;
+        padding: 3px;
+        background-color: rgba(256, 146, 146, 0.3);
+        bottom: 10px;
+        border-radius: 4px;
+        left: 10px;
+        font-weight:600;
+        font-size: 20px;
+        color: white;
+    }
+    button{
+        position: absolute;
+        right:10px;
+        top: 5px;
+        box-shadow:$box_shadow;
+        // height:40px;
+    }
+}
+
+.activity{
+    width: 80%;
+    padding: 3px 10px;
+    background-color: rgb(45, 55, 72);
+    color: white;
+    margin: 0 auto;
+    border-radius: 0 0 4px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    div{
+        padding: 10px;
+    }
+    p{
+        margin-bottom: 0;
+    }
+    h5{
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(113, 128, 150);
+    }
+
 }

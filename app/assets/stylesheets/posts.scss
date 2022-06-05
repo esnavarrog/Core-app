@@ -105,7 +105,7 @@ $resaltColor:            #900C3F;
     height: 500px;
     width: 100%;
     background: asset-data-url("background.jpg");
-    background-size:     contain;
+    background-size: cover;
     background-repeat:   no-repeat;
     background-position: center center;
     display:flex;

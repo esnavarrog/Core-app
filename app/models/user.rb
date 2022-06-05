@@ -44,4 +44,11 @@ class User < ApplicationRecord
     self.save
   end
 
+  def client?
+    role == :user.to_s
+  end
+  def girl?
+    role == :girl.to_s
+  end
+
 end
