@@ -30,6 +30,7 @@
 @import 'poly_likes';
 @import 'videojs';
 
+
 body{
     background-color: #f0f8ff !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -51,3 +52,8 @@ a:hover{
 .row {
     --bs-gutter-x: 10px !important;
 }
+
+#text-primary{
+    color: #BF396A !important;
+}
+

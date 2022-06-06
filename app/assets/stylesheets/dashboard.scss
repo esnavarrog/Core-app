@@ -29,8 +29,26 @@ $lightHoverPrimary:      #FF5733;
 $lightResaltColor:       #C70039;
 $backgroundGrey:     #F9F9F9;
 $box_shadow:rgba(0, 0, 0, 0.08) 0px 4px 12px;
-
-
+.pagination{
+    .page-link{
+        color: $rosa;
+    }
+    .page-item.active .page-link {
+        background-color:$rosa;
+        border:$lightRed;
+    }
+}
+.container-politics{
+    margin-bottom:200px;
+    h2{
+        color: $lightResaltColor;
+        text-align: center;
+    }
+    h3{
+        color: $lightResaltColor;
+        font-size: 24px;
+    }
+}
 
 // buttons
 .btn{
@@ -54,6 +72,16 @@ $box_shadow:rgba(0, 0, 0, 0.08) 0px 4px 12px;
     color: white !important;
     border-color: $hoverPrimary !important;
     background-color: $hoverPrimary !important;
+}
+.btn-webpay{
+    color: white !important;
+    border-color: #6d2077 !important;
+    background-color: #6d2077 !important;
+}
+.btn-webpay:hover{
+    color: white !important;
+    border-color: #d00070 !important;
+    background-color: #d00070 !important;
 }
 .btn-outline-primary:active{
     color: white !important;

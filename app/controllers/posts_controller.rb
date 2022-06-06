@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     options = params
-    @posts = Post.fetch(options).order(created_at: :desc)
+    @posts = Post.limit(1000).fetch(options).order(created_at: :desc)
   end
 
   def new

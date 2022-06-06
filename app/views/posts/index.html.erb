@@ -13,6 +13,6 @@
     <div class="paginate d-flex justify-content-center" style="margin-bottom:100px;">
         <%= paginate @posts, theme:'bootstrap-5',
             pagination_class: "pagination flex-wrap justify-content-center pagination-centered",
-            nav_class: "d-inline-block", remote:true %>
+            nav_class: "d-inline-block", left: 2, right: 2, remote:true %>
     </div>
 <%= render './comments/modal_comments' %>

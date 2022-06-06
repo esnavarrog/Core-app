@@ -1,3 +1,5 @@
+const { post } = require("jquery")
+
 $(document).on('turbolinks:load', events)
 
 function events() {
@@ -11,30 +13,46 @@ function events() {
     $(window).on('scroll', function(){
         if ($(window).scrollTop() + window.innerHeight == $(document).height()){
             console.log('listo')
-            pagination("pc")
+            pagination()
         }
     })
 
     $('window').on('touchmove', function() {
         if ($(window).scrollTop() + window.innerHeight == $(document).height()){
-            pagination("mobil")
+            pagination()
         }
     });
+    // let lastPost;
+    // let observador = new IntersectionObserver((entradas) => {
+    //     console.log(entradas)
+    //     entradas.forEach(entrada => {
+    //         if (entrada.isIntersecting){
+    //             pagination()
+    //         }
+    //     })
+    // }, {
+    //     rootMargin: '0px 0px 200px 0px',
+    //     threshold: 1.0
+    // });
 
-    function pagination(display){
-        let url = $('#paginate-posts .pagination .next a').attr('href');
-        if(url){
-            $.ajax({
-                type: "GET",
-                url: url,
-                dataType: "script",
-                data:{
-                    data:display
-                }
-            });
+    function pagination(){
+        // const posts = document.querySelectorAll('#box-published .published');
+        // if(lastPost){
+        //     observador.unobserve(lastPost);
+        // }
+        // lastPost = posts[post.length -1];
+        // observador.observe(lastPost)
+        // console.log(lastPost)
+        let url = $('#next-page');
+        if(url.attr('href')){
+            // $.ajax({
+            //     type: "GET",
+            //     url: url,
+            //     dataType: "script"
+            // });
+            document.getElementById("next-page").click();
         }else{
-            $('#paginate-posts').removeClass('d-none').html('No tenemos más publicaciones.')
+            $('#paginate-posts').removeClass('hide').html('No tenemos más publicaciones.')
         }
     }
-
 }

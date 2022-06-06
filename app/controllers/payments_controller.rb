@@ -7,13 +7,9 @@ class PaymentsController < ApplicationController
 	end
 	
 	def create    
-		if !payment_params[:webpay_amount].nil? && (webpay_payment = payment_params[:webpay_amount].to_i) > 0  
-				@payment = Payment.prepare_webpay(payment_params, current_user, webpay_payment) 
+		if !payment_params[:bits].nil?
+				@payment = Payment.prepare_webpay(payment_params, current_user) 
 				result = WebpayPlus.init_transaction(@payment)
-				
-				puts '++++++++++++++++'
-				puts result.inspect
-				puts '++++++++++++++++'
 			if(result['token'].present? && result['url'].present?)
 				token = result['token']
 				url   = result['url']
@@ -36,6 +32,7 @@ class PaymentsController < ApplicationController
 	end
 	#Función que despliega una vista, indicando un error en la transacción
 	def webpay_error
+		@payment = Payment.where(tbk_token: params[:token_ws]).lock(true).take
 	end
 	# Función que despliega información en el caso que el usuario haya cancelado la transacción
 	def webpay_nullify

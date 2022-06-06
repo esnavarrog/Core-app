@@ -11,11 +11,11 @@ class WebpayController < ApplicationController
     payment.update(state: 'pending') 
 
     if(result && result['response_code'] == 0 && (payment = Payment.find_by(buy_order:result['buy_order'])))
-      state = result['error_desc'].to_s
+      state = result['status'].to_s
       accountingdate        = result['accounting_date'].to_s
       buyorder                  = result['buy_order'].to_s
       sharesnumber                  = result['sharesnumber'].to_s
-      cardnumber                = result['card_number'].to_s
+      cardnumber                = result['card_detail']['card_number']
       amount                        = result['amount'].to_s
       commercecode          = result['commercecode'].to_s
       authorizationcode = result['authorization_code'].to_s
@@ -41,7 +41,9 @@ class WebpayController < ApplicationController
         when 'medium'
           user.bit = bits + 30
         when 'large'
-          user.bit = bits + 60
+          user.bit = bits + 65
+        when 'xlarge'
+          user.bit = bits + 120
         end
         user.save
         render "payments/webpay_success"
@@ -53,6 +55,7 @@ class WebpayController < ApplicationController
       return                    
     else
       payment.update(description: "Pago con WebPay de: "+ current_user.nickname + " con errores")
+      
       redirect_to webpay_nullify_path
     end             
   end   

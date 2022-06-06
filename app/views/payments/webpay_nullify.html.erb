@@ -1,7 +1,7 @@
 
-
-<div class="container box-content">
-   <h2>Orden de Compra <strong><%= @payment.buy_order %></strong> fué rechazada</h2>
+<%= render './partials/header' %>
+<div class="container box-content bg-white rounded shadow-sm p-4 ">
+   <h2 id="text-primary">Orden de Compra <strong><%= @payment.buy_order %></strong> fué rechazada</h2>
    
    <p>Las posibles causas de este rechazo son:</p>
    <ul>
@@ -9,4 +9,7 @@
       <li>Su tarjeta de crédito o débito no cuenta con saldo suficiente.</li>
       <li>Tarjeta aún no habilitada en el sistema financiero.</li>
    </ul>
+   <div class="row">
+		<%= link_to 'Vuelve al home', :root, class:'btn btn-primary' %>
+	</div>
 </div>

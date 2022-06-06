@@ -1,13 +1,25 @@
 class Payment < ApplicationRecord
 
 	belongs_to :user
+	validates :bits, presence: {message: "Debes seleccionar un plan para realizar la compra"}
 
-	enum bits: [:light, :medium, :large]
-	def self.prepare_webpay(payment_params, current_user, webpay_payment)
+	enum bits: [:light, :medium, :large, :xlarge]
+
+
+	def self.prepare_webpay(payment_params, current_user)
 		payment = self.new
-		payment.amount = payment_params[:webpay_amount]
+		case payment_params[:bits]
+		when 'light'
+			payment.amount = 10000
+		when 'medium'
+			payment.amount = 30000
+		when 'large'
+			payment.amount = 60000
+		when 'xlarge'
+			payment.amount = 110000
+		end
 		payment.user_id = current_user.id if current_user.present?
-		payment.bits = payment_params[:bits].to_i
+		payment.bits = payment_params[:bits].to_sym
 		payment.save
 		payment.update(session_id:"session-#{payment.id}", buy_order: "ordenDeCompra-#{payment.id}")
 		payment

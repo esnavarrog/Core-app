@@ -1,20 +1,48 @@
 <!-- PAGO CON WEBPAY -->
-<div id="webpay-row" class="container-fluid" align="center">
+<% if user_signed_in? %>
+<div id="webpay-row" class="container bg-white rounded shadow-sm py-4" >
+	<h2 id="text-primary" class="text-center m-3">
+		Adquiere <strong>Bits</strong> para subscribirte o desbloquear contenido exclusivo.
+	</h2>
 	<%= form_for(@payment, html: {name: 'new_payment', class: "form-inline"}) do |f| %>
-		<%#= image_tag('webpay_logo.png', alt: 'Logo WebPay', class: 'logo-webpay')%><br>
-		<input id="payment_amount" type="text" class="form-control" required='true' name="payment[webpay_amount]">
-		<div class="form-group">
-			<label for="bit-10">10 bits</label>
-			<input type="checkbox" value="0" name="payment[bits]" id="bit-10">
+		
+		<div class="form-inline d-flex flex-wrap justify-content-around my-3 ">
+			<% price = {light:10000, medium:30000, large:60000, xlarge:110000} %>
+			<% Payment.bits.map{|a| a[0].to_sym}.each do |bits| %>
+			<div class="form-group form-group-radio">
+				<div>Paga <%=number_to_currency(price[bits], precision:0, delimiter:'.')%> por:</div>
+				<%= f.radio_button :bits, bits, class:'input-checkbox' %>
+				<label for="payment_bits_<%= bits%>">
+					Plan de 
+					<% case bits %>
+					<% when :light %>
+					10 
+					<% when :medium %>
+					30 
+					<% when :large %>
+					60 
+					<% when :xlarge %>
+					120 
+					<% end %>
+					bits
+				</label>
+			</div>
+			<% end %>
 		</div>
-		<div class="form-group">
-			<label for="bit-30">30 bits</label>
-			<input type="checkbox" value="1" name="payment[bits]" id="bit-30">
+
+		<div class="d-flex flex-wrap justify-content-center">
+			<button class="btn btn-webpay">Pagar con WebPay</button> 
+			<%= image_tag('WebpayPlus.png', class: 'logo-webpay')%>
 		</div>
-		<div class="form-group">
-			<label for="bit-60">60 bits</label>
-			<input type="checkbox" value="2" name="payment[bits]" id="bit-60">
-		</div>
-		<button class="btn btn-success">Pagar con WebPay</button> 
 	<% end %>
- </div>
+</div>
+<% else %>
+<div class="container bg-white rounded shadow-sm p-4">
+	<h2 class="text-center" id="text-primary">Debes estar logueado para comprar <strong>Bits</strong> </h2>
+	<div class="d-flex justify-content-center">
+		<%= link_to new_user_session_path, class:'btn btn-primary' do %>
+			<%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
+		<% end %>
+	</div>
+</div>
+<% end %>
