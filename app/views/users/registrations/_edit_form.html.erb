@@ -55,7 +55,8 @@
                   </div>
                 <% end %>
         
-                
+                <%= flash[:recaptcha_error] %>
+                <%= recaptcha_tags %>
         
                 <div class="d-grid mt-3 mb-3">
                     <%= f.submit "Actualizar", class:'btn btn-primary' %>
