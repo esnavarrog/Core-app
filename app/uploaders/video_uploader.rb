@@ -5,6 +5,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
   include CarrierWave::Processing::RMagick
+  
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
