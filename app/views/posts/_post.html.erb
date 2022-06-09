@@ -31,7 +31,7 @@
             <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-three-dots-vertical"></i>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropstart-arrow">
                 <% if user_signed_in? && post.user == post.girl.user && post.girl.user == current_user %>
                     <li>
                         <%= link_to girl_post_path(post.girl, post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
@@ -62,9 +62,9 @@
     </div>
     <div class="content-published my-3 <%= post.video.present? || post.img.present? ? 'active' : '' %>">
         <% if post.video.present? || post.img.present? %>
-            <%= post.content %>
+            <%= post.content_body || post.content_body %>
         <%else%>
-            <%= post.content%>
+            <%= post.content_body || post.content_body%>
         <%end%>
     </div>
     <% if post.video_url.present? %>
@@ -213,22 +213,103 @@
     </div>
     
     <% else %>
-    
-    <div class="block-post">
-        <% if user_signed_in? %>
-            <%= link_to pay_post_path(id:post), class:'btn btn-primary', data:{confirm:"Estás seguro de adquirir el acceso a este contenido?"}, method: :post, remote:true do %>
-                Canjea por <%= post.price %>
-            <% end %>
-        <% else %>
-            <%= link_to new_user_session_path, class:'btn btn-primary' do %>
-                <%= inline_svg_tag('icons/icon_sign-in.svg') %> Debes Iniciar Sesión
-            <% end %>
-        <% end %>
+    <div class="content-published <%= post.video.present? || post.img.present? ? 'active' : '' %> d-flex justify-content-between ">
+        <div class="user-published d-flex align-items-center">
+            <% if action_name == "index" %>
+                <%= link_to post.girl do %>
+                    <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
+                <%end%>
+            <%else%>
+                <%= image_tag(post.girl.avatar_url(:thumb), class:'img-circle-avatar') if post.girl.avatar? %>
+            <%end%>
+            <div class="ms-3">
+                <span>
+                    <% if action_name == "index" %>
+                        <%= link_to post.girl do %>
+                            <%= post.girl.name.capitalize %>
+                        <% end %>
+                    <% else %>
+                        <%= post.girl.name.capitalize %>
+                    <% end %>
+                </span>
+                <div class="datetime-published">
+                    <%= time_ago_in_words post.created_at %>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group dropstart">
+            <button type="button" class="btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu  dropstart-arrow">
+                <% if user_signed_in? && post.user == post.girl.user && post.girl.user == current_user %>
+                    <li>
+                        <%= link_to girl_post_path(post.girl, post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                            <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
+                        <% end %>
+                    </li>
+
+                <% elsif user_signed_in? && current_user != post.girl.user %>
+                    <li>
+                        <%= link_to "#", class:'dropdown-item', data:{confirm:"Estás segura de reportar este post?"} do %>
+                            <i class="bi bi-flag"></i> Reporta
+                        <% end %>
+                    </li>
+                <% else %>
+                    <li><span class="dropdown-item-text">Para acceder a las opciones, debes iniciar sesión o registrarte.</span></li>
+                    <li>
+                        <%= link_to new_user_session_path, class:'dropdown-item' do %>
+                            <%= inline_svg_tag('icons/icon_sign-in.svg') %> Inicia Sesión
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to new_user_registration_path, class:'dropdown-item' do %>
+                            <i class="bi bi-plus-square"></i> Crear Cuenta
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+        
     </div>
-    <div class="content-published">
-        <%= post.content %>
+    <div class="content-published my-3 <%= post.video.present? || post.img.present? ? 'active' : '' %>">
+        <% if post.video.present? || post.img.present? %>
+            <%= post.content_body || post.content_body %>
+        <%else%>
+            <%= post.content_body || post.content_body%>
+        <%end%>
+    </div>
+    <div class="content-image-block">
+        <%= image_tag(post.video.thumb.url, class:'block-image') if post.video.thumb.url.present? %>
+    </div>
+    <div class="content-published content-published-block">
+        <div class="block-post">
+            <% if user_signed_in? %>
+                <%= link_to pay_post_path(id:post), class:'btn btn-primary', data:{confirm:"Estás seguro de adquirir el acceso a este contenido?"}, method: :post, remote:true do %>
+                    Unlock <%= post.price %> bits
+                <% end %>
+            <% else %>
+                <%= link_to new_user_session_path, class:'btn btn-primary' do %>
+                    <%= inline_svg_tag('icons/icon_sign-in.svg') %> Debes Iniciar Sesión
+                <% end %>
+            <% end %>
+        </div>
+        
         <% if post.duration.present? %>
-        Duración: <%= post.duration %>
+            <div class="duration">
+                <div class="duration-time">
+                    <%= post.duration %>
+                </div>
+                <span class="duration-lejend">
+                    <% if post.comments.present? %>
+                        <%= number_to_human(post.comments.count, precision:4, units:{thousand:'K',million:'M',billion:'B',trillion:'T',quadrillion:'Qd'}) %> Comentario<%= post.comments.count > 1 ? 's' : '' %> |
+                    <%end%>
+                    <% if post.poly_likes.present? %>
+                        <%= number_to_human(post.poly_likes.count, precision:4, units:{thousand:'K',million:'M',billion:'B',trillion:'T',quadrillion:'Qd'}) %> <%= post.poly_likes.count > 1 ? 'Likes' : 'Like' %> |
+                    <%end%>
+                    h : m : s
+                </span>
+            </div>
         <% end %>
     </div>
     

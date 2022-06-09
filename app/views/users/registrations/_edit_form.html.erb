@@ -15,46 +15,58 @@
                 <%= render "users/shared/error_messages", resource: resource %>
         
                 <div class="form-group">
+                  <%= f.label :nickname %><br />
+                  <%= f.text_field :nickname, autofocus: true, class: "form-control form-control-disabled"%>
+                </div>
+
+                <div class="form-group">
                   <%= f.label :email %><br />
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-disabled"%>
                 </div>
 
-                <div class="form-group">
-                  <%= f.label :avatar %>
-                  <%= f.file_field :avatar, class:'form-control' %>
+                <div class="section-form my-3">
+                  <div class="d-flex justify-content-between align-items-center title-form-section">
+                    <h2>Foto de Perfil</h2>
+                    <div>
+                      <label for="user_avatar" class="btn btn-primary btn-sm">
+                        <%= inline_svg_tag('icons/icon_camera.svg') %>
+                          Subir
+                      </label>
+                      <%= f.file_field :avatar, class:'form-control d-none' %>
+                    </div>
+                  </div>
+                  <div id="avatar-form" class="avatar-form d-flex justify-content-center">
+                    <%= image_tag(@user.avatar_url(:thumb), class:'img-circle-form') if @user.avatar? %>
+                  </div>
                 </div>
         
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                   <div>Estamos esperando tu confirmación para: <%= resource.unconfirmed_email %></div>
                 <% end %>
         
-                <div class="form-group">
-                  <%= f.label :password %> <i>(déjelo en blanco si no quiere cambiarlo)</i><br />
-                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
-                  <% if @minimum_password_length %>
-                    <br />
-                    <em><%= @minimum_password_length %> caracteres mínimos</em>
-                  <% end %>
-                </div>
+                <% if @user.provider.nil? %>
+                  <div class="form-group">
+                    <%= f.label :password %> <i>(déjelo en blanco si no quiere cambiarlo)</i><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
+                    <% if @minimum_password_length %>
+                      <br />
+                      <em><%= @minimum_password_length %> caracteres mínimos</em>
+                    <% end %>
+                  </div>
+                <% end %>
         
-                <div class="field">
-                  <%= f.label :password_confirmation %><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
-                </div>
-        
-                <div class="form-group">
-                  <%= f.label :current_password %> <i>(necesitamos su contraseña actual para confirmar sus cambios)</i><br />
-                  <%= f.password_field :current_password, value:"" , autocomplete: "current-password", class: "form-control"%>
-                </div>
+                
         
                 <div class="d-grid mt-3 mb-3">
                     <%= f.submit "Actualizar", class:'btn btn-primary' %>
                 </div>
               <% end %>
         
-              <h3>Eliminar mi cuenta</h3>
-        
-              <p>Estás infeliz con tu cuenta? <%= button_to "Eliminar mi cuenta", registration_path(resource_name), class:'btn btn-outline-primary btn-sm', data: { confirm: "Estás seguro de eliminar tu cuenta?" }, method: :delete %></p>
+              <div class="mt-3">
+                <h5>Eliminar mi cuenta</h5>
+          
+                <p class="fs-5">Estás infeliz con tu cuenta? <%= button_to "Eliminar mi cuenta", registration_path(resource_name), class:'btn btn-link btn-sm text-danger', data: { confirm: "Estás seguro de eliminar tu cuenta?" }, method: :delete %></p>
+              </div>
         
               
             </div>

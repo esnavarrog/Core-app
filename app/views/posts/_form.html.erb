@@ -1,7 +1,7 @@
 <%= form_with(model:[@girl, @post], data:{remote:true}) do |f| %>
     <div class="modal-body">
         <div class="form-group">
-            <%= f.rich_text_area :content, class:'form-control' %>
+            <%= f.rich_text_area :content_body, class:'form-control' %>
         </div>
         <div class="form-group m-3">
             <label for="price">Precio para tu post</label>

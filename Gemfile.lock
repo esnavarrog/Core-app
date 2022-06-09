@@ -108,9 +108,13 @@ GEM
     carrierwave-ffmpeg (1.0.0)
       carrierwave
       streamio-ffmpeg
+    carrierwave-processing (1.1.0)
+      carrierwave
     carrierwave-video (0.6.0)
       carrierwave
       streamio-ffmpeg
+    carrierwave-video-thumbnailer (0.1.4)
+      carrierwave
     carrierwave_backgrounder (0.0.2)
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
@@ -373,7 +377,9 @@ DEPENDENCIES
   capybara (>= 3.26)
   carrierwave (~> 2.2, >= 2.2.2)
   carrierwave-ffmpeg
+  carrierwave-processing
   carrierwave-video
+  carrierwave-video-thumbnailer
   carrierwave_backgrounder
   devise
   devise-i18n

@@ -47,7 +47,7 @@
             <% if user_signed_in? %>
                 <li>
                     <%= link_to edit_registration_path(current_user), class:'dropdown-item' do %>
-                        <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %> Perfil
+                        <%= current_user.avatar.present? ? image_tag(current_user.avatar_url(:thumb), class:'avatar-perfil') : inline_svg_tag('icons/icon_person_circle.svg') %> Perfil <span class="text-success"><%= current_user.nickname.present? ? current_user.nickname.titleize : '' %></span>
                     <% end %>
                 </li>
                 <li>
@@ -70,7 +70,7 @@
             <hr>
             <% if user_signed_in? %>
                 <li>
-                    <a href="<%= new_payment_path %>" class="dropdown-item"><i class="bi bi-bag-heart-fill"></i> Comprar Bits</a>
+                    <a href="<%= new_payment_path %>" class="dropdown-item"><i class="bi bi-file-binary"></i> Comprar Bits</a>
                 </li>
             <% end %>
             <li>

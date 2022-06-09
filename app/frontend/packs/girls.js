@@ -38,7 +38,7 @@ function events() {
         $('#submit-details-form').click();
     })
 
-    $('body').on('change', '#girl_avatar', function () {
+    $('body').on('change', '#girl_avatar, #user_avatar', function () {
         let styles = 'width:186px; height:186px; object-fit: cover;'
         let className = 'img-circle-form'
         let target = '#avatar-form'
@@ -55,7 +55,8 @@ function events() {
         if (input.files && input.files[0]) {
             var reader = new FileReader(); 
             reader.onload = function (e) {
-                $(target).html('<img src="'+e.target.result+'" style="'+styles+'"  class="'+className+'" />');
+                $(target).html('')
+                $('<img src="'+e.target.result+'" style="'+styles+'"  class="'+className+'" />').hide().prependTo(target).fadeIn(500);
             }
             reader.readAsDataURL(input.files[0]);
         }

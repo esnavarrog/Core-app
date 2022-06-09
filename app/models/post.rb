@@ -2,7 +2,7 @@ class Post < FilterableRecord
 
   mount_uploader :img, PostUploader
   mount_uploader :video, VideoUploader
-  has_rich_text :content
+  has_rich_text :content_body
 
   belongs_to :girl
   belongs_to :user

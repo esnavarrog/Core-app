@@ -45,6 +45,8 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'bootstrap5-kaminari-views'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'carrierwave-video-thumbnailer'
+gem 'carrierwave-processing'
 
 # webpay
 gem "signer", "~> 1.4.3"
