@@ -5,7 +5,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
   include CarrierWave::Processing::RMagick
-  
+
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
@@ -14,6 +14,7 @@ class VideoUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
+  
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
