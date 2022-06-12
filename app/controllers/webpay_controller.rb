@@ -5,7 +5,7 @@ class WebpayController < ApplicationController
     unless params[:TBK_TOKEN].present?
       result = WebpayPlus.transaction_confirmation(params[:token_ws])
 
-      puts 'resultado obtenido: ' + result['buy_order'].to_s if result['buy_order']
+      puts 'resultado obtenido: ' + result['buy_order'].to_s
       puts 'token de transbank: ' +  params[:token_ws]
       payment = Payment.find_by(buy_order:result['buy_order'])
       payment.update(tbk_token: params[:token_ws])
