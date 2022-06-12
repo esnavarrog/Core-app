@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'terms/politics_of_use', as: :politics_of_use
   get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
   post 'pay_post', to:'posts#pay_post'
+  get 'look', to: 'posts#look'
 
   #WebPay 
   post '/webpay/webpay_final_url', :to => 'webpay#webpay_final_url', :as => :webpay_result

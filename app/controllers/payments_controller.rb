@@ -29,14 +29,23 @@ class PaymentsController < ApplicationController
 	# Función que presenta un resumen del pago
 	def webpay_success
       @payment = Payment.where(tbk_token: params[:token_ws]).lock(true).take
+		puts '+++++++++++++++++'
+		puts params[:token_ws]
+		puts '+++++++++++++++++'
 	end
 	#Función que despliega una vista, indicando un error en la transacción
 	def webpay_error
 		@payment = Payment.where(tbk_token: params[:token_ws]).lock(true).take
+		puts '+++++++++++++++++'
+		puts params[:token_ws]
+		puts '+++++++++++++++++'
 	end
 	# Función que despliega información en el caso que el usuario haya cancelado la transacción
 	def webpay_nullify
 		@payment = Payment.where(tbk_token: params[:token_ws]).lock(true).take
+		puts '+++++++++++++++++'
+		puts params[:token_ws]
+		puts '+++++++++++++++++'
 	end
 
 	private

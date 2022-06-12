@@ -14,6 +14,9 @@ require("jquery-ui");
 
 
 import '../js/bootstrap_js_files.js'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+window.Swal = Swal;
 
 Rails.start()
 Turbolinks.start()

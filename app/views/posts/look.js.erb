@@ -1,0 +1,5 @@
+$('#post-<%= @post.id %>').replaceWith('<%= j render @post %>')
+
+videojs("video-<%= @post.id %>", {}, function(){
+   this.load();
+});

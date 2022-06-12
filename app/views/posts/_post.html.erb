@@ -34,7 +34,7 @@
             <ul class="dropdown-menu dropstart-arrow">
                 <% if user_signed_in? && post.user == post.girl.user && post.girl.user == current_user %>
                     <li>
-                        <%= link_to girl_post_path(post.girl, post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                        <%= link_to post_path(post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
                             <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
                         <% end %>
                     </li>
@@ -67,16 +67,24 @@
             <%= post.content_body || post.content_body%>
         <%end%>
     </div>
-    <% if post.video_url.present? %>
+
+    <!-- video  -->
+    <% if post.video_url.present? && @look %>
         <video id="video-<%= post.id %>" controls preload="auto" class='video-published video-js vjs-theme-forest vjs-big-play-centered' >
             <source src="<%= post.video.url %>" type="<%= post.video.content_type %>">
         </video>
+    <% elsif !post.img.present? %>
+        <div class="content-video-noblock">
+            <%= link_to look_path(id:post.id), remote:true do %>
+                <%= post.video.thumb.url.present? ? image_tag(post.video.thumb.url, class:'noblock-image') : image_tag('background.jpg', class:'noblock-image') %>
+            <% end %>
+        </div>
     <% end %>
 
     <% if post.img.present? %>
         <%= image_tag(post.img_url(:normal), class:'img-published') %>
     <% end %>
-    <div>
+    <div class="bottom-menu">
         <%= link_to see_comments_path(id:post.id), class:"link-none #{(post.comments.present? || post.poly_likes.present?) ? '' : 'disabled'}", id:"link-post-#{post.id}", remote:true do %>
             <div class="conteo-likes d-flex justify-content-between align-items-center">
                 <div class="d-flex" id="likes-post-<%= post.id %>">
@@ -244,7 +252,7 @@
             <ul class="dropdown-menu  dropstart-arrow">
                 <% if user_signed_in? && post.user == post.girl.user && post.girl.user == current_user %>
                     <li>
-                        <%= link_to girl_post_path(post.girl, post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                        <%= link_to post_path(post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
                             <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
                         <% end %>
                     </li>
@@ -284,9 +292,13 @@
     </div>
     <div class="content-published content-published-block">
         <div class="block-post">
-            <% if user_signed_in? %>
+            <% if user_signed_in? && (current_user.bit >= post.price) %>
                 <%= link_to pay_post_path(id:post), class:'btn btn-primary', data:{confirm:"Estás seguro de adquirir el acceso a este contenido?"}, method: :post, remote:true do %>
                     Unlock <%= post.price %> bits
+                <% end %>
+            <% elsif user_signed_in? && (current_user.bit < post.price) %>
+                <%= link_to new_payment_path, class:'btn btn-primary' do %>
+                    <i class="bi bi-file-binary"></i> Comprar Bits
                 <% end %>
             <% else %>
                 <%= link_to new_user_session_path, class:'btn btn-primary' do %>

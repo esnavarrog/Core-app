@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_girl, except: [:index, :pay_post]
+  before_action :set_girl, except: [:index, :pay_post, :look, :destroy]
 
   def index
     options = params
@@ -8,6 +8,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+  end
+
+  def look
+    @look = true
+    @post = Post.find(params[:id])
+
   end
   
   def create
@@ -19,7 +25,6 @@ class PostsController < ApplicationController
       @posts = @girl.posts.order(created_at: :desc)
 
       @post.save
-      redirect_to @girl
     else
       render :form_error
     end
@@ -45,9 +50,9 @@ class PostsController < ApplicationController
         respond_to do |format|
           format.js
         end
-      else
-        render :pay_error
       end
+    else
+      render :pay_error
     end
   end
 

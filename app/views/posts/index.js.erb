@@ -7,13 +7,3 @@ $('#paginate-posts').html('<%= j paginate @posts, theme:"bootstrap-5", paginatio
 <%end%>
 
 window.scrollTo(0, 0);
-
-var array = $('.video-js')
-for(var i=0; i < array.length; i++){
-   let element = array[i]
-   if(element.id){
-      videojs(element.id, {}, function(){
-         this.load();
-      });
-   }
-}

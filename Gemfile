@@ -47,6 +47,8 @@ gem 'bootstrap5-kaminari-views'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'carrierwave-video-thumbnailer'
 gem 'carrierwave-processing'
+gem 'sweetalert2'
+gem 'streamio-ffmpeg'
 
 # webpay
 gem "signer", "~> 1.4.3"

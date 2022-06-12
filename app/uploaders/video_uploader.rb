@@ -6,7 +6,6 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video::Thumbnailer
   include CarrierWave::Processing::RMagick
 
-
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     storage :fog
@@ -14,14 +13,16 @@ class VideoUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-
   
+  
+  process :save_video_duration
+  process :watermark_movie
+  process :encode
 
   PROCESSED_DEFAULTS = { 
     resolution: :same,
@@ -30,16 +31,8 @@ class VideoUploader < CarrierWave::Uploader::Base
     constant_rate_factor: '30',
     audio_codec: 'aac',
     audio_bitrate: '64k',
-    audio_sample_rate: '44100',
-    watermark:{
-        path: Rails.root.join('watermark.png'),
-        position: :bottom_right,
-        pixels_from_edge: 10
-      }
-
+    audio_sample_rate: '44100'
   }
-
-  process :save_video_duration
 
   def save_video_duration
     video = Time.at(FFMPEG::Movie.new(file.file).duration).utc.strftime("%H:%M:%S")
@@ -48,7 +41,23 @@ class VideoUploader < CarrierWave::Uploader::Base
     model.resolution = res
   end
 
-  process :encode
+  def watermark_movie
+    num = rand((1..8).to_a.length)
+    case num
+    when 0..2
+      position = "LB"
+    when 3..5
+      position = "LT"
+    else
+      position = "RB"
+    end
+    options = {watermark: "#{Rails.root}/app/assets/images/watermark.png", watermark_filter: {position: position, padding_x: 10, padding_y: 10}}
+    #debugger
+    tmp_path = File.join File.dirname(current_path), "tmp_file.mp4"
+    file = FFMPEG::Movie.new(self.file.path)
+    file.transcode tmp_path, options
+    File.rename tmp_path, current_path
+  end
 
   def encode
     if FFMPEG::Movie.new(file.file).video_codec != 'h264'
@@ -61,12 +70,11 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process thumbnail: [{format: 'jpg', quality: 10, strip: false, size: 720, strip: true, logger: Rails.logger}]
+    process thumbnail: [{format: 'jpg', quality: 10, strip: false, size: 720, logger: Rails.logger}]
     def full_filename for_file
       png_name for_file, version_name
     end
   end
-
   
   def png_name for_file, version_name
     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
