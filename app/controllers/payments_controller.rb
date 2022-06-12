@@ -44,7 +44,9 @@ class PaymentsController < ApplicationController
 	def webpay_nullify
 		@payment = Payment.where(tbk_token: params[:token_ws]).lock(true).take
 		puts '+++++++++++++++++'
-		puts params[:token_ws]
+		puts params[:TBK_TOKEN]
+		puts params[:TBK_ID_SESION]
+		puts params[:TBK_ORDEN_COMRA]
 		puts '+++++++++++++++++'
 	end
 
