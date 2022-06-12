@@ -50,6 +50,10 @@ class PaymentsController < ApplicationController
 		puts '+++++++++++++++++'
 	end
 
+	def webpay_return_url
+		
+	end
+
 	private
 
 	def payment_params
