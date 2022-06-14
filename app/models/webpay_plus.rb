@@ -25,9 +25,6 @@ class WebpayPlus
 			req.url "/rswebpaytransaction/api/webpay/v1.2/transactions/#{webpay_token}"
 		end
 
-		puts '++++++++++++++++'
-		puts response.inspect
-		puts '++++++++++++++++'
 	# WARNING
 	# Use this only if the app have an old data structure and you have to provide backward compatibility
 		if (response = process_response(response))

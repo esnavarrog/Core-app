@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_222625) do
+ActiveRecord::Schema.define(version: 2022_06_13_225505) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_222625) do
     t.string "buy_order"
     t.string "session_id"
     t.integer "bits"
+    t.integer "bit_amount"
   end
 
   create_table "poly_likes", force: :cascade do |t|

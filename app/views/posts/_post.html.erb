@@ -76,6 +76,7 @@
     <% elsif !post.img.present? %>
         <div class="content-video-noblock">
             <%= link_to look_path(id:post.id), remote:true do %>
+            <%= inline_svg_tag('icons/play-btn-fill.svg') %>
                 <%= post.video.thumb.url.present? ? image_tag(post.video.thumb.url, class:'noblock-image') : image_tag('background.jpg', class:'noblock-image') %>
             <% end %>
         </div>

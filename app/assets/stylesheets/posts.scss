@@ -137,6 +137,7 @@ $resaltColor:            #900C3F;
     max-height: 500px;
     min-height: 400px;
     width: 100%;
+    position:relative;
     background: asset-data-url("background.jpg");
     background-size: cover;
     background-repeat:   no-repeat;
@@ -145,7 +146,18 @@ $resaltColor:            #900C3F;
         width:100%;
         margin: 0 auto;
     }
-
+    svg{
+        position:absolute;
+        top: 40%;
+        left: 44%;
+        fill: $resaltColor;
+        width: 100px;
+        height: 100px;
+        opacity: .5;
+        path{
+            box-shadow:$box_shadow;
+        }
+    }
 }
 
 .video-js .vjs-tech{
