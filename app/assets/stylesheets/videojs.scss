@@ -5,7 +5,12 @@
         height: 400px !important;
     }
 }
-.vjs-theme-fantasy .vjs-big-play-button {
+.video-js .vjs-big-play-button {
+    line-height: 2.8em !important;
+    height: 3em !important;
+    border-radius: 50% !important;
+}
+.vjs-js .vjs-big-play-button {
     width: 70px;
     height: 70px;
     background: none;
