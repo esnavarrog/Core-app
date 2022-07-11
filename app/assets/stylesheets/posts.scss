@@ -118,7 +118,8 @@ $resaltColor:            #900C3F;
 }
 
 .content-image-block{
-    max-height: 500px;
+    height: 500px;
+
     width: 100%;
     background: asset-data-url("background.jpg");
     background-size: cover;
