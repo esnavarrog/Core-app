@@ -43,6 +43,13 @@ class PaymentsController < ApplicationController
 
 	end
 
+	def payment_success
+		
+	end
+	def payment_failed
+		
+	end
+
 	private
 
 	def payment_params
