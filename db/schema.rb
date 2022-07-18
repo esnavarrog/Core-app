@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_06_13_225505) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -45,14 +48,14 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "bits", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
     t.integer "price_pay"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commentable_type", null: false
-    t.integer "commentable_id", null: false
+    t.bigint "commentable_id", null: false
     t.integer "user"
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
@@ -128,7 +131,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
     t.string "cadera"
     t.integer "pagos"
     t.string "modalidad"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "slug"
     t.integer "service_type", default: 0
     t.string "gallery"
@@ -145,7 +148,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
     t.integer "amount"
     t.string "number_operation"
     t.text "commentary"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
@@ -171,9 +174,9 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
   end
 
   create_table "poly_likes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "likeable_type", null: false
-    t.integer "likeable_id", null: false
+    t.bigint "likeable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "emoji"
@@ -183,11 +186,11 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
 
   create_table "posts", force: :cascade do |t|
     t.string "img"
-    t.integer "girl_id", null: false
+    t.bigint "girl_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "video"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "price", default: 0
     t.string "duration"
     t.string "resolution"

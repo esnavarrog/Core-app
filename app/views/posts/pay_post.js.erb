@@ -1,5 +1,4 @@
 
 $('#post-<%= @post.id %>').replaceWith('<%= j render @post %>')
-$('#post-<%= @post.id %>').replaceWith('')
 $('<%= j render @post %>').hide().replaceWith("#post-<%= @post.id %>").fadeIn(500);
 alert('Haz canjeado esta publicación por <%= @post.price %>')
