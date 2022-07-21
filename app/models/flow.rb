@@ -77,15 +77,12 @@ class Flow
 		end
 	end
 
-    def self.success_flow(params, order)
-        params_to_get = params_payment(order)
-        puts '------params_to_get---------'
-        puts params_to_get 
-        puts '------params_to_get---------'
-        params_to_get['s'] = signature_encripted(params_to_get)
-        params_to_get['token'] = params['token']
+    def self.success_flow(params)
+        new_params['token'] = params['token']
+        new_params['apiKey'] = ENV['api_key_flow']
+        new_params['s'] = signature_encripted(new_params)
         url = URL_BASE + '/payment/getStatus'
-        url = url + "?" + params_to_get.to_query
+        url = url + "?" + new_params.to_query
         puts '------url---------'
         puts url 
         puts '------url---------'
