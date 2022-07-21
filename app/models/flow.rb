@@ -78,6 +78,7 @@ class Flow
 	end
 
     def self.success_flow(params)
+        new_params = {}
         new_params['token'] = params['token']
         new_params['apiKey'] = ENV['api_key_flow']
         new_params['s'] = signature_encripted(new_params)
