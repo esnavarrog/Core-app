@@ -50,7 +50,7 @@ class PaymentsController < ApplicationController
 		puts params
 		puts '*************'
 		order = Payment.where(tbk_token:params['token']).lock(true).take
-		response = Flow.success_flow(params, order)
+		response = Flow.success_flow(params)
 		if response.code == 200
 			@data = JSON.parse(response)
 			puts @data.inspect
