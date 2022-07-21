@@ -1,0 +1,12 @@
+<div class="container-fluid">
+   <div class="shadow-sm rounded-1 bg-white p-4 m-4">
+      <div class="row">
+         <h2 class="text-success">Tu pago fué exitoso.</h2>
+         <h3>En unos minutos tu pago será verificado y cargados tus Bits, ten paciencia, si tienes problemas y no se han cargado en 1 hora, por favor comunícate al
+             <a href="https://wa.me/+56955248982?text=Hola%20soy%20<%= current_user.present? ? "de mitarde ##{current_user.id} - #{current_user.try(:email)} y me comunico para..." : 'usuario de mitarde' %>">Whatsapp</a>
+         </h3>
+      </div>
+   </div>
+</div>
+
+<!-- editar para que sea failed -->

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :girls
   end
   resources :payments, path:"pagos"
+  get 'payments/payment_success', as: :payment_success
+  get 'payments/payment_failed', as: :payment_failed
   get 'mis_chicas', to:'girls#mis_chicas'
   post 'poly_likes', to: 'poly_likes#create'
   post 'create_post', to: 'posts#create'
