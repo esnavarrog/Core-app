@@ -17,10 +17,7 @@ class User < ApplicationRecord
   enum role: [:user, :admin_super, :girl]
   enum status: [:active, :locked, :inactive]
 
-
-
   def self.from_omniauth(access_token)
-
     user = User.where(email: access_token.info.email).first
     unless user
       user = User.create(
@@ -47,6 +44,7 @@ class User < ApplicationRecord
   def client?
     role == :user.to_s
   end
+
   def girl?
     role == :girl.to_s
   end

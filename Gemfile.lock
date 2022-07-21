@@ -158,6 +158,9 @@ GEM
       builder (>= 2.1.2)
       rexml (~> 3.0)
     hashie (5.0.0)
+    httparty (0.20.0)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     httpi (2.5.0)
       rack
       socksify
@@ -388,6 +391,7 @@ DEPENDENCIES
   devise-i18n
   fog-aws
   friendly_id (~> 5.4.0)
+  httparty
   image_processing (~> 1.2)
   inline_svg
   jbuilder (~> 2.7)

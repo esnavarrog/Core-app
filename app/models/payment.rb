@@ -21,6 +21,7 @@ class Payment < ApplicationRecord
 		payment.bit_amount = BITS[payment_params[:bits].to_sym]
 		payment.user_id = current_user.id if current_user.present?
 		payment.bits = payment_params[:bits].to_sym
+		payment.description = "Compra de #{payment.bit_amount} por #{payment.amount}"
 		payment.save
 		payment.update(session_id:"session-#{payment.id}", buy_order: "ordenDeCompra-#{payment.id}")
 		payment

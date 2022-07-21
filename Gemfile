@@ -49,6 +49,8 @@ gem 'carrierwave-video-thumbnailer'
 gem 'carrierwave-processing'
 gem 'sweetalert2'
 gem 'streamio-ffmpeg'
+# gem 'rest-client'
+gem 'httparty'
 
 # webpay
 gem "signer", "~> 1.4.3"

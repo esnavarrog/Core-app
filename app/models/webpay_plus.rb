@@ -12,6 +12,7 @@ class WebpayPlus
 					return_url: url_helpers.webpay_return_url_url(app_host)
 				}).to_json
 		end
+		
 
 		if (response = process_response(response))
 			return response
@@ -65,7 +66,7 @@ class WebpayPlus
 	end
 
 	def self.url_helpers
-	Rails.application.routes.url_helpers
+		Rails.application.routes.url_helpers
 	end
 
 	# WARNING
