@@ -13,7 +13,6 @@ module Core
     config.autoload_paths << "#{Rails.root}/lib"
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
     config.i18n.default_locale = :es
-    config.action_controller.default_protect_from_forgery = false
 
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'application.yml')
