@@ -45,24 +45,33 @@ class PaymentsController < ApplicationController
 	end
 
 	def success_final
-		puts 'final de ruta pago'
-		puts '*************'
-		puts params
-		puts '*************'
-		order = Payment.where(tbk_token:params['token']).lock(true).take
 		response = Flow.success_flow(params)
 		if response.code == 200
-			@data = JSON.parse(response)
-			puts @data.inspect
-			puts '------------------------'
-			puts response.inspect
-		end
+			@payment = Payment.where(tbk_token:params['token']).lock(true).take
+			@payment = @payment.success_pay(response)
+			unless @payment.media.nil?
+				@user = @payment.user
+				last_bit = @user.bit
+				new_bit = @payment.bit_amount
+				@user.bit = new_bit + last_bit
+				@user.save(validate:false)
+				@response = response
 
-		# if(params[:TBK_ID_SESION] == nil)
-		# 	# redirect_to webpay_success_path(token_ws: params[:token_ws])
-		# else
-		#   	redirect_to webpay_nullify_path
-		# end
+				redirect_to pago_realizado_path(pay_id:@payment.id)
+
+			else
+				redirect_to pago_rechazado_path(pay_id:@payment.id)
+			end
+
+		end
+	end
+
+	def show
+		@payment = Payment.find(params[:pay_id])
+	end
+
+	def pay_aproved
+		@payment = Payment.find(params[:pay_id])
 	end
 
 	private

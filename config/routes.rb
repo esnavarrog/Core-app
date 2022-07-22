@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   # get '/webpay/webpay_return_url', :to => 'webpay#webpay_return_url'
   post '/pagos/success_final', :to => 'payments#success_final', :as => :success_final
   get 'pagos/success', :to => 'payments#pay_success', :as => :pay_success
+  get 'pagos/pago_realizado', to: 'payments#pay_aproved', as: :pago_realizado
+  get 'pagos/pago_rechazado', to: 'payments#pay_rejected', as: :pago_rechazado
   get 'webpay/error', :to => 'payments#webpay_error', :as => :webpay_error
   get 'webpay/nullify', :to => 'payments#webpay_nullify', :as => :webpay_nullify
 end

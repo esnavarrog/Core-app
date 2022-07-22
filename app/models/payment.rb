@@ -27,6 +27,24 @@ class Payment < ApplicationRecord
 		payment
 	end
 
+	def success_pay(response)
+		response = JSON.parse(response.body)
+		puts response["paymentData"]
+		payment = self
+		payment.fee = response["paymentData"]["fee"]
+		payment.balance = response["paymentData"]["balance"]
+		payment.pay_date = response["paymentData"]["date"]
+		payment.payer = response["payer"]
+		payment.media = response["paymentData"]["media"]
+		payment.transfer_date = response["paymentData"]["transferDate"]
+		payment.currency = response["currency"]
+		payment.status = response["status"]
+		payment.flow_order = response["flowOrder"]
+		payment.response_json = response.to_s
+		payment.save
+		payment
+	end
+
 	def webpay_object_data
 		{
 			buy_order: self.buy_order,

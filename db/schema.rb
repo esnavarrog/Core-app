@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_225505) do
+ActiveRecord::Schema.define(version: 2022_07_22_030603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,15 @@ ActiveRecord::Schema.define(version: 2022_06_13_225505) do
     t.string "session_id"
     t.integer "bits"
     t.integer "bit_amount"
+    t.text "response_json"
+    t.string "flow_order"
+    t.integer "status"
+    t.string "currency"
+    t.string "payer"
+    t.string "media"
+    t.integer "fee"
+    t.integer "balance"
+    t.datetime "transfer_date"
   end
 
   create_table "poly_likes", force: :cascade do |t|

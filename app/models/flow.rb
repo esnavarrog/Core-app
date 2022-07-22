@@ -84,12 +84,8 @@ class Flow
         new_params['s'] = signature_encripted(new_params)
         url = URL_BASE + '/payment/getStatus'
         url = url + "?" + new_params.to_query
-        puts '------url---------'
-        puts url 
-        puts '------url---------'
 
         response = HTTParty.get(url)
-        puts response.code
         response
     end
 end
