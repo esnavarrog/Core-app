@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_22_030603) do
+ActiveRecord::Schema.define(version: 2022_07_24_044716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,9 @@ ActiveRecord::Schema.define(version: 2022_07_22_030603) do
     t.integer "fee"
     t.integer "balance"
     t.datetime "transfer_date"
+    t.string "status_message"
+    t.integer "last_bit_amount"
+    t.integer "after_bit"
   end
 
   create_table "poly_likes", force: :cascade do |t|
@@ -248,6 +251,7 @@ ActiveRecord::Schema.define(version: 2022_07_22_030603) do
     t.string "uid", limit: 500, default: "", null: false
     t.string "image"
     t.integer "bit", default: 0
+    t.integer "last_bit"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

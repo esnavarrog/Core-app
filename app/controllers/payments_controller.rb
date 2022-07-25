@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
 	skip_before_action :verify_authenticity_token, only:[:success_final]
+	before_action :require_user, only: :new
 	require 'openssl'
 	require 'base64'
 	require 'json'
@@ -54,12 +55,13 @@ class PaymentsController < ApplicationController
 				last_bit = @user.bit
 				new_bit = @payment.bit_amount
 				@user.bit = new_bit + last_bit
+				@payment.update(last_bit_amount:last_bit, after_bit: @user.bit)
 				@user.save(validate:false)
 				@response = response
 
 				redirect_to pago_realizado_path(pay_id:@payment.id)
-
 			else
+				@payment.update(status_message:"Pago no realizado por algún error...", last_bit_amount:@payment.user.bit, after_bit: @payment.user.bit)
 				redirect_to pago_rechazado_path(pay_id:@payment.id)
 			end
 
@@ -67,7 +69,8 @@ class PaymentsController < ApplicationController
 	end
 
 	def show
-		@payment = Payment.find(params[:pay_id])
+		pay_id = params[:pay_id] || params[:id]
+		@payment = Payment.find(pay_id)
 	end
 
 	def pay_aproved

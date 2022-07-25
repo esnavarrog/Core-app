@@ -21,7 +21,7 @@ class Payment < ApplicationRecord
 		payment.bit_amount = BITS[payment_params[:bits].to_sym]
 		payment.user_id = current_user.id if current_user.present?
 		payment.bits = payment_params[:bits].to_sym
-		payment.description = "Compra de #{payment.bit_amount} por #{payment.amount}"
+		payment.description = "Compra de #{payment.bit_amount} por #{ActionController::Base.helpers.number_to_currency(payment.amount, precision:0, delimiter:".")}"
 		payment.save
 		payment.update(session_id:"session-#{payment.id}", buy_order: "ordenDeCompra-#{payment.id}")
 		payment
@@ -29,7 +29,6 @@ class Payment < ApplicationRecord
 
 	def success_pay(response)
 		response = JSON.parse(response.body)
-		puts response["paymentData"]
 		payment = self
 		payment.fee = response["paymentData"]["fee"]
 		payment.balance = response["paymentData"]["balance"]
@@ -40,17 +39,10 @@ class Payment < ApplicationRecord
 		payment.currency = response["currency"]
 		payment.status = response["status"]
 		payment.flow_order = response["flowOrder"]
+		payment.status_message = "Pago realizado correctamente."
 		payment.response_json = response.to_s
 		payment.save
 		payment
-	end
-
-	def webpay_object_data
-		{
-			buy_order: self.buy_order,
-			session_id: self.session_id,
-			amount: self.amount
-		}
 	end
 
 end

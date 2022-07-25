@@ -1,38 +1,43 @@
 <!-- PAGO CON WEBPAY -->
 <% if user_signed_in? %>
+<div class="container bg-white rounded shadow-sm p-4">
+	<h2 class="text-pink">Compra bits para desbloquear contenido exclusivo.</h2>
+	<h5>Recuerda ingresar el mismo correo electrónico de tu cuenta MiTarde <span class="text-pink"><%= current_user.present? ? "(#{current_user.email})" : "" %></span></h5>
+	<p>En Flow puedes pagar con diferentes medios de pago, como WebPay, MACH, Khipu, onepay, WebPayOneClick, Multicaja, Servipag, Chek.</p>
+	<p>Elige una compra... <i class="bi bi-arrow-down-circle-fill text-pink"></i></p>
+ </div>
 <div id="webpay-row" class="container bg-white rounded shadow-sm py-4" >
-	<h2 id="text-primary" class="text-center m-3">
-		Adquiere <strong>Bits</strong> para subscribirte o desbloquear contenido exclusivo.
-	</h2>
 	<%= form_for(@payment, html: {name: 'new_payment', class: "form-inline"}) do |f| %>
 		
 		<div class="form-inline d-flex flex-wrap justify-content-around my-3 ">
 			<% price = {light:10000, medium:30000, large:60000, xlarge:110000} %>
 			<% Payment.bits.map{|a| a[0].to_sym}.each do |bits| %>
-			<div class="form-group form-group-radio">
-				<div>Paga <%=number_to_currency(price[bits], precision:0, delimiter:'.')%> por:</div>
+			<div class="form-group form-group-radio-button">
 				<%= f.radio_button :bits, bits, class:'input-checkbox' %>
 				<label for="payment_bits_<%= bits%>">
-					Plan de 
-					<% case bits %>
-					<% when :light %>
-					10 
-					<% when :medium %>
-					30 
-					<% when :large %>
-					60 
-					<% when :xlarge %>
-					120 
-					<% end %>
-					bits
+					<div>
+						Paga <%=number_to_currency(price[bits], precision:0, delimiter:'.')%> por: 
+						<% case bits %>
+						<% when :light %>
+						10 
+						<% when :medium %>
+						30 
+						<% when :large %>
+						60 
+						<% when :xlarge %>
+						120 
+						<% end %>
+						bits
+
+					</div>
+
 				</label>
 			</div>
 			<% end %>
 		</div>
 
 		<div class="d-flex flex-wrap justify-content-center">
-			<button class="btn btn-webpay">Pagar con WebPay</button> 
-			<%= image_tag('WebpayPlus.png', class: 'logo-webpay')%>
+			<button class="btn btn-webpay">Pagar con Flow</button> 
 		</div>
 	<% end %>
 </div>

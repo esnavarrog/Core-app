@@ -1,29 +1,31 @@
 <%= render './partials/header' %>
-<div class=" container bg-white rounded shadow-sm">
-
-    <div class="text-center mt-24 mb-24">
-        <h2>Estas son tus chicas favoritas</h2>
-        <h4>Presiona el corazón de tu chica para hacerla favorita.</h4>
+<div class="content-row">
+    <div class=" container bg-white rounded shadow-sm">
+    
+        <div class="text-center p-4 mt-24 mb-24">
+            <h2 class="text-pink">Estas son tus chicas favoritas</h2>
+            <p>Presiona el corazón de tu chica para hacerla favorita.</p>
+            
+        </div>
+        <% if @girls.present? %>
+            <% @girls.each do |like| %>
+                <% girl = Girl.find(like.likeable_id) %>
+                <div class="grid">
+                    <%= render partial:'girl', locals:{girl:girl} %>
+                </div>
+            <% end %>
         
-    </div>
-    <% if @girls.present? %>
-        <% @girls.each do |like| %>
-            <% girl = Girl.find(like.likeable_id) %>
-            <div class="grid">
-                <%= render partial:'girl', locals:{girl:girl} %>
-            </div>
+        <% else %>
+        <div class="text-center mt-24 mb-24">
+            <h3>Aún no tienes chicas en favoritos</h3>
+        </div>
         <% end %>
-    
-    <% else %>
-    <div class="text-center mt-24 mb-24">
-        <h3>Aún no tienes chicas en favoritos</h3>
-    </div>
-    <% end %>
-    
-    <div class="box-bottom mt-100 text-center">
-        <h1>Club Escort</h1>
-        <h3>Únete a la comunidad</h3>
-        <h6>Sé parte de la mejor multiplataforma de anuncios de modelos y entretenimiento para adultos en Santiago de Chile.</h6>
-        <button class="btn btn-outline-primary mt-24">COMIENZA</button>
+        
+        <div class="box-bottom mt-100 text-center">
+            <h1>Club Escort</h1>
+            <h3>Únete a la comunidad</h3>
+            <h6>Sé parte de la mejor multiplataforma de anuncios de modelos y entretenimiento para adultos en Santiago de Chile.</h6>
+            <button class="btn btn-outline-primary mt-24">COMIENZA</button>
+        </div>
     </div>
 </div>

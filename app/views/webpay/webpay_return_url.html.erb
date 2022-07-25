@@ -1,11 +1,13 @@
 <%= render './partials/header' %>
-<div class="container box-content bg-white rounded shadow-sm p-4 ">
-   <h2 id="text-primary">Orden de Compra <strong><%= params[:TBK_TOKEN] %></strong> fué anulada</h2>
-   
-   <p>Anulaste la compra, si cometiste un error por favor intenta nuevamente</p>
-   <%= link_to 'Comprar', new_payment_path, class:'btn btn-link' %>
-   
-   <div class="row">
-		<%= link_to 'Vuelve al home', :root, class:'btn btn-primary' %>
-	</div>
+<div class="content-row">
+   <div class="container box-content bg-white rounded shadow-sm p-4 ">
+      <h2 id="text-primary">Orden de Compra <strong><%= params[:TBK_TOKEN] %></strong> fué anulada</h2>
+      
+      <p>Anulaste la compra, si cometiste un error por favor intenta nuevamente</p>
+      <%= link_to 'Comprar', new_payment_path, class:'btn btn-link' %>
+      
+      <div class="row">
+         <%= link_to 'Vuelve al home', :root, class:'btn btn-primary' %>
+      </div>
+   </div>
 </div>

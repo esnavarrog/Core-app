@@ -1,4 +1,4 @@
-<section class="nav-header">
+<section class="nav-header fixed-top">
     <div class="container d-flex justify-content-between align-items-center">
         <% if user_signed_in? && !current_user.girl? %>
             <%= link_to 'Únete', new_girl_path, class:'btn btn-link' %>
@@ -12,9 +12,7 @@
             <% end %>
         <% end %>
         <% if user_signed_in? && current_user.client? %>
-            <div class="bits">
-                <%= "#{current_user.bit} bits" %>
-            </div>
+            <%= link_to "#{current_user.bit} bits", new_payment_path, class:'bits' %>
         <% end %>
             <%= inline_svg_tag('logomitarde.svg', class:'logo-header') %>
     </div>

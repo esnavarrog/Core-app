@@ -1,76 +1,74 @@
 <%= render './partials/header' %>
+<div class="content-row">
 
-<div class="container bg-white rounded shadow-sm py-3">
-	<section class="content-header text-center">
-		<h1>
-			Este es tu detalle de pago.
-		</h1>
-		<h2>
-			Muchas gracias por preferirnos
-		</h2>
-			<div><%= @payment.user.email  %></div>
-			<div class="active">Detalle de tu pago:</div>
-	</section>
-	<div class="mt-3">
-		<div class="row table-responsive">
-		<table class="table table-striped ">
-			<tbody>
-				<tr>
+	<div class="container bg-white rounded shadow-sm py-3">
+		<section class="content-header text-center">
+			<h1>
+				Este es tu detalle de pago.
+			</h1>
+			<h2>
+				Muchas gracias por preferirnos
+			</h2>
+				<div><%= link_to @payment.user.nickname, edit_registration_path(@payment.user) %></div>
+				<div class="active">Detalle de tu pago:</div>
+		</section>
+		<div class="mt-3">
+			<div class="row table-responsive">
+			<table class="table table-striped ">
+				<tbody>
+					<tr>
 						<td>Número de pago</td>
 						<td><%= @payment.id %></td>
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 						<td>Monto</td>
 						<td><%= number_to_currency(@payment.amount, precision: 0, unit: "$ ", delimiter: ".")%></td>           
 					</tr>
-				<tr>
-					<td>Bits</td>
-					<% case @payment.bits %>
-					<% when 'light' %>
-						<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 10bits</td>           
-					<% when 'medium' %>
-						<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 30bits</td>           
-					<% when 'large' %>
-						<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 65bits</td>           
-					<% when 'xlarge' %>
-						<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 110bits</td>           
-					<% end %>
-					</tr>
-				<tr>
+					<tr>
+						<td>Bits</td>
+						<% case @payment.bits %>
+						<% when 'light' %>
+							<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 10bits</td>           
+						<% when 'medium' %>
+							<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 30bits</td>           
+						<% when 'large' %>
+							<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 65bits</td>           
+						<% when 'xlarge' %>
+							<td class="text-danger bold">Plan <%= @payment.bits.capitalize %> 110bits</td>           
+						<% end %>
+						</tr>
+					<tr>
 						<td>Código de autorización de Flow</td>
 						<td><%= @payment.flow_order %></td>       
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 						<td>Fecha de transacción</td>
 						
 						<td>
 							<%unless @payment.pay_date.nil?%>  
 								<%=format_date(@payment.pay_date)%>
-							<% end %></td>
-				</tr>
-				<tr>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
 						<td>Tipo de pago</td>
 						<td>
-							<%=  %>    
+							<%= @payment.media.try(:titleize)%>    
 						</td>       
-				</tr>            
-				<tr>       
-						<td>Tipo de cuota</td>
+					</tr> 
+					<tr>
+						<td>Estado Pago</td>
 						<td>
-							<%=  %>
-							
-						</td>  
-				</tr>
-				
-				<tr>
-						<td>Número de tarjeta (últimos 4 digitos)</td>
-						<td><%=  %></td>
-				</tr>   
-			</tbody>
-		</table>         
+							<%= @payment.status_message %>    
+						</td>       
+					</tr> 
+					
+				</tbody>
+			</table>         
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<%= link_to 'Vuelve al home', :root, class:'btn btn-primary' %>
+		<div class="row">
+			<%= link_to 'Vuelve al home', :root, class:'btn btn-primary' %>
+		</div>
 	</div>
 </div>

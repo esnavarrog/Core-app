@@ -47,13 +47,6 @@ class Flow
         signature_encripted
     end
 
-    def self.api_connection
-		return Faraday.new(
-			url: URL_BASE,
-			headers: request_headers
-		)
-	end
-
     def request_headers
 		return {
 			'api_Key' => ENV['api_key_flow'],
