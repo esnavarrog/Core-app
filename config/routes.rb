@@ -8,11 +8,10 @@ Rails.application.routes.draw do
   get 'posts/destroy'
   get 'posts/update'
   post 'comment_new', to: 'comments#create'
-  resources :girls, path:'chicas'
   resources :inscriptions
-  resources :bits
   resources :posts, path:"publicaciones"
-  resources :girls do
+  resources :girls, path:'chicas' do
+    resources :bits
     resources :posts do
       resources :comments, only: [:create]
     end
@@ -41,6 +40,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
   post 'pay_post', to:'posts#pay_post'
   get 'look', to: 'posts#look'
+  get 'bit_of_post', to: 'bits#bit_of_post', as: :bits_de_publicacion
 
   #WebPay 
   get '/webpay/webpay_final_url', :to => 'webpay#webpay_final_url'

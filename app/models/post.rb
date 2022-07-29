@@ -22,4 +22,8 @@ class Post < FilterableRecord
     # collection = attribute_filter(collection,"status",options)
   end
 
+  def deletable?
+    bits.count == 0
+  end
+
 end

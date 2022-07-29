@@ -1,0 +1,6 @@
+<% @post.bits.each do |bit| %>
+    <%= bit.id %>
+    <%= bit.user.nickname %>
+    <%= format_date bit.created_at %>
+    <%= format_time bit.created_at %>
+<% end %>

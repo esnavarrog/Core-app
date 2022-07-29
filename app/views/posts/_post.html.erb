@@ -34,8 +34,12 @@
             <ul class="dropdown-menu dropstart-arrow">
                 <% if user_signed_in? && post.user == post.girl.user && post.girl.user == current_user %>
                     <li>
-                        <%= link_to post_path(post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
-                            <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
+                        <% if post.deletable? %>
+                            <%= link_to post_path(post), class:"dropdown-item d-flex align-items-center", method: :delete, data:{confirm:"Estás segura de eliminar este post?"}, remote: true do %>
+                                <%= inline_svg_tag('icons/icon_trash.svg', class:'me-2') %> <span>Eliminar</span> 
+                            <% end %>
+                        <% else %>
+                            <a href="" class="dropdown-item">Comprados <%= post.bits.count %></a>
                         <% end %>
                     </li>
 

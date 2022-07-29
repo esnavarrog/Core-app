@@ -11,6 +11,6 @@
 // import 'bootstrap/js/src/grid'  
 // import 'bootstrap/js/src/tab'  
 // import 'bootstrap/js/src/toast'  
-// import 'bootstrap/js/src/tooltip' 
+import 'bootstrap/js/src/tooltip' 
 
 import 'bootstrap';

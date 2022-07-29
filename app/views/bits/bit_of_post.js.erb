@@ -1,0 +1,3 @@
+$('#bitsTableModal').modal('toggle');
+$('#bitsTableModal').find('.modal-title').html('Bits de publicación: <%= @post.id %>');
+$('#bitsTableModal').find('.modal-body').html('<%= j render './bits/partials/list_bits' %>');

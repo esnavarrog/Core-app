@@ -30,9 +30,15 @@
       <div id="portada-form" class="avatar-form d-flex justify-content-center">
         <%= image_tag(@girl.portada_url(:medium), class:'portada') if @girl.avatar? %>
       </div>
-      <div id="gallery" class="form-group">
-        <%= form.label :gallery, 'Sube tu galería' %>
-        <%= form.file_field :gallery, multiple: true, class:"form-control" %>
+      
+      
+      <div class="form-group mb-3 mt-3">
+        <%= form.label :gallery, class:'d-flex align-items-center justify-content-center', id:'button-upload-avatar' do %>
+        <i class="bi bi-upload me-2"></i> Sube tu galería
+        <% end %>
+            
+        <%= form.file_field :gallery, class:'d-none' %>
+
       </div>
     </div>
 

@@ -19,12 +19,11 @@ class Girl < FilterableRecord
     accepts_nested_attributes_for :posts, reject_if: :all_blank, allow_destroy: true
     
     x = 10000
-    array = []
+    array = ["A Consultar", "No Presencial"]
     while x <= 170000
-        array << x
+        array << ActionController::Base.helpers.number_with_delimiter(x, delimiter:'.')
         x = x+5000
     end
-        
 
     IDIOMA_LIST = ['Español', 'Español y Inglés', 'Inglés', 'Español y Francés', 'Frances', 'Español y Portuguéz', 'Portugues', 'Japonés', 'Chino', 'Alemán', 'Otro']
     ORAL_LIST = ['Oral C/C', 'Oral S/C', 'Oral S/C según higiene']

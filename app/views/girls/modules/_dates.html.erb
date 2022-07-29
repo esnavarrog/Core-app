@@ -14,11 +14,15 @@
 		<div class="atencion">
 			<%= @girl.horario %>
 		</div>
-		<div class="precio">
-			<% if @girl.price == 'a consultar' %>
-				Valor a consultar
+		<!-- boton para desplegar precio -->
+		<button class="btn btn-link shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrice" aria-expanded="false" aria-controls="collapseExample">
+			<span>Ver Precio</span> <i class="bi bi-chevron-down"></i>
+		</button>
+		<div id="collapsePrice" class="precio collapse">
+			<% if @girl.price == 'A Consultar' || @girl.price == 'No Presencial' %>
+				<%= @girl.price %>
 			<% else %>
-				Valor desde $<%= number_with_delimiter @girl.price.to_i, delimiter:'.' %>
+				Valor desde $<%= @girl.price %>
 			<% end %>
 		</div>
 		<div id="contact-buttons" class="d-flex justify-content-center">
