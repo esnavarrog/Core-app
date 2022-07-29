@@ -12,6 +12,7 @@
                 <th>CANT. VENTAS</th>
                 <th>TIPO CONTENIDO</th>
                 <th>ESTADO</th>
+                <th>GANANCIA</th>
                 <th></th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                         <% end %>
                     </td>
                     <td><%= post.try(:status) %></td>
+                    <td><%= number_to_currency((post.bits.sum(:price_pay)*850), precision:0, delimiter:'.') %></td>
                     <td>
                         <%= link_to bits_de_publicacion_path(id:post), class:'btn btn-link shadow-none', remote:true do %>
                             <i class="bi bi-chevron-down"></i>
