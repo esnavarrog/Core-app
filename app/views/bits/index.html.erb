@@ -1,48 +1,27 @@
-<%= render './partials/header' %>
-<div class="content-row">
+<div class="header-bits">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="amount">
+            <small>Saldo Pendiente</small>
+            <div>
+                <%= number_to_currency @amount_pending, precision:0, delimiter:'.' %> bits
+            </div>
+        </div>
+        <div class="perfil">
+            <small>
+                <%= @girl.name.titleize %>
+            </small>
+            <%= image_tag @girl.avatar_url(:thumb), class:'img-circle-avatar' %>
+        </div>
+    </div>
+    <div class="overflow-info shadow">
+        <h2>hola</h2>
+    </div>
+</div>
 
-</div>
-<div class="container bg-white rounded shadow-sm p-2">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID PUBLICACIÓN</th>
-                <th>FECHA PUB.</th>
-                <th>VALOR BITS</th>
-                <th>CANT. VENTAS</th>
-                <th>TIPO CONTENIDO</th>
-                <th>ESTADO</th>
-                <th>GANANCIA</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @amount.each do |post| %>
-                <tr>
-                    <td><%= post.id %></td>
-                    <td><%= format_date post.created_at %></td>
-                    <td><%= post.price %></td>
-                    <td><%= post.bits.count %></td>
-                    <td>
-                        <% if post.video.present? %>
-                            Video
-                        <% elsif post.img.present? %>
-                            Imagen
-                        <% else %>
-                            Solo Texto
-                        <% end %>
-                    </td>
-                    <td><%= post.try(:status) %></td>
-                    <td><%= number_to_currency((post.bits.sum(:price_pay)*850), precision:0, delimiter:'.') %></td>
-                    <td>
-                        <%= link_to bits_de_publicacion_path(id:post), class:'btn btn-link shadow-none', remote:true do %>
-                            <i class="bi bi-chevron-down"></i>
-                        <% end %>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>
+
+
+
+
+
 
 <%= render './bits/modals/bits_table' %>

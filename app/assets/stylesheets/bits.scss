@@ -1,3 +1,40 @@
 // Place all the styles related to the Bits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$lightHoverPrimary:      #FF5733;
+$lightResaltColor:       #C70039;
+.header-bits{
+    min-height: 200px;
+    padding: 24px;
+    // background-color: rebeccapurple;
+    background-image: linear-gradient(to right, $lightHoverPrimary, $lightResaltColor);
+    color: white;
+    .d-flex{
+        margin-top: 2rem;
+
+        .amount{
+            small{
+                font-size: 1rem;
+            }
+            div{
+                font-size: 24px;
+                line-height: 18px;
+            }
+        }
+        img{
+            border: 2px solid white;
+        }
+    }
+    .overflow-info{
+        color: black;
+        position: absolute;
+        top: 150px;
+        min-height: 100px;
+        background: white;
+        width: 90%;
+        margin: 0 auto;
+        padding: 24px;
+        border-radius: 8px;
+    }
+}
+
